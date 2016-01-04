@@ -99,7 +99,7 @@ void communicationReset(void){
     OD_writeOutput8Bit[1] = 0;
 
     /* Configure Object dictionary entry at index 0x2120 */
-    CO_OD_configure(CO->SDO, ODF_testDomain_index, ODF_testDomain, 0, 0, 0);
+    CO_OD_configure(CO->SDO[0], ODF_testDomain_index, ODF_testDomain, 0, 0, 0);
 }
 
 

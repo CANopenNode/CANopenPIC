@@ -1,6 +1,6 @@
 # mplab_ide
-/*.X/build
-/*.X/debug
-/*.X/dist
-/*.X/nbproject/private/private.xml
+/*.X/build/
+/*.X/debug/
+/*.X/dist/
+/*.X/nbproject/private/
 
