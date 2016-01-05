@@ -80,11 +80,14 @@ int main (void){
     /* Initialize two CAN led diodes */
     TRISAbits.TRISA0 = 0; LATAbits.LATA0 = 0;
     TRISAbits.TRISA1 = 0; LATAbits.LATA1 = 1;
-    #define CAN_RUN_LED        LATAbits.LATA0
-    #define CAN_ERROR_LED      LATAbits.LATA1
+    #define CAN_RUN_LED   LATAbits.LATA0
+    #define CAN_ERROR_LED LATAbits.LATA1
+
+    /* Initialize LED diode for CANrx */
+    TRISAbits.TRISA2 = 0; LATAbits.LATA2 = 0;
+    #define CAN_RX_LED    LATAbits.LATA2
 
     /* Initialize other LED diodes for RPDO */
-    TRISAbits.TRISA2 = 0; LATAbits.LATA2 = 0;
     TRISAbits.TRISA3 = 0; LATAbits.LATA3 = 0;
     TRISAbits.TRISA4 = 0; LATAbits.LATA4 = 0;
     TRISAbits.TRISA5 = 0; LATAbits.LATA5 = 0;
@@ -128,7 +131,6 @@ int main (void){
         CAN_ERROR_LED = 1;
 
         /* Initialize digital outputs */
-        TRISAbits.TRISA2 = 0; LATAbits.LATA2 = 0;
         TRISAbits.TRISA3 = 0; LATAbits.LATA3 = 0;
         TRISAbits.TRISA4 = 0; LATAbits.LATA4 = 0;
         TRISAbits.TRISA5 = 0; LATAbits.LATA5 = 0;
@@ -247,7 +249,6 @@ CO_TIMER_ISR(){
         /* Further I/O or nonblocking application code may go here. */
         /* read RPDO and show it on example LEDS on Explorer16 */
         uint8_t leds = OD_writeOutput8Bit[0];
-        LATAbits.LATA2 = (leds&0x04) ? 1 : 0;
         LATAbits.LATA3 = (leds&0x08) ? 1 : 0;
         LATAbits.LATA4 = (leds&0x10) ? 1 : 0;
         LATAbits.LATA5 = (leds&0x20) ? 1 : 0;
@@ -260,6 +261,24 @@ CO_TIMER_ISR(){
         if(!PORTDbits.RD7)  but |= 0x04;
         if(!PORTDbits.RD13) but |= 0x01;
         OD_readInput8Bit[0] = but;
+
+#if 0
+        /* Debug - disable CANrx for 650 ms, if button pressed. */
+        static uint16_t tmrDebug = 0;
+        if(!PORTDbits.RD13) {
+            if(tmrDebug < 650) {
+                CO_CAN_ISR_ENABLE = 0;
+                tmrDebug++;
+            }
+            else {
+                CO_CAN_ISR_ENABLE = 1;
+            }
+        }
+        else {
+            CO_CAN_ISR_ENABLE = 1;
+            tmrDebug = 0;
+        }
+#endif
 
         /* Write outputs */
         CO_process_TPDO(CO, syncWas, 1000);
@@ -282,7 +301,12 @@ CO_TIMER_ISR(){
 
 /* CAN interrupt function *****************************************************/
 CO_CAN_ISR(){
+    CAN_RX_LED = 1;
+
     CO_CANinterrupt(CO->CANmodule[0]);
+
     /* Clear combined Interrupt flag */
     CO_CAN_ISR_FLAG = 0;
+
+    CAN_RX_LED = 0;
 }
