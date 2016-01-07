@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../CANopenNode/stack/CO_Emergency.c ../CANopenNode/stack/CO_HBconsumer.c ../CANopenNode/stack/CO_NMT_Heartbeat.c ../CANopenNode/stack/CO_PDO.c ../CANopenNode/stack/CO_SDO.c ../CANopenNode/stack/CO_SYNC.c ../CANopenNode/stack/PIC24H_dsPIC33F/CO_driver.c ../CANopenNode/stack/crc16-ccitt.c ../main_dsPIC33F.c ../CANopenNode/example/CO_OD.c ../CANopenNode/CANopen.c
+SOURCEFILES_QUOTED_IF_SPACED=../CANopenNode/stack/CO_Emergency.c ../CANopenNode/stack/CO_HBconsumer.c ../CANopenNode/stack/CO_NMT_Heartbeat.c ../CANopenNode/stack/CO_PDO.c ../CANopenNode/stack/CO_SDO.c ../CANopenNode/stack/CO_SYNC.c ../CANopenNode/stack/crc16-ccitt.c ../main_dsPIC33F.c ../CANopenNode/example/CO_OD.c ../CANopenNode/CANopen.c ../CANopenNode/stack/PIC24_dsPIC33/CO_driver.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/994165574/CO_Emergency.o ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o ${OBJECTDIR}/_ext/994165574/CO_PDO.o ${OBJECTDIR}/_ext/994165574/CO_SDO.o ${OBJECTDIR}/_ext/994165574/CO_SYNC.o ${OBJECTDIR}/_ext/1142031099/CO_driver.o ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o ${OBJECTDIR}/_ext/1472/main_dsPIC33F.o ${OBJECTDIR}/_ext/1809917272/CO_OD.o ${OBJECTDIR}/_ext/398055091/CANopen.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/994165574/CO_Emergency.o.d ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o.d ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o.d ${OBJECTDIR}/_ext/994165574/CO_PDO.o.d ${OBJECTDIR}/_ext/994165574/CO_SDO.o.d ${OBJECTDIR}/_ext/994165574/CO_SYNC.o.d ${OBJECTDIR}/_ext/1142031099/CO_driver.o.d ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o.d ${OBJECTDIR}/_ext/1472/main_dsPIC33F.o.d ${OBJECTDIR}/_ext/1809917272/CO_OD.o.d ${OBJECTDIR}/_ext/398055091/CANopen.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/994165574/CO_Emergency.o ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o ${OBJECTDIR}/_ext/994165574/CO_PDO.o ${OBJECTDIR}/_ext/994165574/CO_SDO.o ${OBJECTDIR}/_ext/994165574/CO_SYNC.o ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o ${OBJECTDIR}/_ext/1472/main_dsPIC33F.o ${OBJECTDIR}/_ext/1809917272/CO_OD.o ${OBJECTDIR}/_ext/398055091/CANopen.o ${OBJECTDIR}/_ext/1491020033/CO_driver.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/994165574/CO_Emergency.o.d ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o.d ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o.d ${OBJECTDIR}/_ext/994165574/CO_PDO.o.d ${OBJECTDIR}/_ext/994165574/CO_SDO.o.d ${OBJECTDIR}/_ext/994165574/CO_SYNC.o.d ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o.d ${OBJECTDIR}/_ext/1472/main_dsPIC33F.o.d ${OBJECTDIR}/_ext/1809917272/CO_OD.o.d ${OBJECTDIR}/_ext/398055091/CANopen.o.d ${OBJECTDIR}/_ext/1491020033/CO_driver.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/994165574/CO_Emergency.o ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o ${OBJECTDIR}/_ext/994165574/CO_PDO.o ${OBJECTDIR}/_ext/994165574/CO_SDO.o ${OBJECTDIR}/_ext/994165574/CO_SYNC.o ${OBJECTDIR}/_ext/1142031099/CO_driver.o ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o ${OBJECTDIR}/_ext/1472/main_dsPIC33F.o ${OBJECTDIR}/_ext/1809917272/CO_OD.o ${OBJECTDIR}/_ext/398055091/CANopen.o
+OBJECTFILES=${OBJECTDIR}/_ext/994165574/CO_Emergency.o ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o ${OBJECTDIR}/_ext/994165574/CO_PDO.o ${OBJECTDIR}/_ext/994165574/CO_SDO.o ${OBJECTDIR}/_ext/994165574/CO_SYNC.o ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o ${OBJECTDIR}/_ext/1472/main_dsPIC33F.o ${OBJECTDIR}/_ext/1809917272/CO_OD.o ${OBJECTDIR}/_ext/398055091/CANopen.o ${OBJECTDIR}/_ext/1491020033/CO_driver.o
 
 # Source Files
-SOURCEFILES=../CANopenNode/stack/CO_Emergency.c ../CANopenNode/stack/CO_HBconsumer.c ../CANopenNode/stack/CO_NMT_Heartbeat.c ../CANopenNode/stack/CO_PDO.c ../CANopenNode/stack/CO_SDO.c ../CANopenNode/stack/CO_SYNC.c ../CANopenNode/stack/PIC24H_dsPIC33F/CO_driver.c ../CANopenNode/stack/crc16-ccitt.c ../main_dsPIC33F.c ../CANopenNode/example/CO_OD.c ../CANopenNode/CANopen.c
+SOURCEFILES=../CANopenNode/stack/CO_Emergency.c ../CANopenNode/stack/CO_HBconsumer.c ../CANopenNode/stack/CO_NMT_Heartbeat.c ../CANopenNode/stack/CO_PDO.c ../CANopenNode/stack/CO_SDO.c ../CANopenNode/stack/CO_SYNC.c ../CANopenNode/stack/crc16-ccitt.c ../main_dsPIC33F.c ../CANopenNode/example/CO_OD.c ../CANopenNode/CANopen.c ../CANopenNode/stack/PIC24_dsPIC33/CO_driver.c
 
 
 CFLAGS=
@@ -86,156 +86,156 @@ ${OBJECTDIR}/_ext/994165574/CO_Emergency.o: ../CANopenNode/stack/CO_Emergency.c 
 	@${MKDIR} "${OBJECTDIR}/_ext/994165574" 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_Emergency.o.d 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_Emergency.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_Emergency.c  -o ${OBJECTDIR}/_ext/994165574/CO_Emergency.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_Emergency.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_Emergency.c  -o ${OBJECTDIR}/_ext/994165574/CO_Emergency.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_Emergency.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/994165574/CO_Emergency.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o: ../CANopenNode/stack/CO_HBconsumer.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/994165574" 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o.d 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_HBconsumer.c  -o ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_HBconsumer.c  -o ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o: ../CANopenNode/stack/CO_NMT_Heartbeat.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/994165574" 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o.d 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_NMT_Heartbeat.c  -o ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_NMT_Heartbeat.c  -o ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/994165574/CO_PDO.o: ../CANopenNode/stack/CO_PDO.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/994165574" 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_PDO.o.d 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_PDO.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_PDO.c  -o ${OBJECTDIR}/_ext/994165574/CO_PDO.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_PDO.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_PDO.c  -o ${OBJECTDIR}/_ext/994165574/CO_PDO.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_PDO.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/994165574/CO_PDO.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/994165574/CO_SDO.o: ../CANopenNode/stack/CO_SDO.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/994165574" 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_SDO.o.d 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_SDO.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_SDO.c  -o ${OBJECTDIR}/_ext/994165574/CO_SDO.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_SDO.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_SDO.c  -o ${OBJECTDIR}/_ext/994165574/CO_SDO.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_SDO.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/994165574/CO_SDO.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/994165574/CO_SYNC.o: ../CANopenNode/stack/CO_SYNC.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/994165574" 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_SYNC.o.d 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_SYNC.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_SYNC.c  -o ${OBJECTDIR}/_ext/994165574/CO_SYNC.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_SYNC.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_SYNC.c  -o ${OBJECTDIR}/_ext/994165574/CO_SYNC.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_SYNC.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/994165574/CO_SYNC.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1142031099/CO_driver.o: ../CANopenNode/stack/PIC24H_dsPIC33F/CO_driver.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1142031099" 
-	@${RM} ${OBJECTDIR}/_ext/1142031099/CO_driver.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1142031099/CO_driver.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/PIC24H_dsPIC33F/CO_driver.c  -o ${OBJECTDIR}/_ext/1142031099/CO_driver.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1142031099/CO_driver.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1142031099/CO_driver.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o: ../CANopenNode/stack/crc16-ccitt.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/994165574" 
 	@${RM} ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o.d 
 	@${RM} ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/crc16-ccitt.c  -o ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/crc16-ccitt.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/crc16-ccitt.c  -o ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/crc16-ccitt.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/994165574/crc16-ccitt.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1472/main_dsPIC33F.o: ../main_dsPIC33F.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/main_dsPIC33F.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/main_dsPIC33F.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../main_dsPIC33F.c  -o ${OBJECTDIR}/_ext/1472/main_dsPIC33F.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/main_dsPIC33F.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../main_dsPIC33F.c  -o ${OBJECTDIR}/_ext/1472/main_dsPIC33F.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/main_dsPIC33F.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/main_dsPIC33F.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1809917272/CO_OD.o: ../CANopenNode/example/CO_OD.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1809917272" 
 	@${RM} ${OBJECTDIR}/_ext/1809917272/CO_OD.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1809917272/CO_OD.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/example/CO_OD.c  -o ${OBJECTDIR}/_ext/1809917272/CO_OD.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1809917272/CO_OD.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/example/CO_OD.c  -o ${OBJECTDIR}/_ext/1809917272/CO_OD.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1809917272/CO_OD.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1809917272/CO_OD.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/398055091/CANopen.o: ../CANopenNode/CANopen.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/398055091" 
 	@${RM} ${OBJECTDIR}/_ext/398055091/CANopen.o.d 
 	@${RM} ${OBJECTDIR}/_ext/398055091/CANopen.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/CANopen.c  -o ${OBJECTDIR}/_ext/398055091/CANopen.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/398055091/CANopen.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/CANopen.c  -o ${OBJECTDIR}/_ext/398055091/CANopen.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/398055091/CANopen.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/398055091/CANopen.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1491020033/CO_driver.o: ../CANopenNode/stack/PIC24_dsPIC33/CO_driver.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1491020033" 
+	@${RM} ${OBJECTDIR}/_ext/1491020033/CO_driver.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1491020033/CO_driver.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/PIC24_dsPIC33/CO_driver.c  -o ${OBJECTDIR}/_ext/1491020033/CO_driver.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1491020033/CO_driver.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1    -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1491020033/CO_driver.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 else
 ${OBJECTDIR}/_ext/994165574/CO_Emergency.o: ../CANopenNode/stack/CO_Emergency.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/994165574" 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_Emergency.o.d 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_Emergency.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_Emergency.c  -o ${OBJECTDIR}/_ext/994165574/CO_Emergency.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_Emergency.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_Emergency.c  -o ${OBJECTDIR}/_ext/994165574/CO_Emergency.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_Emergency.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/994165574/CO_Emergency.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o: ../CANopenNode/stack/CO_HBconsumer.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/994165574" 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o.d 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_HBconsumer.c  -o ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_HBconsumer.c  -o ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o: ../CANopenNode/stack/CO_NMT_Heartbeat.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/994165574" 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o.d 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_NMT_Heartbeat.c  -o ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_NMT_Heartbeat.c  -o ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/994165574/CO_PDO.o: ../CANopenNode/stack/CO_PDO.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/994165574" 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_PDO.o.d 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_PDO.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_PDO.c  -o ${OBJECTDIR}/_ext/994165574/CO_PDO.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_PDO.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_PDO.c  -o ${OBJECTDIR}/_ext/994165574/CO_PDO.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_PDO.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/994165574/CO_PDO.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/994165574/CO_SDO.o: ../CANopenNode/stack/CO_SDO.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/994165574" 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_SDO.o.d 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_SDO.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_SDO.c  -o ${OBJECTDIR}/_ext/994165574/CO_SDO.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_SDO.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_SDO.c  -o ${OBJECTDIR}/_ext/994165574/CO_SDO.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_SDO.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/994165574/CO_SDO.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/994165574/CO_SYNC.o: ../CANopenNode/stack/CO_SYNC.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/994165574" 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_SYNC.o.d 
 	@${RM} ${OBJECTDIR}/_ext/994165574/CO_SYNC.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_SYNC.c  -o ${OBJECTDIR}/_ext/994165574/CO_SYNC.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_SYNC.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/CO_SYNC.c  -o ${OBJECTDIR}/_ext/994165574/CO_SYNC.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_SYNC.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/994165574/CO_SYNC.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/_ext/1142031099/CO_driver.o: ../CANopenNode/stack/PIC24H_dsPIC33F/CO_driver.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1142031099" 
-	@${RM} ${OBJECTDIR}/_ext/1142031099/CO_driver.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1142031099/CO_driver.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/PIC24H_dsPIC33F/CO_driver.c  -o ${OBJECTDIR}/_ext/1142031099/CO_driver.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1142031099/CO_driver.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1142031099/CO_driver.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o: ../CANopenNode/stack/crc16-ccitt.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/994165574" 
 	@${RM} ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o.d 
 	@${RM} ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/crc16-ccitt.c  -o ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/crc16-ccitt.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/crc16-ccitt.c  -o ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/994165574/crc16-ccitt.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/994165574/crc16-ccitt.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1472/main_dsPIC33F.o: ../main_dsPIC33F.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/main_dsPIC33F.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/main_dsPIC33F.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../main_dsPIC33F.c  -o ${OBJECTDIR}/_ext/1472/main_dsPIC33F.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/main_dsPIC33F.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../main_dsPIC33F.c  -o ${OBJECTDIR}/_ext/1472/main_dsPIC33F.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/main_dsPIC33F.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/main_dsPIC33F.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1809917272/CO_OD.o: ../CANopenNode/example/CO_OD.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1809917272" 
 	@${RM} ${OBJECTDIR}/_ext/1809917272/CO_OD.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1809917272/CO_OD.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/example/CO_OD.c  -o ${OBJECTDIR}/_ext/1809917272/CO_OD.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1809917272/CO_OD.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/example/CO_OD.c  -o ${OBJECTDIR}/_ext/1809917272/CO_OD.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1809917272/CO_OD.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1809917272/CO_OD.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/398055091/CANopen.o: ../CANopenNode/CANopen.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/398055091" 
 	@${RM} ${OBJECTDIR}/_ext/398055091/CANopen.o.d 
 	@${RM} ${OBJECTDIR}/_ext/398055091/CANopen.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/CANopen.c  -o ${OBJECTDIR}/_ext/398055091/CANopen.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/398055091/CANopen.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24H_dsPIC33F" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/CANopen.c  -o ${OBJECTDIR}/_ext/398055091/CANopen.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/398055091/CANopen.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/398055091/CANopen.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1491020033/CO_driver.o: ../CANopenNode/stack/PIC24_dsPIC33/CO_driver.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1491020033" 
+	@${RM} ${OBJECTDIR}/_ext/1491020033/CO_driver.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1491020033/CO_driver.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../CANopenNode/stack/PIC24_dsPIC33/CO_driver.c  -o ${OBJECTDIR}/_ext/1491020033/CO_driver.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1491020033/CO_driver.o.d"        -g -omf=elf -legacy-libc  -O0 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC24_dsPIC33" -I"../CANopenNode/stack" -I"../CANopenNode" -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1491020033/CO_driver.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 

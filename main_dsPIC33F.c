@@ -97,7 +97,7 @@ int main (void){
 
     /* Configure Oscillator */
     /* Fosc = Fin*M/(N1*N2), Fcy=Fosc/2 */
-    /* Fosc = 8M*24(2*2) = 48MHz -> Fcy = 24MHz */
+    /* Fosc = 8M*24/(2*2) = 48MHz -> Fcy = 24MHz */
     PLLFBD=22;              /*  M=24 */
     CLKDIVbits.PLLPOST=0;   /*  N1=2 */
     CLKDIVbits.PLLPRE=0;    /*  N2=2 */

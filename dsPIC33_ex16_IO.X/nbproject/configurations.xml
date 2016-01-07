@@ -11,8 +11,8 @@
         <itemPath>../CANopenNode/stack/CO_PDO.h</itemPath>
         <itemPath>../CANopenNode/stack/CO_SDO.h</itemPath>
         <itemPath>../CANopenNode/stack/CO_SYNC.h</itemPath>
-        <itemPath>../CANopenNode/stack/PIC24H_dsPIC33F/CO_driver.h</itemPath>
         <itemPath>../CANopenNode/stack/crc16-ccitt.h</itemPath>
+        <itemPath>../CANopenNode/stack/PIC24_dsPIC33/CO_driver.h</itemPath>
       </logicalFolder>
       <itemPath>../CANopenNode/example/CO_OD.h</itemPath>
       <itemPath>../CANopenNode/CANopen.h</itemPath>
@@ -31,8 +31,8 @@
         <itemPath>../CANopenNode/stack/CO_PDO.c</itemPath>
         <itemPath>../CANopenNode/stack/CO_SDO.c</itemPath>
         <itemPath>../CANopenNode/stack/CO_SYNC.c</itemPath>
-        <itemPath>../CANopenNode/stack/PIC24H_dsPIC33F/CO_driver.c</itemPath>
         <itemPath>../CANopenNode/stack/crc16-ccitt.c</itemPath>
+        <itemPath>../CANopenNode/stack/PIC24_dsPIC33/CO_driver.c</itemPath>
       </logicalFolder>
       <itemPath>../main_dsPIC33F.c</itemPath>
       <itemPath>../CANopenNode/example/CO_OD.c</itemPath>
@@ -98,7 +98,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="extra-include-directories"
-                  value="../CANopenNode/example;../CANopenNode/stack/PIC24H_dsPIC33F;../CANopenNode/stack;../CANopenNode"/>
+                  value="../CANopenNode/example;../CANopenNode/stack/PIC24_dsPIC33;../CANopenNode/stack;../CANopenNode"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
