@@ -93,6 +93,8 @@ int main (void){
 /* CANopen communication reset - initialize CANopen objects *******************/
         static uint16_t timer1msPrevious;
         CO_ReturnError_t err;
+        uint8_t nodeId;
+        uint16_t CANBitRate;
 
         /* disable timer and CAN interrupts, turn on red LED */
         CO_TMR_ISR_ENABLE = 0;
@@ -100,8 +102,14 @@ int main (void){
         CAN_RUN_LED = 0;
         CAN_ERROR_LED = 1;
 
+
+        /* Read CANopen Node-ID and CAN bit-rate from object dictionary */
+        nodeId = OD_CANNodeID;
+        if(nodeId<1 || nodeId>127) nodeId = 0x10;
+        CANBitRate = OD_CANBitRate;/* in kbps */
+
         /* initialize CANopen */
-        err = CO_init();
+        err = CO_init(ADDR_CAN1, nodeId, CANBitRate);
         if(err != CO_ERROR_NO){
             while(1) ClrWdt();
             /* CO_errorReport(CO->em, CO_EM_MEMORY_ALLOCATION_ERROR, CO_EMC_SOFTWARE_INTERNAL, err); */
@@ -157,7 +165,7 @@ int main (void){
             TMR_TMR_PREV = t0;
 
             /* CANopen process */
-            reset = CO_process(CO, timer1msDiff);
+            reset = CO_process(CO, timer1msDiff, NULL);
 
             CAN_RUN_LED = LED_GREEN_RUN(CO->NMT);
             CAN_ERROR_LED = LED_RED_ERROR(CO->NMT);
@@ -176,7 +184,7 @@ int main (void){
     CAN_ERROR_LED = 1;
 
     /* delete CANopen object from memory */
-    CO_delete();
+    CO_delete(ADDR_CAN1);
 
     /* reset */
     return 0;
@@ -185,14 +193,28 @@ int main (void){
 
 /* timer interrupt function executes every millisecond ************************/
 CO_TIMER_ISR(){
+    bool_t syncWas;
+
     /* clear interrupt flag bit */
     CO_TMR_ISR_FLAG = 0;
 
     CO_timer1ms++;
 
-    CO_process_RPDO(CO);
+//    if(CO->CANmodule[0]->CANnormal) {
+//        bool_t syncWas;
 
-    CO_process_TPDO(CO);
+        /* Process Sync and read inputs */
+        syncWas = CO_process_SYNC_RPDO(CO, 1000);
+
+        /* Re-enable CANrx, if it was disabled by SYNC callback */
+        // TODO this and outer loop
+
+        /* Further I/O or nonblocking application code may go here. */
+
+        /* Write outputs */
+        CO_process_TPDO(CO, syncWas, 1000);
+//    }
+
 
     /* verify timer overflow */
     if(CO_TMR_ISR_FLAG == 1){
