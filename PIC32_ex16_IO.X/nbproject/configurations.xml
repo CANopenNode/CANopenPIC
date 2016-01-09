@@ -46,6 +46,8 @@
                    displayName="Important Files"
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
+      <itemPath>../LICENSE</itemPath>
+      <itemPath>../README.md</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
