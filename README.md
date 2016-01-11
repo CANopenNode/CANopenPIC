@@ -41,7 +41,46 @@ will switch leds on explorer16 board.
 You can also use Linux computer, (USB to) CAN interface and
 [CANopenSocket](https://github.com/CANopenNode/CANopenSocket) as another
 CANopen node. It also includes CAN monitor and command line interface for
-master access of the CANopen network. There is also some Getting started.
+master access of the CANopen network. There is also some Getting started
+guide. Here is quick example for explorer16 board leds and buttons:
+```
+sudo ip link set up can0 type can bitrate 250000
+candump can0
+# Pressing some buttons will produce PDO
+
+#another terminal
+cd CANopenSocket/canopend/
+./canopend can0 -i3 -c "" &
+cd ../canopencomm/
+./canopencomm 0x30 w 0x1017 0 i16 5000 #set heartbeat to 5 seconds
+cangen can0 -I 230 -L2 -g100 -Di #leds should be blinking now
+
+#candump output
+  can0  730   [1]  00
+  can0  1B0   [2]  00 00
+  can0  703   [1]  05       # canopend heartbeat
+  can0  730   [1]  05       # PIC heartbeat
+  can0  1B0   [2]  01 00    # button pressed
+  can0  1B0   [2]  00 00
+  can0  703   [1]  05
+  can0  730   [1]  05
+  can0  630   [8]  2B 17 10 00 88 13 00 00
+  can0  5B0   [8]  60 17 10 00 00 00 00 00
+  can0  703   [1]  05
+  can0  703   [1]  05
+  can0  703   [1]  05
+  can0  703   [1]  05
+  can0  703   [1]  05
+  can0  730   [1]  05
+  can0  703   [1]  05
+  can0  230   [2]  00 00    # cangen
+  can0  230   [2]  01 00
+  can0  230   [2]  02 00
+  can0  230   [2]  03 00
+  can0  230   [2]  04 00
+  can0  230   [2]  05 00
+  can0  703   [1]  05
+```
 
 
 License
