@@ -166,6 +166,25 @@ void program1ms(void){
     if(!PORTDbits.RD7) CO_errorReset(CO->em, CO_EMA_TEST1_INFORMATIVE, 0xAAAAAABBL);
 
 
+#if 0
+    /* Debug - disable CANrx for 650 ms, if button pressed. */
+    static uint16_t tmrDebug = 0;
+    if(!PORTDbits.RD13) {
+        if(tmrDebug < 650) {
+            IEC1bits.CAN1IE = 0;
+            tmrDebug++;
+        }
+        else {
+            IEC1bits.CAN1IE = 1;
+        }
+    }
+    else {
+        IEC1bits.CAN1IE = 1;
+        tmrDebug = 0;
+    }
+#endif
+
+
     /* Prepare TPDO from buttons on Explorer16. */
     /* According to PDO mapping and communication parameters, first TPDO is sent */
     /* automatically on change of state of OD_readInput8Bit[0] variable. */
