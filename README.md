@@ -28,13 +28,13 @@ Visit [Microchip](http://www.microchip.com/) and Install MplabX IDE,
 XC32 C compiler for PIC32 or XC16 C compiler for others.
 Works on Linux, Mac or Windows.
 
-Open Project, build and program your microcontroller.
+Open project, build and program your microcontroller.
 
 Program is tested on Explorer16 board from Microchip, devices
 PIC32MX795F512L and dsPIC33FJ256GP710.
 CAN transciever chip is soldered to the Explorer16 board.
 
-You can use connect the PIC device into your CANopen network and
+You can connect the PIC device into your CANopen network and
 watch the CAN messages. TPDO is sent on buttons pressed. Correct RPDO
 will switch leds on explorer16 board.
 
