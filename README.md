@@ -38,11 +38,13 @@ You can connect the PIC device into your CANopen network and
 watch the CAN messages. TPDO is sent on buttons pressed. Correct RPDO
 will switch leds on explorer16 board.
 
-You can also use Linux computer, (USB to) CAN interface and
-[CANopenSocket](https://github.com/CANopenNode/CANopenSocket) as another
-CANopen node. It also includes CAN monitor and command line interface for
-master access of the CANopen network. There is also some Getting started
-guide. Here is quick example for explorer16 board leds and buttons:
+#### Using with CANopenSocket master
+[CANopenSocket](https://github.com/CANopenNode/CANopenSocket) runs on any Linux
+machine and is connected to CAN network (via (USB to) CAN interface). It acts as
+another CANopen node. It also includes CAN monitor and command line interface
+for master access to the CANopen network. There is also some Getting started
+guide. Here is quick example for Explorer16 board leds and buttons:
+
 ```
 sudo ip link set up can0 type can bitrate 250000
 candump can0
@@ -81,6 +83,31 @@ cangen can0 -I 230 -L2 -g100 -Di #leds should be blinking now
   can0  230   [2]  05 00
   can0  703   [1]  05
 ```
+#### Monitor variables using built in trace functionality
+CANopenNode includes optional trace functionality. It monitors
+choosen variables from Object Dictionary. On change of state of variable it
+makes a record with timestamp into circular buffer. String with points can later
+be read via SDO.
+
+Here is en example of monitoring variable, connected with buttons (OD_readInput8Bit,
+index 0x6000, subindex 0x01). It is implemented on PIC32:
+
+```
+# Press and hold the button on Explorer16 and execute SDO read command:
+./canopencomm 0x30 r 0x6000 1 u8
+[1] 0x08
+# It displays same value, as was transmitted via PDO and visible on candump.
+
+# Now get the history of all pressing to the buttons with millisecond
+# timestamps and store it as a text to the file:
+./canopencomm 0x30 r 0x2400 5 vs > plot1.csv
+cat plot1.csv
+```
+If large data blocks are transmitted via CAN bus, then more efficient SDO block
+transfer can be enabled with command `./canopencomm set sdo_block 1`
+
+For more info on using trace functionality see CANopenNode/example/IO.html
+file. There is also a description of all Object Dictionary variables.
 
 
 License
