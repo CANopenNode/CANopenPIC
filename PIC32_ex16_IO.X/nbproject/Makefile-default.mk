@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../CANopenNode/stack/CO_Emergency.c ../CANopenNode/stack/CO_HBconsumer.c ../CANopenNode/stack/CO_NMT_Heartbeat.c ../CANopenNode/stack/CO_PDO.c ../CANopenNode/stack/CO_SDO.c ../CANopenNode/stack/CO_SYNC.c ../CANopenNode/stack/crc16-ccitt.c ../CANopenNode/stack/PIC32/CO_driver.c ../CANopenNode/stack/PIC32/eeprom.c ../CANopenNode/CANopen.c ../CANopenNode/example/CO_OD.c ../CANopenNode/stack/PIC32/main_PIC32.c ../appl_PIC32_explorer16_IO.c ../CANopenNode/stack/CO_trace.c
+SOURCEFILES_QUOTED_IF_SPACED=../CANopenNode/stack/CO_Emergency.c ../CANopenNode/stack/CO_HBconsumer.c ../CANopenNode/stack/CO_NMT_Heartbeat.c ../CANopenNode/stack/CO_PDO.c ../CANopenNode/stack/CO_SDO.c ../CANopenNode/stack/CO_SYNC.c ../CANopenNode/stack/crc16-ccitt.c ../CANopenNode/stack/PIC32/CO_driver.c ../CANopenNode/stack/PIC32/eeprom.c ../CANopenNode/CANopen.c ../CANopenNode/example/CO_OD.c ../CANopenNode/stack/PIC32/main_PIC32.c ../appl_PIC32_explorer16_IO.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/994165574/CO_Emergency.o ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o ${OBJECTDIR}/_ext/994165574/CO_PDO.o ${OBJECTDIR}/_ext/994165574/CO_SDO.o ${OBJECTDIR}/_ext/994165574/CO_SYNC.o ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o ${OBJECTDIR}/_ext/827655488/CO_driver.o ${OBJECTDIR}/_ext/827655488/eeprom.o ${OBJECTDIR}/_ext/398055091/CANopen.o ${OBJECTDIR}/_ext/1809917272/CO_OD.o ${OBJECTDIR}/_ext/827655488/main_PIC32.o ${OBJECTDIR}/_ext/1472/appl_PIC32_explorer16_IO.o ${OBJECTDIR}/_ext/994165574/CO_trace.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/994165574/CO_Emergency.o.d ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o.d ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o.d ${OBJECTDIR}/_ext/994165574/CO_PDO.o.d ${OBJECTDIR}/_ext/994165574/CO_SDO.o.d ${OBJECTDIR}/_ext/994165574/CO_SYNC.o.d ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o.d ${OBJECTDIR}/_ext/827655488/CO_driver.o.d ${OBJECTDIR}/_ext/827655488/eeprom.o.d ${OBJECTDIR}/_ext/398055091/CANopen.o.d ${OBJECTDIR}/_ext/1809917272/CO_OD.o.d ${OBJECTDIR}/_ext/827655488/main_PIC32.o.d ${OBJECTDIR}/_ext/1472/appl_PIC32_explorer16_IO.o.d ${OBJECTDIR}/_ext/994165574/CO_trace.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/994165574/CO_Emergency.o ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o ${OBJECTDIR}/_ext/994165574/CO_PDO.o ${OBJECTDIR}/_ext/994165574/CO_SDO.o ${OBJECTDIR}/_ext/994165574/CO_SYNC.o ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o ${OBJECTDIR}/_ext/827655488/CO_driver.o ${OBJECTDIR}/_ext/827655488/eeprom.o ${OBJECTDIR}/_ext/398055091/CANopen.o ${OBJECTDIR}/_ext/1809917272/CO_OD.o ${OBJECTDIR}/_ext/827655488/main_PIC32.o ${OBJECTDIR}/_ext/1472/appl_PIC32_explorer16_IO.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/994165574/CO_Emergency.o.d ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o.d ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o.d ${OBJECTDIR}/_ext/994165574/CO_PDO.o.d ${OBJECTDIR}/_ext/994165574/CO_SDO.o.d ${OBJECTDIR}/_ext/994165574/CO_SYNC.o.d ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o.d ${OBJECTDIR}/_ext/827655488/CO_driver.o.d ${OBJECTDIR}/_ext/827655488/eeprom.o.d ${OBJECTDIR}/_ext/398055091/CANopen.o.d ${OBJECTDIR}/_ext/1809917272/CO_OD.o.d ${OBJECTDIR}/_ext/827655488/main_PIC32.o.d ${OBJECTDIR}/_ext/1472/appl_PIC32_explorer16_IO.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/994165574/CO_Emergency.o ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o ${OBJECTDIR}/_ext/994165574/CO_PDO.o ${OBJECTDIR}/_ext/994165574/CO_SDO.o ${OBJECTDIR}/_ext/994165574/CO_SYNC.o ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o ${OBJECTDIR}/_ext/827655488/CO_driver.o ${OBJECTDIR}/_ext/827655488/eeprom.o ${OBJECTDIR}/_ext/398055091/CANopen.o ${OBJECTDIR}/_ext/1809917272/CO_OD.o ${OBJECTDIR}/_ext/827655488/main_PIC32.o ${OBJECTDIR}/_ext/1472/appl_PIC32_explorer16_IO.o ${OBJECTDIR}/_ext/994165574/CO_trace.o
+OBJECTFILES=${OBJECTDIR}/_ext/994165574/CO_Emergency.o ${OBJECTDIR}/_ext/994165574/CO_HBconsumer.o ${OBJECTDIR}/_ext/994165574/CO_NMT_Heartbeat.o ${OBJECTDIR}/_ext/994165574/CO_PDO.o ${OBJECTDIR}/_ext/994165574/CO_SDO.o ${OBJECTDIR}/_ext/994165574/CO_SYNC.o ${OBJECTDIR}/_ext/994165574/crc16-ccitt.o ${OBJECTDIR}/_ext/827655488/CO_driver.o ${OBJECTDIR}/_ext/827655488/eeprom.o ${OBJECTDIR}/_ext/398055091/CANopen.o ${OBJECTDIR}/_ext/1809917272/CO_OD.o ${OBJECTDIR}/_ext/827655488/main_PIC32.o ${OBJECTDIR}/_ext/1472/appl_PIC32_explorer16_IO.o
 
 # Source Files
-SOURCEFILES=../CANopenNode/stack/CO_Emergency.c ../CANopenNode/stack/CO_HBconsumer.c ../CANopenNode/stack/CO_NMT_Heartbeat.c ../CANopenNode/stack/CO_PDO.c ../CANopenNode/stack/CO_SDO.c ../CANopenNode/stack/CO_SYNC.c ../CANopenNode/stack/crc16-ccitt.c ../CANopenNode/stack/PIC32/CO_driver.c ../CANopenNode/stack/PIC32/eeprom.c ../CANopenNode/CANopen.c ../CANopenNode/example/CO_OD.c ../CANopenNode/stack/PIC32/main_PIC32.c ../appl_PIC32_explorer16_IO.c ../CANopenNode/stack/CO_trace.c
+SOURCEFILES=../CANopenNode/stack/CO_Emergency.c ../CANopenNode/stack/CO_HBconsumer.c ../CANopenNode/stack/CO_NMT_Heartbeat.c ../CANopenNode/stack/CO_PDO.c ../CANopenNode/stack/CO_SDO.c ../CANopenNode/stack/CO_SYNC.c ../CANopenNode/stack/crc16-ccitt.c ../CANopenNode/stack/PIC32/CO_driver.c ../CANopenNode/stack/PIC32/eeprom.c ../CANopenNode/CANopen.c ../CANopenNode/example/CO_OD.c ../CANopenNode/stack/PIC32/main_PIC32.c ../appl_PIC32_explorer16_IO.c
 
 
 CFLAGS=
@@ -172,12 +172,6 @@ ${OBJECTDIR}/_ext/1472/appl_PIC32_explorer16_IO.o: ../appl_PIC32_explorer16_IO.c
 	@${RM} ${OBJECTDIR}/_ext/1472/appl_PIC32_explorer16_IO.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/appl_PIC32_explorer16_IO.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC32" -I"../CANopenNode/stack" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1472/appl_PIC32_explorer16_IO.o.d" -o ${OBJECTDIR}/_ext/1472/appl_PIC32_explorer16_IO.o ../appl_PIC32_explorer16_IO.c     
 	
-${OBJECTDIR}/_ext/994165574/CO_trace.o: ../CANopenNode/stack/CO_trace.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/994165574" 
-	@${RM} ${OBJECTDIR}/_ext/994165574/CO_trace.o.d 
-	@${RM} ${OBJECTDIR}/_ext/994165574/CO_trace.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/994165574/CO_trace.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC32" -I"../CANopenNode/stack" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_trace.o.d" -o ${OBJECTDIR}/_ext/994165574/CO_trace.o ../CANopenNode/stack/CO_trace.c     
-	
 else
 ${OBJECTDIR}/_ext/994165574/CO_Emergency.o: ../CANopenNode/stack/CO_Emergency.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/994165574" 
@@ -256,12 +250,6 @@ ${OBJECTDIR}/_ext/1472/appl_PIC32_explorer16_IO.o: ../appl_PIC32_explorer16_IO.c
 	@${RM} ${OBJECTDIR}/_ext/1472/appl_PIC32_explorer16_IO.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/appl_PIC32_explorer16_IO.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/appl_PIC32_explorer16_IO.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC32" -I"../CANopenNode/stack" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1472/appl_PIC32_explorer16_IO.o.d" -o ${OBJECTDIR}/_ext/1472/appl_PIC32_explorer16_IO.o ../appl_PIC32_explorer16_IO.c     
-	
-${OBJECTDIR}/_ext/994165574/CO_trace.o: ../CANopenNode/stack/CO_trace.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/994165574" 
-	@${RM} ${OBJECTDIR}/_ext/994165574/CO_trace.o.d 
-	@${RM} ${OBJECTDIR}/_ext/994165574/CO_trace.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/994165574/CO_trace.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../CANopenNode/example" -I"../CANopenNode/stack/PIC32" -I"../CANopenNode/stack" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/994165574/CO_trace.o.d" -o ${OBJECTDIR}/_ext/994165574/CO_trace.o ../CANopenNode/stack/CO_trace.c     
 	
 endif
 

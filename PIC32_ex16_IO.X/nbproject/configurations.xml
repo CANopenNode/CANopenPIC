@@ -14,7 +14,6 @@
         <itemPath>../CANopenNode/stack/CO_SDO.h</itemPath>
         <itemPath>../CANopenNode/stack/CO_SYNC.h</itemPath>
         <itemPath>../CANopenNode/stack/crc16-ccitt.h</itemPath>
-        <itemPath>../CANopenNode/stack/CO_trace.h</itemPath>
       </logicalFolder>
       <itemPath>../CANopenNode/CANopen.h</itemPath>
       <itemPath>../CANopenNode/example/application.h</itemPath>
@@ -37,7 +36,6 @@
         <itemPath>../CANopenNode/stack/crc16-ccitt.c</itemPath>
         <itemPath>../CANopenNode/stack/PIC32/CO_driver.c</itemPath>
         <itemPath>../CANopenNode/stack/PIC32/eeprom.c</itemPath>
-        <itemPath>../CANopenNode/stack/CO_trace.c</itemPath>
       </logicalFolder>
       <itemPath>../CANopenNode/CANopen.c</itemPath>
       <itemPath>../CANopenNode/example/CO_OD.c</itemPath>
