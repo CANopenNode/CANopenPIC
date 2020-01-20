@@ -97,6 +97,9 @@ Here is en example of monitoring variable, connected with buttons
 (OD_readInput8Bit, index 0x6000, subindex 0x01). It was tested on PIC32:
 
 ```
+# Enable trace first:
+./canopencomm 0x30 w 0x2400 0 u8 1
+
 # Press and hold the button on Explorer16 and execute SDO read command:
 ./canopencomm 0x30 r 0x6000 1 u8
 [1] 0x08
@@ -104,7 +107,7 @@ Here is en example of monitoring variable, connected with buttons
 
 # Now get the complete history for that buttons with timestamp for each change
 # and store it as a text to the file:
-./canopencomm 0x30 r 0x2400 5 vs > plot1.csv
+./canopencomm 0x30 r 0x2401 5 vs > plot1.csv
 cat plot1.csv
 ```
 If large data blocks are transmitted via CAN bus, then more efficient SDO block

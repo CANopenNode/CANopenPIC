@@ -124,7 +124,6 @@ int main (void){
         uint16_t CANBitRate;
 
         /* disable CAN and CAN interrupts, turn on red LED */
-        CO->CANmodule[0]->CANnormal = false;
         CO_CAN_ISR_ENABLE = 0;
         CAN_RUN_LED = 0;
         CAN_ERROR_LED = 1;
