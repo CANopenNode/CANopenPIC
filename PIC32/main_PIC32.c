@@ -151,7 +151,7 @@ int main (void){
         CANBitRate = OD_CANBitRate;/* in kbps */
 
         /* initialize CANopen */
-        err = CO_init(ADDR_CAN1, nodeId, CANBitRate);
+        err = CO_init((void *)_CAN1_BASE_ADDRESS, nodeId, CANBitRate);
         if(err != CO_ERROR_NO){
             while(1) CO_clearWDT();
             /* CO_errorReport(CO->em, CO_EM_MEMORY_ALLOCATION_ERROR, CO_EMC_SOFTWARE_INTERNAL, err); */
@@ -256,7 +256,7 @@ int main (void){
 
     /* delete objects from memory */
     programEnd();
-    CO_delete(ADDR_CAN1);
+    CO_delete((void*)_CAN1_BASE_ADDRESS);
 
     /* reset */
     SYSKEY = 0x00000000;

@@ -34,9 +34,21 @@ Program is tested on Explorer16 board from Microchip, devices
 PIC32MX795F512L and dsPIC33FJ256GP710.
 CAN transciever chip is soldered to the Explorer16 board.
 
+Program also compiles for dsPIC30F6015, should work, but is not tested.
+
 You can connect the PIC device into your CANopen network and
 watch the CAN messages. TPDO is sent on buttons pressed. Correct RPDO
 will switch leds on explorer16 board.
+
+#### MplabX project configuration:
+- encoding: UTF-8
+- (gcc -> optimization-level = 1)
+- Global Options -> Use legacy libc: NO
+- gcc -> Preprocessor macros (PIC32): CO_SDO_BUFFER_SIZE=950
+- gcc -> Include directories (PIC32): ../PIC32;../CANopenNode/example;
+                                      ../CANopenNode/stack;../CANopenNode
+- ld -> Heap size (bytes) (PIC32, dsPIC33): 5000 (dsPIC30F6015 has defined
+                                           CO_USE_GLOBALS in CO_driver.target.h)
 
 #### Using with CANopenSocket master
 [CANopenSocket](https://github.com/CANopenNode/CANopenSocket) runs on any Linux
