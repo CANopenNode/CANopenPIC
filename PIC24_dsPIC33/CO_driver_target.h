@@ -57,6 +57,7 @@ typedef long double             float64_t;
 typedef char                    char_t;
 typedef unsigned char           oChar_t;
 typedef unsigned char           domain_t;
+typedef unsigned int            uintptr_t;
 
 
 /* CAN message buffer sizes for CAN module 1 and 2. Valid values
@@ -143,7 +144,7 @@ typedef struct {
     uint16_t ident;
     uint16_t mask;
     void *object;
-    void (*CANrx_callback)(void *object, void *message);
+    void (*CANrx_callback)(void *object, const CO_CANrxMsg_t *message);
 } CO_CANrx_t;
 
 /* Transmit message object */
@@ -192,10 +193,10 @@ typedef struct {
 #define CO_ENABLE_INTERRUPTS()   asm volatile ("disi #0x0000")
 
 /* Synchronization between CAN receive and message processing threads. */
-#define CO_MemoryBarrier()
-#define CO_CANrxNew_READ(rxNew) ((int *)rxNew)
-#define CO_CANrxNew_SET(rxNew) {CO_MemoryBarrier(); rxNew = (void*)1L;}
-#define CO_CANrxNew_CLEAR(rxNew) {CO_MemoryBarrier(); rxNew = (void*)0L;}
+#define CANrxMemoryBarrier()
+#define IS_CANrxNew(rxNew) ((uintptr_t)rxNew)
+#define SET_CANrxNew(rxNew) {CANrxMemoryBarrier(); rxNew = (void*)1L;}
+#define CLEAR_CANrxNew(rxNew) {CANrxMemoryBarrier(); rxNew = (void*)0L;}
 
 
 /* CAN bit rates

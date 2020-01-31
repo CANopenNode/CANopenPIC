@@ -368,11 +368,11 @@ CO_ReturnError_t CO_CANrxBufferInit(
         uint16_t                mask,
         bool_t                  rtr,
         void                   *object,
-        void                  (*CANrx_callback)(void *object, void *message))
+        void                  (*pFunct)(void *object, const CO_CANrxMsg_t *message))
 {
     CO_ReturnError_t ret = CO_ERROR_NO;
 
-    if((CANmodule!=NULL) && (object!=NULL) && (CANrx_callback!=NULL) && (index < CANmodule->rxSize)){
+    if((CANmodule!=NULL) && (object!=NULL) && (pFunct!=NULL) && (index < CANmodule->rxSize)){
         /* buffer, which will be configured */
         CO_CANrx_t *buffer = &CANmodule->rxArray[index];
         uint16_t RXF, RXM;
@@ -380,7 +380,7 @@ CO_ReturnError_t CO_CANrxBufferInit(
 
         /* Configure object variables */
         buffer->object = object;
-        buffer->CANrx_callback = CANrx_callback;
+        buffer->CANrx_callback = pFunct;
 
 
         /* CAN identifier and CAN mask, bit aligned with CAN module registers (in DMA RAM) */
