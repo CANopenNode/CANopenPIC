@@ -12,8 +12,8 @@ CAN-based higher-layer protocol for embedded control system. For more
 information on CANopen see http://www.can-cia.org/
 
 
-Getting the project
-------------------
+Getting or updating the project
+-------------------------------
 Clone the project from git repository and get submodules:
 
     $ git clone https://github.com/CANopenNode/CANopenPIC.git
@@ -21,6 +21,12 @@ Clone the project from git repository and get submodules:
     $ git submodule init
     $ git submodule update
 
+Update the project:
+
+    $ cd CANopenPIC
+    $ git pull # or: git fetch; inspect the changes (gitk); git merge
+    $ cd CANopenNode
+    $ git submodule update
 
 Using on PIC32, dsPIC33, PIC24 and dsPIC30
 ------------------------------------------
