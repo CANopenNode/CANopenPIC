@@ -25,7 +25,6 @@ Update the project:
 
     $ cd CANopenPIC
     $ git pull # or: git fetch; inspect the changes (gitk); git merge
-    $ cd CANopenNode
     $ git submodule update
 
 Using on PIC32, dsPIC33, PIC24 and dsPIC30
