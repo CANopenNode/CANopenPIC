@@ -134,6 +134,8 @@ CO_ReturnError_t CO_CANmodule_init(
 
     for(i=0U; i<rxSize; i++){
         rxArray[i].ident = 0U;
+		rxArray[i].mask = (uint16_t)0xFFFFFFFFU;
+        rxArray[i].object = NULL;
         rxArray[i].CANrx_callback = NULL;
     }
     for(i=0U; i<txSize; i++){
