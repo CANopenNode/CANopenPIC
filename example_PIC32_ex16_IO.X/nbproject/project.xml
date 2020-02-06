@@ -4,7 +4,7 @@
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
             <name>example_PIC32_ex16_IO</name>
-            <creation-uuid>ae7af5d8-8e7e-445f-b490-999d81089e7b</creation-uuid>
+            <creation-uuid>52ad9bf3-aa8e-4ccf-914d-2d3ddd311f67</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>
@@ -13,8 +13,8 @@
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList>
-                <sourceRootElem>../PIC32</sourceRootElem>
                 <sourceRootElem>../CANopenNode</sourceRootElem>
+                <sourceRootElem>../PIC32</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

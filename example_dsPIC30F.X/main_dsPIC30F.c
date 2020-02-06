@@ -69,6 +69,7 @@
 
 /* main ***********************************************************************/
 int main (void){
+    CO_ReturnError_t err;
     CO_NMT_reset_cmd_t reset = CO_RESET_NOT;
 
     /* Initialize two CAN led diodes */
@@ -84,6 +85,13 @@ int main (void){
     if(CO_OD_ROM.FirstWord != CO_OD_ROM.LastWord) while(1) ClrWdt();
 
 
+    /* Allocate memory */
+    err = CO_new();
+    if (err != CO_ERROR_NO) {
+        while(1);
+    }
+
+
     /* initialize EEPROM */
 //    eeprom_init(&eeprom,
 //                     0xFC00,
@@ -96,7 +104,6 @@ int main (void){
     while(reset != CO_RESET_APP){
 /* CANopen communication reset - initialize CANopen objects *******************/
         static uint16_t timer1msPrevious;
-        CO_ReturnError_t err;
         uint8_t nodeId;
         uint16_t CANBitRate;
 
@@ -112,7 +119,10 @@ int main (void){
         CANBitRate = OD_CANBitRate;/* in kbps */
 
         /* initialize CANopen */
-        err = CO_init(ADDR_CAN1, nodeId, CANBitRate);
+        err = CO_CANinit(ADDR_CAN1, CANBitRate);
+        if (err == CO_ERROR_NO) {
+            err = CO_CANopenInit(nodeId);
+        }
         if(err != CO_ERROR_NO){
             while(1) ClrWdt();
             /* CO_errorReport(CO->em, CO_EM_MEMORY_ALLOCATION_ERROR, CO_EMC_SOFTWARE_INTERNAL, err); */
@@ -168,7 +178,7 @@ int main (void){
             TMR_TMR_PREV = t0;
 
             /* CANopen process */
-            reset = CO_process(CO, timer1msDiff, NULL);
+            reset = CO_process(CO, (uint32_t)timer1msDiff*1000, NULL);
 
             CAN_RUN_LED = LED_GREEN_RUN(CO->NMT);
             CAN_ERROR_LED = LED_RED_ERROR(CO->NMT);
@@ -206,7 +216,7 @@ CO_TIMER_ISR(){
         bool_t syncWas;
 
         /* Process Sync */
-        syncWas = CO_process_SYNC(CO, 1000);
+        syncWas = CO_process_SYNC(CO, 1000, NULL);
 
         /* Read inputs */
         CO_process_RPDO(CO, syncWas);
@@ -214,7 +224,7 @@ CO_TIMER_ISR(){
         /* Further I/O or nonblocking application code may go here. */
 
         /* Write outputs */
-        CO_process_TPDO(CO, syncWas, 1000);
+        CO_process_TPDO(CO, syncWas, 1000, NULL);
 
         /* verify timer overflow */
         if(CO_TMR_ISR_FLAG == 1){

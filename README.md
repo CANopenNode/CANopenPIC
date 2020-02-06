@@ -51,9 +51,8 @@ will switch leds on explorer16 board.
 - Global Options -> Use legacy libc: NO
 - gcc -> Preprocessor macros (PIC32): CO_SDO_BUFFER_SIZE=950
 - gcc -> Include directories (PIC32): ../PIC32;../CANopenNode/example;
-                                      ../CANopenNode/stack;../CANopenNode
-- ld -> Heap size (bytes) (PIC32, dsPIC33): 5000 (dsPIC30F6015 has defined
-                                           CO_USE_GLOBALS in CO_driver.target.h)
+                                      ../CANopenNode
+- ld -> Heap size (bytes): 5000
 
 #### Using with CANopenSocket master
 [CANopenSocket](https://github.com/CANopenNode/CANopenSocket) runs on any Linux
@@ -139,6 +138,18 @@ that variable. Text buffer is then read with the similar command as above. But
 local SDO data access from CANopenSocket itself doesn't occupy CAN bus, so large
 data is transfered realy fast. Besides that, Linux machine has much more RAM to
 store the monitored data. Except timestamp is less accurate.
+
+
+Change Log
+----------
+- **[Unreleased](https://github.com/CANopenNode/CANopenPIC/tree/HEAD)**: [Full Changelog](https://github.com/CANopenNode/CANopenPIC/compare/v1.0...master)
+  - License changed to Apache 2.0.
+  - Drivers moved from CANopenNode into this project. Changed directory structure. Changed CANopen.h interface.
+  - Trace added to PIC32. Time base changed to microseconds in all functions.
+- **[v1.0](https://github.com/CANopenNode/CANopenPIC/tree/v1.0) - 2016-03-21**: Stable. [Full Changelog](https://github.com/CANopenNode/CANopenPIC/compare/v0.5...v1.0)
+- **[v0.5](https://github.com/CANopenNode/CANopenPIC/tree/v0.5) - 2015-10-20**: Git repository started on GitHub.
+- **[v0.4](https://sourceforge.net/p/canopennode/code_complete/ci/master/tree/) - 2012-02-26**: Git repository started on Sourceforge.
+- **[v0.3](https://sourceforge.net/projects/canopennode/files/canopennode/CANopenNode-3.00/) - 2011-08-26**: First edition for 16 and 32 bit PIC on SourceForge.
 
 
 License

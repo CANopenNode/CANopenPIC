@@ -99,6 +99,7 @@
 
 /* main ***********************************************************************/
 int main (void){
+    CO_ReturnError_t err;
     CO_NMT_reset_cmd_t reset = CO_RESET_NOT;
 
     /* Configure system for maximum performance. plib is necessary for that.*/
@@ -119,6 +120,13 @@ int main (void){
     if(CO_OD_ROM.FirstWord != CO_OD_ROM.LastWord) while(1) CO_clearWDT();
 
 
+    /* Allocate memory */
+    err = CO_new();
+    if (err != CO_ERROR_NO) {
+        while(1);
+    }
+
+
     /* initialize EEPROM - part 1 */
 #ifdef USE_EEPROM
     CO_ReturnError_t eeStatus = CO_EE_init_1(&CO_EEO, (uint8_t*) &CO_OD_EEPROM, sizeof(CO_OD_EEPROM),
@@ -135,7 +143,6 @@ int main (void){
 
     while(reset != CO_RESET_APP){
 /* CANopen communication reset - initialize CANopen objects *******************/
-        CO_ReturnError_t err;
         uint16_t timer1msPrevious;
         uint16_t TMR_TMR_PREV = 0;
         uint8_t nodeId;
@@ -151,7 +158,10 @@ int main (void){
         CANBitRate = OD_CANBitRate;/* in kbps */
 
         /* initialize CANopen */
-        err = CO_init((void *)_CAN1_BASE_ADDRESS, nodeId, CANBitRate);
+        err = CO_CANinit((void *)_CAN1_BASE_ADDRESS, CANBitRate);
+        if (err == CO_ERROR_NO) {
+            err = CO_CANopenInit(nodeId);
+        }
         if(err != CO_ERROR_NO){
             while(1) CO_clearWDT();
             /* CO_errorReport(CO->em, CO_EM_MEMORY_ALLOCATION_ERROR, CO_EMC_SOFTWARE_INTERNAL, err); */
@@ -239,7 +249,7 @@ int main (void){
 
 
             /* CANopen process */
-            reset = CO_process(CO, timer1msDiff, NULL);
+            reset = CO_process(CO, (uint32_t)timer1msDiff*1000, NULL);
 
             CO_clearWDT();
 
@@ -281,7 +291,7 @@ void __ISR(_TIMER_2_VECTOR, IPL3SOFT) CO_TimerInterruptHandler(void){
         int i;
 
         /* Process Sync */
-        syncWas = CO_process_SYNC(CO, 1000);
+        syncWas = CO_process_SYNC(CO, 1000, NULL);
 
         /* Read inputs */
         CO_process_RPDO(CO, syncWas);
@@ -296,7 +306,7 @@ void __ISR(_TIMER_2_VECTOR, IPL3SOFT) CO_TimerInterruptHandler(void){
         program1ms();
 
         /* Write outputs */
-        CO_process_TPDO(CO, syncWas, 1000);
+        CO_process_TPDO(CO, syncWas, 1000, NULL);
 
         /* verify timer overflow */
         if(CO_TMR_ISR_FLAG == 1){

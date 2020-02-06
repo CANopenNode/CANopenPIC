@@ -25,8 +25,8 @@
  */
 
 
-#include "CO_driver.h"
-#include "CO_Emergency.h"
+#include "301/CO_driver.h"
+#include "301/CO_Emergency.h"
 
 
 /* Globals */
@@ -199,7 +199,7 @@ CO_ReturnError_t CO_CANmodule_init(
 
     for(i=0U; i<rxSize; i++){
         rxArray[i].ident = 0U;
-        rxArray[i].mask = (uint16_t)0xFFFFFFFFU;
+        rxArray[i].mask = 0xFFFFU;
         rxArray[i].object = NULL;
         rxArray[i].CANrx_callback = NULL;
     }
