@@ -101,6 +101,7 @@
 int main (void){
     CO_ReturnError_t err;
     CO_NMT_reset_cmd_t reset = CO_RESET_NOT;
+    uint32_t heapMemoryUsed;
 
     /* Configure system for maximum performance. plib is necessary for that.*/
     /* SYSTEMConfig(CO_FSYS*1000, SYS_CFG_WAIT_STATES | SYS_CFG_PCACHE); */
@@ -121,7 +122,7 @@ int main (void){
 
 
     /* Allocate memory */
-    err = CO_new();
+    err = CO_new(&heapMemoryUsed);
     if (err != CO_ERROR_NO) {
         while(1);
     }

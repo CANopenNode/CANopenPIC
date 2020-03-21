@@ -111,218 +111,218 @@ ${OBJECTDIR}/_ext/1688412750/CO_Emergency.o: ../CANopenNode/301/CO_Emergency.c  
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412750" 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_Emergency.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_Emergency.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_Emergency.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_Emergency.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_Emergency.o ../CANopenNode/301/CO_Emergency.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_Emergency.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_Emergency.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_Emergency.o ../CANopenNode/301/CO_Emergency.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1688412750/CO_HBconsumer.o: ../CANopenNode/301/CO_HBconsumer.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412750" 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_HBconsumer.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_HBconsumer.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_HBconsumer.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_HBconsumer.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_HBconsumer.o ../CANopenNode/301/CO_HBconsumer.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_HBconsumer.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_HBconsumer.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_HBconsumer.o ../CANopenNode/301/CO_HBconsumer.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1688412750/CO_NMT_Heartbeat.o: ../CANopenNode/301/CO_NMT_Heartbeat.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412750" 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_NMT_Heartbeat.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_NMT_Heartbeat.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_NMT_Heartbeat.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_NMT_Heartbeat.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_NMT_Heartbeat.o ../CANopenNode/301/CO_NMT_Heartbeat.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_NMT_Heartbeat.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_NMT_Heartbeat.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_NMT_Heartbeat.o ../CANopenNode/301/CO_NMT_Heartbeat.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1688412750/CO_PDO.o: ../CANopenNode/301/CO_PDO.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412750" 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_PDO.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_PDO.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_PDO.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_PDO.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_PDO.o ../CANopenNode/301/CO_PDO.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_PDO.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_PDO.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_PDO.o ../CANopenNode/301/CO_PDO.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1688412750/CO_SDOclient.o: ../CANopenNode/301/CO_SDOclient.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412750" 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_SDOclient.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_SDOclient.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_SDOclient.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_SDOclient.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_SDOclient.o ../CANopenNode/301/CO_SDOclient.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_SDOclient.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_SDOclient.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_SDOclient.o ../CANopenNode/301/CO_SDOclient.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1688412750/CO_SDOserver.o: ../CANopenNode/301/CO_SDOserver.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412750" 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_SDOserver.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_SDOserver.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_SDOserver.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_SDOserver.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_SDOserver.o ../CANopenNode/301/CO_SDOserver.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_SDOserver.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_SDOserver.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_SDOserver.o ../CANopenNode/301/CO_SDOserver.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1688412750/CO_SYNC.o: ../CANopenNode/301/CO_SYNC.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412750" 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_SYNC.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_SYNC.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_SYNC.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_SYNC.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_SYNC.o ../CANopenNode/301/CO_SYNC.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_SYNC.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_SYNC.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_SYNC.o ../CANopenNode/301/CO_SYNC.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1688412750/CO_TIME.o: ../CANopenNode/301/CO_TIME.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412750" 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_TIME.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_TIME.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_TIME.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_TIME.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_TIME.o ../CANopenNode/301/CO_TIME.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_TIME.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_TIME.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_TIME.o ../CANopenNode/301/CO_TIME.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1688412750/crc16-ccitt.o: ../CANopenNode/301/crc16-ccitt.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412750" 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/crc16-ccitt.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/crc16-ccitt.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/crc16-ccitt.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/crc16-ccitt.o.d" -o ${OBJECTDIR}/_ext/1688412750/crc16-ccitt.o ../CANopenNode/301/crc16-ccitt.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/crc16-ccitt.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/crc16-ccitt.o.d" -o ${OBJECTDIR}/_ext/1688412750/crc16-ccitt.o ../CANopenNode/301/crc16-ccitt.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1688412746/CO_LSSmaster.o: ../CANopenNode/305/CO_LSSmaster.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412746" 
 	@${RM} ${OBJECTDIR}/_ext/1688412746/CO_LSSmaster.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412746/CO_LSSmaster.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412746/CO_LSSmaster.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412746/CO_LSSmaster.o.d" -o ${OBJECTDIR}/_ext/1688412746/CO_LSSmaster.o ../CANopenNode/305/CO_LSSmaster.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412746/CO_LSSmaster.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412746/CO_LSSmaster.o.d" -o ${OBJECTDIR}/_ext/1688412746/CO_LSSmaster.o ../CANopenNode/305/CO_LSSmaster.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1688412746/CO_LSSslave.o: ../CANopenNode/305/CO_LSSslave.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412746" 
 	@${RM} ${OBJECTDIR}/_ext/1688412746/CO_LSSslave.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412746/CO_LSSslave.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412746/CO_LSSslave.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412746/CO_LSSslave.o.d" -o ${OBJECTDIR}/_ext/1688412746/CO_LSSslave.o ../CANopenNode/305/CO_LSSslave.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412746/CO_LSSslave.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412746/CO_LSSslave.o.d" -o ${OBJECTDIR}/_ext/1688412746/CO_LSSslave.o ../CANopenNode/305/CO_LSSslave.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/981374158/CO_trace.o: ../CANopenNode/extra/CO_trace.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/981374158" 
 	@${RM} ${OBJECTDIR}/_ext/981374158/CO_trace.o.d 
 	@${RM} ${OBJECTDIR}/_ext/981374158/CO_trace.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/981374158/CO_trace.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/981374158/CO_trace.o.d" -o ${OBJECTDIR}/_ext/981374158/CO_trace.o ../CANopenNode/extra/CO_trace.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/981374158/CO_trace.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/981374158/CO_trace.o.d" -o ${OBJECTDIR}/_ext/981374158/CO_trace.o ../CANopenNode/extra/CO_trace.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/2137914310/CO_driver.o: ../PIC32/CO_driver.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/2137914310" 
 	@${RM} ${OBJECTDIR}/_ext/2137914310/CO_driver.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2137914310/CO_driver.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2137914310/CO_driver.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/2137914310/CO_driver.o.d" -o ${OBJECTDIR}/_ext/2137914310/CO_driver.o ../PIC32/CO_driver.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/2137914310/CO_driver.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/2137914310/CO_driver.o.d" -o ${OBJECTDIR}/_ext/2137914310/CO_driver.o ../PIC32/CO_driver.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/2137914310/eeprom.o: ../PIC32/eeprom.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/2137914310" 
 	@${RM} ${OBJECTDIR}/_ext/2137914310/eeprom.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2137914310/eeprom.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2137914310/eeprom.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/2137914310/eeprom.o.d" -o ${OBJECTDIR}/_ext/2137914310/eeprom.o ../PIC32/eeprom.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/2137914310/eeprom.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/2137914310/eeprom.o.d" -o ${OBJECTDIR}/_ext/2137914310/eeprom.o ../PIC32/eeprom.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/2137914310/main_PIC32.o: ../PIC32/main_PIC32.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/2137914310" 
 	@${RM} ${OBJECTDIR}/_ext/2137914310/main_PIC32.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2137914310/main_PIC32.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2137914310/main_PIC32.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/2137914310/main_PIC32.o.d" -o ${OBJECTDIR}/_ext/2137914310/main_PIC32.o ../PIC32/main_PIC32.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/2137914310/main_PIC32.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/2137914310/main_PIC32.o.d" -o ${OBJECTDIR}/_ext/2137914310/main_PIC32.o ../PIC32/main_PIC32.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/398055091/CANopen.o: ../CANopenNode/CANopen.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/398055091" 
 	@${RM} ${OBJECTDIR}/_ext/398055091/CANopen.o.d 
 	@${RM} ${OBJECTDIR}/_ext/398055091/CANopen.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/398055091/CANopen.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/398055091/CANopen.o.d" -o ${OBJECTDIR}/_ext/398055091/CANopen.o ../CANopenNode/CANopen.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/398055091/CANopen.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/398055091/CANopen.o.d" -o ${OBJECTDIR}/_ext/398055091/CANopen.o ../CANopenNode/CANopen.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1809917272/CO_OD.o: ../CANopenNode/example/CO_OD.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1809917272" 
 	@${RM} ${OBJECTDIR}/_ext/1809917272/CO_OD.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1809917272/CO_OD.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1809917272/CO_OD.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1809917272/CO_OD.o.d" -o ${OBJECTDIR}/_ext/1809917272/CO_OD.o ../CANopenNode/example/CO_OD.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1809917272/CO_OD.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1809917272/CO_OD.o.d" -o ${OBJECTDIR}/_ext/1809917272/CO_OD.o ../CANopenNode/example/CO_OD.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/appl_PIC32_explorer16_IO.o: appl_PIC32_explorer16_IO.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/appl_PIC32_explorer16_IO.o.d 
 	@${RM} ${OBJECTDIR}/appl_PIC32_explorer16_IO.o 
-	@${FIXDEPS} "${OBJECTDIR}/appl_PIC32_explorer16_IO.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/appl_PIC32_explorer16_IO.o.d" -o ${OBJECTDIR}/appl_PIC32_explorer16_IO.o appl_PIC32_explorer16_IO.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/appl_PIC32_explorer16_IO.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/appl_PIC32_explorer16_IO.o.d" -o ${OBJECTDIR}/appl_PIC32_explorer16_IO.o appl_PIC32_explorer16_IO.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 else
 ${OBJECTDIR}/_ext/1688412750/CO_Emergency.o: ../CANopenNode/301/CO_Emergency.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412750" 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_Emergency.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_Emergency.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_Emergency.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_Emergency.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_Emergency.o ../CANopenNode/301/CO_Emergency.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_Emergency.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_Emergency.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_Emergency.o ../CANopenNode/301/CO_Emergency.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1688412750/CO_HBconsumer.o: ../CANopenNode/301/CO_HBconsumer.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412750" 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_HBconsumer.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_HBconsumer.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_HBconsumer.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_HBconsumer.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_HBconsumer.o ../CANopenNode/301/CO_HBconsumer.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_HBconsumer.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_HBconsumer.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_HBconsumer.o ../CANopenNode/301/CO_HBconsumer.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1688412750/CO_NMT_Heartbeat.o: ../CANopenNode/301/CO_NMT_Heartbeat.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412750" 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_NMT_Heartbeat.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_NMT_Heartbeat.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_NMT_Heartbeat.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_NMT_Heartbeat.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_NMT_Heartbeat.o ../CANopenNode/301/CO_NMT_Heartbeat.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_NMT_Heartbeat.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_NMT_Heartbeat.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_NMT_Heartbeat.o ../CANopenNode/301/CO_NMT_Heartbeat.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1688412750/CO_PDO.o: ../CANopenNode/301/CO_PDO.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412750" 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_PDO.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_PDO.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_PDO.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_PDO.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_PDO.o ../CANopenNode/301/CO_PDO.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_PDO.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_PDO.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_PDO.o ../CANopenNode/301/CO_PDO.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1688412750/CO_SDOclient.o: ../CANopenNode/301/CO_SDOclient.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412750" 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_SDOclient.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_SDOclient.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_SDOclient.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_SDOclient.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_SDOclient.o ../CANopenNode/301/CO_SDOclient.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_SDOclient.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_SDOclient.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_SDOclient.o ../CANopenNode/301/CO_SDOclient.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1688412750/CO_SDOserver.o: ../CANopenNode/301/CO_SDOserver.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412750" 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_SDOserver.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_SDOserver.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_SDOserver.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_SDOserver.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_SDOserver.o ../CANopenNode/301/CO_SDOserver.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_SDOserver.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_SDOserver.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_SDOserver.o ../CANopenNode/301/CO_SDOserver.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1688412750/CO_SYNC.o: ../CANopenNode/301/CO_SYNC.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412750" 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_SYNC.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_SYNC.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_SYNC.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_SYNC.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_SYNC.o ../CANopenNode/301/CO_SYNC.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_SYNC.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_SYNC.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_SYNC.o ../CANopenNode/301/CO_SYNC.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1688412750/CO_TIME.o: ../CANopenNode/301/CO_TIME.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412750" 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_TIME.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/CO_TIME.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_TIME.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_TIME.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_TIME.o ../CANopenNode/301/CO_TIME.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/CO_TIME.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/CO_TIME.o.d" -o ${OBJECTDIR}/_ext/1688412750/CO_TIME.o ../CANopenNode/301/CO_TIME.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1688412750/crc16-ccitt.o: ../CANopenNode/301/crc16-ccitt.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412750" 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/crc16-ccitt.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412750/crc16-ccitt.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/crc16-ccitt.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/crc16-ccitt.o.d" -o ${OBJECTDIR}/_ext/1688412750/crc16-ccitt.o ../CANopenNode/301/crc16-ccitt.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412750/crc16-ccitt.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412750/crc16-ccitt.o.d" -o ${OBJECTDIR}/_ext/1688412750/crc16-ccitt.o ../CANopenNode/301/crc16-ccitt.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1688412746/CO_LSSmaster.o: ../CANopenNode/305/CO_LSSmaster.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412746" 
 	@${RM} ${OBJECTDIR}/_ext/1688412746/CO_LSSmaster.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412746/CO_LSSmaster.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412746/CO_LSSmaster.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412746/CO_LSSmaster.o.d" -o ${OBJECTDIR}/_ext/1688412746/CO_LSSmaster.o ../CANopenNode/305/CO_LSSmaster.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412746/CO_LSSmaster.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412746/CO_LSSmaster.o.d" -o ${OBJECTDIR}/_ext/1688412746/CO_LSSmaster.o ../CANopenNode/305/CO_LSSmaster.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1688412746/CO_LSSslave.o: ../CANopenNode/305/CO_LSSslave.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1688412746" 
 	@${RM} ${OBJECTDIR}/_ext/1688412746/CO_LSSslave.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1688412746/CO_LSSslave.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412746/CO_LSSslave.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412746/CO_LSSslave.o.d" -o ${OBJECTDIR}/_ext/1688412746/CO_LSSslave.o ../CANopenNode/305/CO_LSSslave.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1688412746/CO_LSSslave.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1688412746/CO_LSSslave.o.d" -o ${OBJECTDIR}/_ext/1688412746/CO_LSSslave.o ../CANopenNode/305/CO_LSSslave.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/981374158/CO_trace.o: ../CANopenNode/extra/CO_trace.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/981374158" 
 	@${RM} ${OBJECTDIR}/_ext/981374158/CO_trace.o.d 
 	@${RM} ${OBJECTDIR}/_ext/981374158/CO_trace.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/981374158/CO_trace.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/981374158/CO_trace.o.d" -o ${OBJECTDIR}/_ext/981374158/CO_trace.o ../CANopenNode/extra/CO_trace.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/981374158/CO_trace.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/981374158/CO_trace.o.d" -o ${OBJECTDIR}/_ext/981374158/CO_trace.o ../CANopenNode/extra/CO_trace.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/2137914310/CO_driver.o: ../PIC32/CO_driver.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/2137914310" 
 	@${RM} ${OBJECTDIR}/_ext/2137914310/CO_driver.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2137914310/CO_driver.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2137914310/CO_driver.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/2137914310/CO_driver.o.d" -o ${OBJECTDIR}/_ext/2137914310/CO_driver.o ../PIC32/CO_driver.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/2137914310/CO_driver.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/2137914310/CO_driver.o.d" -o ${OBJECTDIR}/_ext/2137914310/CO_driver.o ../PIC32/CO_driver.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/2137914310/eeprom.o: ../PIC32/eeprom.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/2137914310" 
 	@${RM} ${OBJECTDIR}/_ext/2137914310/eeprom.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2137914310/eeprom.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2137914310/eeprom.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/2137914310/eeprom.o.d" -o ${OBJECTDIR}/_ext/2137914310/eeprom.o ../PIC32/eeprom.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/2137914310/eeprom.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/2137914310/eeprom.o.d" -o ${OBJECTDIR}/_ext/2137914310/eeprom.o ../PIC32/eeprom.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/2137914310/main_PIC32.o: ../PIC32/main_PIC32.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/2137914310" 
 	@${RM} ${OBJECTDIR}/_ext/2137914310/main_PIC32.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2137914310/main_PIC32.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/2137914310/main_PIC32.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/2137914310/main_PIC32.o.d" -o ${OBJECTDIR}/_ext/2137914310/main_PIC32.o ../PIC32/main_PIC32.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/2137914310/main_PIC32.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/2137914310/main_PIC32.o.d" -o ${OBJECTDIR}/_ext/2137914310/main_PIC32.o ../PIC32/main_PIC32.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/398055091/CANopen.o: ../CANopenNode/CANopen.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/398055091" 
 	@${RM} ${OBJECTDIR}/_ext/398055091/CANopen.o.d 
 	@${RM} ${OBJECTDIR}/_ext/398055091/CANopen.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/398055091/CANopen.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/398055091/CANopen.o.d" -o ${OBJECTDIR}/_ext/398055091/CANopen.o ../CANopenNode/CANopen.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/398055091/CANopen.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/398055091/CANopen.o.d" -o ${OBJECTDIR}/_ext/398055091/CANopen.o ../CANopenNode/CANopen.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/_ext/1809917272/CO_OD.o: ../CANopenNode/example/CO_OD.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1809917272" 
 	@${RM} ${OBJECTDIR}/_ext/1809917272/CO_OD.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1809917272/CO_OD.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1809917272/CO_OD.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1809917272/CO_OD.o.d" -o ${OBJECTDIR}/_ext/1809917272/CO_OD.o ../CANopenNode/example/CO_OD.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1809917272/CO_OD.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/_ext/1809917272/CO_OD.o.d" -o ${OBJECTDIR}/_ext/1809917272/CO_OD.o ../CANopenNode/example/CO_OD.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/appl_PIC32_explorer16_IO.o: appl_PIC32_explorer16_IO.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/appl_PIC32_explorer16_IO.o.d 
 	@${RM} ${OBJECTDIR}/appl_PIC32_explorer16_IO.o 
-	@${FIXDEPS} "${OBJECTDIR}/appl_PIC32_explorer16_IO.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -DCO_SDO_BUFFER_SIZE=950 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/appl_PIC32_explorer16_IO.o.d" -o ${OBJECTDIR}/appl_PIC32_explorer16_IO.o appl_PIC32_explorer16_IO.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/appl_PIC32_explorer16_IO.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -I"../PIC32" -I"../CANopenNode/example" -I"../CANopenNode" -MMD -MF "${OBJECTDIR}/appl_PIC32_explorer16_IO.o.d" -o ${OBJECTDIR}/appl_PIC32_explorer16_IO.o appl_PIC32_explorer16_IO.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 endif
 

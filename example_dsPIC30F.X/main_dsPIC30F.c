@@ -71,6 +71,7 @@
 int main (void){
     CO_ReturnError_t err;
     CO_NMT_reset_cmd_t reset = CO_RESET_NOT;
+    uint32_t heapMemoryUsed;
 
     /* Initialize two CAN led diodes */
     TRISFbits.TRISF4 = 0; LATFbits.LATF4 = 0;
@@ -86,7 +87,7 @@ int main (void){
 
 
     /* Allocate memory */
-    err = CO_new();
+    err = CO_new(&heapMemoryUsed);
     if (err != CO_ERROR_NO) {
         while(1);
     }

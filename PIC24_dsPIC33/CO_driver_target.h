@@ -37,13 +37,22 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#ifdef CO_DRIVER_CUSTOM
+#include "CO_driver_custom.h"
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+/* Stack configuration override from CO_driver.h.
+ * For more information see file CO_config.h. */
+#ifndef CO_CONFIG_NMT
+#define CO_CONFIG_NMT CO_CONFIG_NMT_MASTER | CO_CONFIG_NMT_LEDS
+#endif
+
 /* Basic definitions */
 #define CO_LITTLE_ENDIAN
-#define CO_USE_LEDS
 #define CO_OWN_INTTYPES
 #define PRIu32 "lu"
 #define PRId32 "ld"
