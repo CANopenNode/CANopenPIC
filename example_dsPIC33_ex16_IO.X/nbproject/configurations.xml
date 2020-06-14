@@ -9,12 +9,17 @@
         <itemPath>../CANopenNode/301/CO_HBconsumer.h</itemPath>
         <itemPath>../CANopenNode/301/CO_NMT_Heartbeat.h</itemPath>
         <itemPath>../CANopenNode/301/CO_PDO.h</itemPath>
-        <itemPath>../CANopenNode/301/CO_SDOclient.h</itemPath>
         <itemPath>../CANopenNode/301/CO_SDOserver.h</itemPath>
         <itemPath>../CANopenNode/301/CO_SYNC.h</itemPath>
         <itemPath>../CANopenNode/301/CO_TIME.h</itemPath>
         <itemPath>../CANopenNode/301/CO_driver.h</itemPath>
         <itemPath>../CANopenNode/301/crc16-ccitt.h</itemPath>
+        <itemPath>../CANopenNode/301/CO_config.h</itemPath>
+        <itemPath>../CANopenNode/301/CO_SDOclient.h</itemPath>
+        <itemPath>../CANopenNode/301/CO_fifo.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f5" displayName="303" projectFiles="true">
+        <itemPath>../CANopenNode/303/CO_LEDs.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="305" projectFiles="true">
         <itemPath>../CANopenNode/305/CO_LSS.h</itemPath>
@@ -42,11 +47,15 @@
         <itemPath>../CANopenNode/301/CO_HBconsumer.c</itemPath>
         <itemPath>../CANopenNode/301/CO_NMT_Heartbeat.c</itemPath>
         <itemPath>../CANopenNode/301/CO_PDO.c</itemPath>
-        <itemPath>../CANopenNode/301/CO_SDOclient.c</itemPath>
         <itemPath>../CANopenNode/301/CO_SDOserver.c</itemPath>
         <itemPath>../CANopenNode/301/CO_SYNC.c</itemPath>
         <itemPath>../CANopenNode/301/CO_TIME.c</itemPath>
         <itemPath>../CANopenNode/301/crc16-ccitt.c</itemPath>
+        <itemPath>../CANopenNode/301/CO_SDOclient.c</itemPath>
+        <itemPath>../CANopenNode/301/CO_fifo.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f5" displayName="303" projectFiles="true">
+        <itemPath>../CANopenNode/303/CO_LEDs.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="305" projectFiles="true">
         <itemPath>../CANopenNode/305/CO_LSSmaster.c</itemPath>
@@ -148,7 +157,7 @@
         <property key="optimization-level" value="1"/>
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
-        <property key="preprocessor-macros" value="CO_SDO_BUFFER_SIZE=950"/>
+        <property key="preprocessor-macros" value=""/>
         <property key="scalar-model" value="default"/>
         <property key="use-cci" value="false"/>
         <property key="use-iar" value="false"/>

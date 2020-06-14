@@ -16,16 +16,16 @@ Getting or updating the project
 -------------------------------
 Clone the project from git repository and get submodules:
 
-    $ git clone https://github.com/CANopenNode/CANopenPIC.git
-    $ cd CANopenPIC
-    $ git submodule init
-    $ git submodule update
+    git clone https://github.com/CANopenNode/CANopenPIC.git
+    cd CANopenPIC
+    git submodule init
+    git submodule update
 
 Update the project:
 
-    $ cd CANopenPIC
-    $ git pull # or: git fetch; inspect the changes (gitk); git merge
-    $ git submodule update
+    cd CANopenPIC
+    git pull # or: git fetch; inspect the changes (gitk); git merge
+    git submodule update
 
 Using on PIC32, dsPIC33, PIC24 and dsPIC30
 ------------------------------------------
@@ -49,56 +49,77 @@ will switch leds on explorer16 board.
 - encoding: UTF-8
 - (gcc -> optimization-level = 1)
 - Global Options -> Use legacy libc: NO
-- gcc -> Preprocessor macros (PIC32): CO_SDO_BUFFER_SIZE=950
-- gcc -> Include directories (PIC32): ../PIC32;../CANopenNode/example;
+- gcc -> Include directories (PIC32): .
+                                      ../PIC32
+                                      ../CANopenNode/example;
                                       ../CANopenNode
-- ld -> Heap size (bytes): 5000
+- ld -> Heap size (bytes): 5000 (see heapMemoryUsed in main() for actual usage).
+  If macro `CO_USE_GLOBALS` is definded, then heap is not needed.
 
-#### Using with CANopenSocket master
-[CANopenSocket](https://github.com/CANopenNode/CANopenSocket) runs on any Linux
-machine and is connected to CAN network (via (USB to) CAN interface). It acts as
-another CANopen node. It also includes CAN monitor and command line interface
-for master access to the CANopen network. There is also some Getting started
-guide. Here is quick example for Explorer16 board leds and buttons:
+Example usage
+-------------
 
-```
-sudo ip link set up can0 type can bitrate 250000
-candump can0
-# Pressing some buttons will produce PDO
+#### Using with CANopen command interface
+Linux command interface, as described in CANopenNode
+[Getting Started](https://github.com/CANopenNode/CANopenNode/blob/master/doc/gettingStarted.md),
+connected to CAN network (via (USB to) CAN interface), can be used for testing.
+It acts as another CANopen device. It also includes CAN monitor and command line
+interface for master access to the CANopen network.
+Here is a quick example for Explorer16 board leds and buttons:
 
-#another terminal
-cd CANopenSocket/canopend/
-./canopend can0 -i3 -c "" &
-cd ../canopencomm/
-./canopencomm 0x30 w 0x1017 0 i16 5000 #set heartbeat to 5 seconds
-cangen can0 -I 230 -L2 -g100 -Di #leds should be blinking now
 
-#candump output
-  can0  730   [1]  00
-  can0  1B0   [2]  00 00
-  can0  703   [1]  05       # canopend heartbeat
-  can0  730   [1]  05       # PIC heartbeat
-  can0  1B0   [2]  01 00    # button pressed
-  can0  1B0   [2]  00 00
-  can0  703   [1]  05
-  can0  730   [1]  05
-  can0  630   [8]  2B 17 10 00 88 13 00 00
-  can0  5B0   [8]  60 17 10 00 00 00 00 00
-  can0  703   [1]  05
-  can0  703   [1]  05
-  can0  703   [1]  05
-  can0  703   [1]  05
-  can0  703   [1]  05
-  can0  730   [1]  05
-  can0  703   [1]  05
-  can0  230   [2]  00 00    # cangen
-  can0  230   [2]  01 00
-  can0  230   [2]  02 00
-  can0  230   [2]  03 00
-  can0  230   [2]  04 00
-  can0  230   [2]  05 00
-  can0  703   [1]  05
-```
+    sudo ip link set up can0 type can bitrate 250000
+    candump can0
+
+Pressing some buttons on Explorer16 board will produce PDO.
+
+Another terminal, start CANopen "master" device:
+
+    cd CANopenNode
+    ./canopend vcan0 -i1 -c "stdio"
+
+Type into program command interface. Set heartbeat of the PIC to 5 seconds:
+
+    0x30 w 0x1017 0 i16 5000
+
+Third terminal, generate CAN message, which should make LEDs on Explorer16 board blinking:
+
+    cangen can0 -I 230 -L2 -g100 -Di
+
+candump output:
+
+    can0  730   [1]  00
+    can0  1B0   [2]  00 00
+    can0  701   [1]  05       # canopend heartbeat
+    can0  730   [1]  05       # PIC heartbeat
+    can0  1B0   [2]  01 00    # button pressed
+    can0  1B0   [2]  00 00
+    can0  701   [1]  05
+    can0  730   [1]  05
+    can0  630   [8]  2B 17 10 00 88 13 00 00
+    can0  5B0   [8]  60 17 10 00 00 00 00 00
+    can0  701   [1]  05
+    can0  701   [1]  05
+    can0  701   [1]  05
+    can0  701   [1]  05
+    can0  701   [1]  05
+    can0  730   [1]  05
+    can0  701   [1]  05
+    can0  230   [2]  00 00    # cangen
+    can0  230   [2]  01 00
+    can0  230   [2]  02 00
+    can0  230   [2]  03 00
+    can0  230   [2]  04 00
+    can0  230   [2]  05 00
+    can0  701   [1]  05
+
+#### Configuration CANopen node-id and CAN bit-rate with LSS
+All microcontrollers are LSS slaves by default, see
+[LSS usage](https://github.com/CANopenNode/CANopenNode/blob/master/doc/LSSusage.md).
+
+Please note, eeprom storage of variables is not implemented in examples, so
+node node-id and bit-rate are not preserved.
+
 #### Monitor variables using built in trace functionality
 CANopenNode includes optional trace functionality. It monitors
 choosen variables from Object Dictionary. On change of state of variable it
@@ -146,6 +167,7 @@ Change Log
   - License changed to Apache 2.0.
   - Drivers moved from CANopenNode into this project. Changed directory structure. Changed CANopen.h interface.
   - Trace added to PIC32. Time base changed to microseconds in all functions.
+  - LSS slave running in all microcontrollers.
 - **[v1.0](https://github.com/CANopenNode/CANopenPIC/tree/v1.0) - 2016-03-21**: Stable. [Full Changelog](https://github.com/CANopenNode/CANopenPIC/compare/v0.5...v1.0)
 - **[v0.5](https://github.com/CANopenNode/CANopenPIC/tree/v0.5) - 2015-10-20**: Git repository started on GitHub.
 - **[v0.4](https://sourceforge.net/p/canopennode/code_complete/ci/master/tree/) - 2012-02-26**: Git repository started on Sourceforge.

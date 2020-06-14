@@ -126,7 +126,7 @@ void programStart(void);
 /**
  * Called after communication reset.
  */
-void communicationReset(void);
+void communicationReset(bool_t CANopenConfiguredOK);
 
 
 /**
@@ -140,13 +140,13 @@ void programEnd(void);
  *
  * @param timer1msDiff Time difference since last call
  */
-void programAsync(uint16_t timer1msDiff);
+void programAsync(bool_t CANopenConfiguredOK, uint16_t timer1msDiff);
 
 
 /**
  * Called cyclically from 1ms timer task.
  */
-void program1ms(void);
+void program1ms(bool_t CANopenConfiguredOK);
 
 
 /** @} */

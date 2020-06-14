@@ -15,6 +15,10 @@
         <itemPath>../CANopenNode/301/CO_TIME.h</itemPath>
         <itemPath>../CANopenNode/301/CO_driver.h</itemPath>
         <itemPath>../CANopenNode/301/crc16-ccitt.h</itemPath>
+        <itemPath>../CANopenNode/301/CO_fifo.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f5" displayName="303" projectFiles="true">
+        <itemPath>../CANopenNode/303/CO_LEDs.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="305" projectFiles="true">
         <itemPath>../CANopenNode/305/CO_LSS.h</itemPath>
@@ -47,6 +51,10 @@
         <itemPath>../CANopenNode/301/CO_SYNC.c</itemPath>
         <itemPath>../CANopenNode/301/CO_TIME.c</itemPath>
         <itemPath>../CANopenNode/301/crc16-ccitt.c</itemPath>
+        <itemPath>../CANopenNode/301/CO_fifo.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f5" displayName="303" projectFiles="true">
+        <itemPath>../CANopenNode/303/CO_LEDs.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="305" projectFiles="true">
         <itemPath>../CANopenNode/305/CO_LSSmaster.c</itemPath>
@@ -200,7 +208,7 @@
         <property key="general-code-protect" value="no_code_protect"/>
         <property key="general-write-protect" value="no_write_protect"/>
         <property key="generate-cross-reference-file" value="false"/>
-        <property key="heap-size" value="2000"/>
+        <property key="heap-size" value="0"/>
         <property key="input-libraries" value=""/>
         <property key="linker-stack" value="true"/>
         <property key="linker-symbols" value=""/>

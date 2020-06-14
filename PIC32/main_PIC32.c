@@ -89,6 +89,7 @@
     #define CO_clearWDT() (WDTCONSET = _WDTCON_WDTCLR_MASK)
 
 /* Global variables and objects */
+    volatile static bool_t CANopenConfiguredOK = false; /* Indication if CANopen modules are configured */
     volatile uint16_t CO_timer1ms = 0U; /* variable increments each millisecond */
     const CO_CANbitRateData_t   CO_CANbitRateData[8] = {CO_CANbitRateDataInitializers};
     static uint32_t tmpU32;
@@ -97,10 +98,34 @@
 #endif
 
 
+/* callback for checking bitrate */
+static bool_t LSSchkBitrateCallback(void *object, uint16_t bitRate) {
+    (void)object;
+    int i;
+
+    for (i=0; i<(sizeof(CO_CANbitRateData)/sizeof(CO_CANbitRateData[0])); i++) {
+        if (CO_CANbitRateData[i].bitrate == bitRate) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/* callback for storing node id and bitrate */
+static bool_t LSScfgStoreCallback(void *object, uint8_t id, uint16_t bitRate) {
+    (void)object;
+    OD_CANNodeID = id;
+    OD_CANBitRate = bitRate;
+    return true;
+}
+
 /* main ***********************************************************************/
 int main (void){
     CO_ReturnError_t err;
     CO_NMT_reset_cmd_t reset = CO_RESET_NOT;
+    uint16_t pendingBitRate;
+    uint8_t pendingNodeId;
+    uint8_t activeNodeId;
     uint32_t heapMemoryUsed;
 
     /* Configure system for maximum performance. plib is necessary for that.*/
@@ -135,6 +160,12 @@ int main (void){
 #endif
 
 
+    /* Read CANopen Node-ID and CAN bit-rate from object dictionary */
+    pendingNodeId = OD_CANNodeID;
+    if (pendingNodeId<1 || pendingNodeId>127) pendingNodeId = 0xFF;
+    pendingBitRate = OD_CANBitRate;
+
+
     programStart();
 
 
@@ -146,26 +177,28 @@ int main (void){
 /* CANopen communication reset - initialize CANopen objects *******************/
         uint16_t timer1msPrevious;
         uint16_t TMR_TMR_PREV = 0;
-        uint8_t nodeId;
-        uint16_t CANBitRate;
 
         /* disable CAN and CAN interrupts */
         CO_CAN_ISR_ENABLE = 0;
         CO_CAN_ISR2_ENABLE = 0;
-
-        /* Read CANopen Node-ID and CAN bit-rate from object dictionary */
-        nodeId = OD_CANNodeID;
-        if(nodeId<1 || nodeId>127) nodeId = 0x10;
-        CANBitRate = OD_CANBitRate;/* in kbps */
+        CANopenConfiguredOK = false;
 
         /* initialize CANopen */
-        err = CO_CANinit((void *)_CAN1_BASE_ADDRESS, CANBitRate);
-        if (err == CO_ERROR_NO) {
-            err = CO_CANopenInit(nodeId);
-        }
-        if(err != CO_ERROR_NO){
+        err = CO_CANinit((void *)_CAN1_BASE_ADDRESS, pendingBitRate);
+        if (err != CO_ERROR_NO) {
             while(1) CO_clearWDT();
-            /* CO_errorReport(CO->em, CO_EM_MEMORY_ALLOCATION_ERROR, CO_EMC_SOFTWARE_INTERNAL, err); */
+        }
+        err = CO_LSSinit(&pendingNodeId, &pendingBitRate);
+        if (err != CO_ERROR_NO) {
+            while(1) CO_clearWDT();
+        }
+        activeNodeId = pendingNodeId;
+        err = CO_CANopenInit(activeNodeId);
+        if (err == CO_ERROR_NO) {
+            CANopenConfiguredOK = true;
+        }
+        else if (err != CO_ERROR_NODE_ID_UNCONFIGURED_LSS) {
+            while(1) CO_clearWDT();
         }
 
 
@@ -174,6 +207,12 @@ int main (void){
         CO_EE_init_2(&CO_EEO, eeStatus, CO->SDO[0], CO->em);
 #endif
 
+
+        /* initialize part of threadMain and callbacks */
+        CO_LSSslave_initCheckBitRateCallback(CO->LSSslave, NULL,
+                                             LSSchkBitrateCallback);
+        CO_LSSslave_initCfgStoreCallback(CO->LSSslave, NULL,
+                                         LSScfgStoreCallback);
 
         /* initialize variables */
         timer1msPrevious = CO_timer1ms;
@@ -201,7 +240,7 @@ int main (void){
         CO_CAN_ISR2_PRIORITY = 5;  /* CAN Interrupt - Set higher priority than timer (set the same value in '#define CO_CAN_ISR_PRIORITY') */
 
 
-        communicationReset();
+        communicationReset(CANopenConfiguredOK);
 
 
         /* start CAN and enable interrupts */
@@ -244,7 +283,7 @@ int main (void){
 
 
             /* Application asynchronous program */
-            programAsync(timer1msDiff);
+            programAsync(CANopenConfiguredOK, timer1msDiff);
 
             CO_clearWDT();
 
@@ -304,7 +343,7 @@ void __ISR(_TIMER_2_VECTOR, IPL3SOFT) CO_TimerInterruptHandler(void){
             CO_trace_process(CO->trace[i], OD_time.epochTimeOffsetMs);
         }
 #endif
-        program1ms();
+        program1ms(CANopenConfiguredOK);
 
         /* Write outputs */
         CO_process_TPDO(CO, syncWas, 1000, NULL);

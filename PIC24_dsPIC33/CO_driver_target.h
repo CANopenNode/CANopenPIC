@@ -48,7 +48,7 @@ extern "C" {
 /* Stack configuration override from CO_driver.h.
  * For more information see file CO_config.h. */
 #ifndef CO_CONFIG_NMT
-#define CO_CONFIG_NMT CO_CONFIG_NMT_MASTER | CO_CONFIG_NMT_LEDS
+#define CO_CONFIG_NMT CO_CONFIG_NMT_MASTER
 #endif
 
 /* Basic definitions */
@@ -173,13 +173,13 @@ typedef struct {
     uint16_t rxSize;
     CO_CANtx_t *txArray;
     uint16_t txSize;
+    uint16_t CANerrorStatus;
     volatile bool_t CANnormal;
     volatile bool_t useCANrxFilters;
     volatile bool_t bufferInhibitFlag;
     volatile bool_t firstCANtxMessage;
     volatile uint16_t CANtxCount;
     uint16_t errOld;
-    void *em;
 } CO_CANmodule_t;
 
 
@@ -252,174 +252,174 @@ typedef struct {
 
     #if CO_FCY == 2000
         #define CO_CANbitRateDataInitializers  \
-        {1, 5,   TQ_x_20},   /*CAN=10kbps*/    \
-        {2, 5,   TQ_x_20},   /*CAN=20kbps*/    \
-        {1, 1,   TQ_x_20},   /*CAN=50kbps*/    \
-        {2, 1,   TQ_x_16},   /*CAN=125kbps*/   \
-        {2, 1,   TQ_x_8 },   /*CAN=250kbps*/   \
-        {2, 1,   TQ_x_4 },   /*CAN=500kbps*/   \
-        {2, 1,   TQ_x_4 },   /*Not possible*/  \
-        {2, 1,   TQ_x_4 }    /*Not possible*/
+        {1, 5,   TQ_x_20, 10}, \
+        {2, 5,   TQ_x_20, 20}, \
+        {1, 1,   TQ_x_20, 50}, \
+        {2, 1,   TQ_x_16, 125}, \
+        {2, 1,   TQ_x_8 , 250}, \
+        {2, 1,   TQ_x_4 , 500}, \
+        {2, 1,   TQ_x_4 , 0}, \
+        {2, 1,   TQ_x_4 , 0}
     #elif CO_FCY == 3000
         #define CO_CANbitRateDataInitializers  \
-        {2, 15,  TQ_x_20},   /*CAN=10kbps*/    \
-        {1, 5,   TQ_x_15},   /*CAN=20kbps*/    \
-        {1, 2,   TQ_x_15},   /*CAN=50kbps*/    \
-        {1, 1,   TQ_x_12},   /*CAN=125kbps*/   \
-        {2, 1,   TQ_x_12},   /*CAN=250kbps*/   \
-        {2, 1,   TQ_x_6 },   /*CAN=500kbps*/   \
-        {2, 1,   TQ_x_6 },   /*Not possible*/  \
-        {2, 1,   TQ_x_6 }    /*Not possible*/
+        {2, 15,  TQ_x_20, 10}, \
+        {1, 5,   TQ_x_15, 20}, \
+        {1, 2,   TQ_x_15, 50}, \
+        {1, 1,   TQ_x_12, 125}, \
+        {2, 1,   TQ_x_12, 250}, \
+        {2, 1,   TQ_x_6 , 500}, \
+        {2, 1,   TQ_x_6 , 0}, \
+        {2, 1,   TQ_x_6 , 0}
     #elif CO_FCY == 4000
         #define CO_CANbitRateDataInitializers  \
-        {2, 25,  TQ_x_16},   /*CAN=10kbps*/    \
-        {1, 5,   TQ_x_20},   /*CAN=20kbps*/    \
-        {2, 5,   TQ_x_16},   /*CAN=50kbps*/    \
-        {1, 1,   TQ_x_16},   /*CAN=125kbps*/   \
-        {2, 1,   TQ_x_16},   /*CAN=250kbps*/   \
-        {2, 1,   TQ_x_8 },   /*CAN=500kbps*/   \
-        {2, 1,   TQ_x_5 },   /*CAN=800kbps*/   \
-        {2, 1,   TQ_x_4 }    /*CAN=1000kbps*/
+        {2, 25,  TQ_x_16, 10}, \
+        {1, 5,   TQ_x_20, 20}, \
+        {2, 5,   TQ_x_16, 50}, \
+        {1, 1,   TQ_x_16, 125}, \
+        {2, 1,   TQ_x_16, 250}, \
+        {2, 1,   TQ_x_8 , 500}, \
+        {2, 1,   TQ_x_5 , 800}, \
+        {2, 1,   TQ_x_4 , 1000}
     #elif CO_FCY == 5000
         #define CO_CANbitRateDataInitializers  \
-        {2, 25,  TQ_x_20},   /*CAN=10kbps*/    \
-        {1, 5,   TQ_x_25},   /*CAN=20kbps*/    \
-        {2, 5,   TQ_x_20},   /*CAN=50kbps*/    \
-        {1, 1,   TQ_x_20},   /*CAN=125kbps*/   \
-        {2, 1,   TQ_x_20},   /*CAN=250kbps*/   \
-        {2, 1,   TQ_x_10},   /*CAN=500kbps*/   \
-        {2, 1,   TQ_x_10},   /*Not possible*/  \
-        {2, 1,   TQ_x_5 }    /*CAN=1000kbps*/
+        {2, 25,  TQ_x_20, 10}, \
+        {1, 5,   TQ_x_25, 20}, \
+        {2, 5,   TQ_x_20, 50}, \
+        {1, 1,   TQ_x_20, 125}, \
+        {2, 1,   TQ_x_20, 250}, \
+        {2, 1,   TQ_x_10, 500}, \
+        {2, 1,   TQ_x_10, 0}, \
+        {2, 1,   TQ_x_5 , 1000}
     #elif CO_FCY == 6000
         #define CO_CANbitRateDataInitializers  \
-        {1, 20,  TQ_x_15},   /*CAN=10kbps*/    \
-        {1, 10,  TQ_x_15},   /*CAN=20kbps*/    \
-        {1, 4,   TQ_x_15},   /*CAN=50kbps*/    \
-        {2, 3,   TQ_x_16},   /*CAN=125kbps*/   \
-        {1, 1,   TQ_x_12},   /*CAN=250kbps*/   \
-        {2, 1,   TQ_x_12},   /*CAN=500kbps*/   \
-        {2, 1,   TQ_x_12},   /*Not possible*/  \
-        {2, 1,   TQ_x_6 }    /*CAN=1000kbps*/
+        {1, 20,  TQ_x_15, 10}, \
+        {1, 10,  TQ_x_15, 20}, \
+        {1, 4,   TQ_x_15, 50}, \
+        {2, 3,   TQ_x_16, 125}, \
+        {1, 1,   TQ_x_12, 250}, \
+        {2, 1,   TQ_x_12, 500}, \
+        {2, 1,   TQ_x_12, 0}, \
+        {2, 1,   TQ_x_6 , 1000}
     #elif CO_FCY == 8000
         #define CO_CANbitRateDataInitializers  \
-        {1, 25,  TQ_x_16},   /*CAN=10kbps*/    \
-        {2, 25,  TQ_x_16},   /*CAN=20kbps*/    \
-        {1, 5,   TQ_x_16},   /*CAN=50kbps*/    \
-        {1, 2,   TQ_x_16},   /*CAN=125kbps*/   \
-        {1, 1,   TQ_x_16},   /*CAN=250kbps*/   \
-        {2, 1,   TQ_x_16},   /*CAN=500kbps*/   \
-        {2, 1,   TQ_x_10},   /*CAN=800kbps*/   \
-        {2, 1,   TQ_x_8 }    /*CAN=1000kbps*/
+        {1, 25,  TQ_x_16, 10}, \
+        {2, 25,  TQ_x_16, 20}, \
+        {1, 5,   TQ_x_16, 50}, \
+        {1, 2,   TQ_x_16, 125}, \
+        {1, 1,   TQ_x_16, 250}, \
+        {2, 1,   TQ_x_16, 500}, \
+        {2, 1,   TQ_x_10, 800}, \
+        {2, 1,   TQ_x_8 , 1000}
     #elif CO_FCY == 10000
         #define CO_CANbitRateDataInitializers  \
-        {1, 25,  TQ_x_20},   /*CAN=10kbps*/    \
-        {2, 25,  TQ_x_20},   /*CAN=20kbps*/    \
-        {1, 5,   TQ_x_20},   /*CAN=50kbps*/    \
-        {2, 5,   TQ_x_16},   /*CAN=125kbps*/   \
-        {1, 1,   TQ_x_20},   /*CAN=250kbps*/   \
-        {2, 1,   TQ_x_20},   /*CAN=500kbps*/   \
-        {2, 1,   TQ_x_20},   /*Not possible*/  \
-        {2, 1,   TQ_x_10}    /*CAN=1000kbps*/
+        {1, 25,  TQ_x_20, 10}, \
+        {2, 25,  TQ_x_20, 20}, \
+        {1, 5,   TQ_x_20, 50}, \
+        {2, 5,   TQ_x_16, 125}, \
+        {1, 1,   TQ_x_20, 250}, \
+        {2, 1,   TQ_x_20, 500}, \
+        {2, 1,   TQ_x_20, 0}, \
+        {2, 1,   TQ_x_10, 1000}
     #elif CO_FCY == 12000
         #define CO_CANbitRateDataInitializers  \
-        {2, 63,  TQ_x_19},   /*CAN=10kbps*/    \
-        {1, 20,  TQ_x_15},   /*CAN=20kbps*/    \
-        {2, 15,  TQ_x_16},   /*CAN=50kbps*/    \
-        {1, 3,   TQ_x_16},   /*CAN=125kbps*/   \
-        {2, 3,   TQ_x_16},   /*CAN=250kbps*/   \
-        {1, 1,   TQ_x_12},   /*CAN=500kbps*/   \
-        {2, 1,   TQ_x_15},   /*CAN=800kbps*/   \
-        {2, 1,   TQ_x_12}    /*CAN=1000kbps*/
+        {2, 63,  TQ_x_19, 10}, \
+        {1, 20,  TQ_x_15, 20}, \
+        {2, 15,  TQ_x_16, 50}, \
+        {1, 3,   TQ_x_16, 125}, \
+        {2, 3,   TQ_x_16, 250}, \
+        {1, 1,   TQ_x_12, 500}, \
+        {2, 1,   TQ_x_15, 800}, \
+        {2, 1,   TQ_x_12, 1000}
     #elif CO_FCY == 16000
         #define CO_CANbitRateDataInitializers  \
-        {1, 50,  TQ_x_16},   /*CAN=10kbps*/    \
-        {1, 25,  TQ_x_16},   /*CAN=20kbps*/    \
-        {1, 10,  TQ_x_16},   /*CAN=50kbps*/    \
-        {1, 4,   TQ_x_16},   /*CAN=125kbps*/   \
-        {1, 2,   TQ_x_16},   /*CAN=250kbps*/   \
-        {1, 1,   TQ_x_16},   /*CAN=500kbps*/   \
-        {1, 1,   TQ_x_10},   /*CAN=800kbps*/   \
-        {1, 1,   TQ_x_8 }    /*CAN=1000kbps*/
+        {1, 50,  TQ_x_16, 10}, \
+        {1, 25,  TQ_x_16, 20}, \
+        {1, 10,  TQ_x_16, 50}, \
+        {1, 4,   TQ_x_16, 125}, \
+        {1, 2,   TQ_x_16, 250}, \
+        {1, 1,   TQ_x_16, 500}, \
+        {1, 1,   TQ_x_10, 800}, \
+        {1, 1,   TQ_x_8 , 1000}
     #elif CO_FCY == 20000
         #define CO_CANbitRateDataInitializers  \
-        {1, 50,  TQ_x_20},   /*CAN=10kbps*/    \
-        {1, 25,  TQ_x_20},   /*CAN=20kbps*/    \
-        {1, 10,  TQ_x_20},   /*CAN=50kbps*/    \
-        {1, 5,   TQ_x_16},   /*CAN=125kbps*/   \
-        {1, 2,   TQ_x_20},   /*CAN=250kbps*/   \
-        {1, 1,   TQ_x_20},   /*CAN=500kbps*/   \
-        {1, 1,   TQ_x_20},   /*Not possible*/  \
-        {1, 1,   TQ_x_10}    /*CAN=1000kbps*/
+        {1, 50,  TQ_x_20, 10}, \
+        {1, 25,  TQ_x_20, 20}, \
+        {1, 10,  TQ_x_20, 50}, \
+        {1, 5,   TQ_x_16, 125}, \
+        {1, 2,   TQ_x_20, 250}, \
+        {1, 1,   TQ_x_20, 500}, \
+        {1, 1,   TQ_x_20, 0}, \
+        {1, 1,   TQ_x_10, 1000}
     #elif CO_FCY == 24000
         #define CO_CANbitRateDataInitializers  \
-        {1, 63,  TQ_x_19},   /*CAN=10kbps*/    \
-        {1, 40,  TQ_x_15},   /*CAN=20kbps*/    \
-        {1, 15,  TQ_x_16},   /*CAN=50kbps*/    \
-        {1, 6,   TQ_x_16},   /*CAN=125kbps*/   \
-        {1, 3,   TQ_x_16},   /*CAN=250kbps*/   \
-        {1, 2,   TQ_x_12},   /*CAN=500kbps*/   \
-        {1, 1,   TQ_x_15},   /*CAN=800kbps*/   \
-        {1, 1,   TQ_x_12}    /*CAN=1000kbps*/
+        {1, 63,  TQ_x_19, 10}, \
+        {1, 40,  TQ_x_15, 20}, \
+        {1, 15,  TQ_x_16, 50}, \
+        {1, 6,   TQ_x_16, 125}, \
+        {1, 3,   TQ_x_16, 250}, \
+        {1, 2,   TQ_x_12, 500}, \
+        {1, 1,   TQ_x_15, 800}, \
+        {1, 1,   TQ_x_12, 1000}
     #elif CO_FCY == 32000
         #define CO_CANbitRateDataInitializers  \
-        {1, 64,  TQ_x_25},   /*CAN=10kbps*/    \
-        {1, 50,  TQ_x_16},   /*CAN=20kbps*/    \
-        {1, 20,  TQ_x_16},   /*CAN=50kbps*/    \
-        {1, 8,   TQ_x_16},   /*CAN=125kbps*/   \
-        {1, 4,   TQ_x_16},   /*CAN=250kbps*/   \
-        {1, 2,   TQ_x_16},   /*CAN=500kbps*/   \
-        {1, 2,   TQ_x_10},   /*CAN=800kbps*/   \
-        {1, 1,   TQ_x_16}    /*CAN=1000kbps*/
+        {1, 64,  TQ_x_25, 10}, \
+        {1, 50,  TQ_x_16, 20}, \
+        {1, 20,  TQ_x_16, 50}, \
+        {1, 8,   TQ_x_16, 125}, \
+        {1, 4,   TQ_x_16, 250}, \
+        {1, 2,   TQ_x_16, 500}, \
+        {1, 2,   TQ_x_10, 800}, \
+        {1, 1,   TQ_x_16, 1000}
     #elif CO_FCY == 40000
         #define CO_CANbitRateDataInitializers  \
-        {1, 50,  TQ_x_20},   /*Not possible*/  \
-        {1, 50,  TQ_x_20},   /*CAN=20kbps*/    \
-        {1, 25,  TQ_x_16},   /*CAN=50kbps*/    \
-        {1, 10,  TQ_x_16},   /*CAN=125kbps*/   \
-        {1, 5,   TQ_x_16},   /*CAN=250kbps*/   \
-        {1, 2,   TQ_x_20},   /*CAN=500kbps*/   \
-        {1, 1,   TQ_x_25},   /*CAN=800kbps*/   \
-        {1, 1,   TQ_x_20}    /*CAN=1000kbps*/
+        {1, 50,  TQ_x_20, 0}, \
+        {1, 50,  TQ_x_20, 20}, \
+        {1, 25,  TQ_x_16, 50}, \
+        {1, 10,  TQ_x_16, 125}, \
+        {1, 5,   TQ_x_16, 250}, \
+        {1, 2,   TQ_x_20, 500}, \
+        {1, 1,   TQ_x_25, 800}, \
+        {1, 1,   TQ_x_20, 1000}
     #elif CO_FCY == 48000
         #define CO_CANbitRateDataInitializers  \
-        {1, 63,  TQ_x_19},   /*Not possible*/  \
-        {1, 63,  TQ_x_19},   /*CAN=20kbps*/    \
-        {1, 30,  TQ_x_16},   /*CAN=50kbps*/    \
-        {1, 12,  TQ_x_16},   /*CAN=125kbps*/   \
-        {1, 6,   TQ_x_16},   /*CAN=250kbps*/   \
-        {1, 3,   TQ_x_16},   /*CAN=500kbps*/   \
-        {1, 2,   TQ_x_15},   /*CAN=800kbps*/   \
-        {1, 2,   TQ_x_12}    /*CAN=1000kbps*/
+        {1, 63,  TQ_x_19, 0}, \
+        {1, 63,  TQ_x_19, 20}, \
+        {1, 30,  TQ_x_16, 50}, \
+        {1, 12,  TQ_x_16, 125}, \
+        {1, 6,   TQ_x_16, 250}, \
+        {1, 3,   TQ_x_16, 500}, \
+        {1, 2,   TQ_x_15, 800}, \
+        {1, 2,   TQ_x_12, 1000}
     #elif CO_FCY == 56000
         #define CO_CANbitRateDataInitializers  \
-        {1, 61,  TQ_x_23},   /*Not possible*/  \
-        {1, 61,  TQ_x_23},   /*CAN=20kbps*/    \
-        {1, 35,  TQ_x_16},   /*CAN=50kbps*/    \
-        {1, 14,  TQ_x_16},   /*CAN=125kbps*/   \
-        {1, 7,   TQ_x_16},   /*CAN=250kbps*/   \
-        {1, 4,   TQ_x_14},   /*CAN=500kbps*/   \
-        {1, 5,   TQ_x_7 },   /*CAN=800kbps*/   \
-        {1, 2,   TQ_x_14}    /*CAN=1000kbps*/
+        {1, 61,  TQ_x_23, 0}, \
+        {1, 61,  TQ_x_23, 20}, \
+        {1, 35,  TQ_x_16, 50}, \
+        {1, 14,  TQ_x_16, 125}, \
+        {1, 7,   TQ_x_16, 250}, \
+        {1, 4,   TQ_x_14, 500}, \
+        {1, 5,   TQ_x_7 , 800}, \
+        {1, 2,   TQ_x_14, 1000}
     #elif CO_FCY == 64000
         #define CO_CANbitRateDataInitializers  \
-        {1, 64,  TQ_x_25},   /*Not possible*/  \
-        {1, 64,  TQ_x_25},   /*CAN=20kbps*/    \
-        {1, 40,  TQ_x_16},   /*CAN=50kbps*/    \
-        {1, 16,  TQ_x_16},   /*CAN=125kbps*/   \
-        {1, 8,   TQ_x_16},   /*CAN=250kbps*/   \
-        {1, 4,   TQ_x_16},   /*CAN=500kbps*/   \
-        {1, 2,   TQ_x_20},   /*CAN=800kbps*/   \
-        {1, 2,   TQ_x_16}    /*CAN=1000kbps*/
+        {1, 64,  TQ_x_25, 0}, \
+        {1, 64,  TQ_x_25, 20}, \
+        {1, 40,  TQ_x_16, 50}, \
+        {1, 16,  TQ_x_16, 125}, \
+        {1, 8,   TQ_x_16, 250}, \
+        {1, 4,   TQ_x_16, 500}, \
+        {1, 2,   TQ_x_20, 800}, \
+        {1, 2,   TQ_x_16, 1000}
     #elif CO_FCY == 70000
         #define CO_CANbitRateDataInitializers  \
-        {1, 64,  TQ_x_25},   /*Not possible*/  \
-        {1, 64,  TQ_x_25},   /*CAN=20kbps*/    \
-        {1, 35,  TQ_x_20},   /*CAN=50kbps*/    \
-        {1, 14,  TQ_x_20},   /*CAN=125kbps*/   \
-        {1, 7,   TQ_x_20},   /*CAN=250kbps*/   \
-        {1, 5,   TQ_x_14},   /*CAN=500kbps*/   \
-        {1, 3,   TQ_x_15},   /*Not working*/   \
-        {1, 2,   TQ_x_17}    /*Not working*/
+        {1, 64,  TQ_x_25, 0}, \
+        {1, 64,  TQ_x_25, 20}, \
+        {1, 35,  TQ_x_20, 50}, \
+        {1, 14,  TQ_x_20, 125}, \
+        {1, 7,   TQ_x_20, 250}, \
+        {1, 5,   TQ_x_14, 500}, \
+        {1, 3,   TQ_x_15, 0}, \
+        {1, 2,   TQ_x_17, 0}
     #else
         #error define_CO_FCY CO_FCY not supported
     #endif
@@ -440,6 +440,7 @@ typedef struct {
     uint8_t   PROP;     /* (1...8) PROP time */
     uint8_t   phSeg1;   /* (1...8) Phase Segment 1 time */
     uint8_t   phSeg2;   /* (1...8) Phase Segment 2 time */
+    uint16_t  bitrate;  /* bitrate in kbps */
 } CO_CANbitRateData_t;
 
 #ifdef __cplusplus

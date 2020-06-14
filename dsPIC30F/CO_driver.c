@@ -24,7 +24,6 @@
 
 
 #include "301/CO_driver.h"
-#include "301/CO_Emergency.h"
 
 
 extern const CO_CANbitRateData_t  CO_CANbitRateData[8];
@@ -121,6 +120,7 @@ CO_ReturnError_t CO_CANmodule_init(
         uint16_t                CANbitRate)
 {
     uint16_t i;
+    const CO_CANbitRateData_t *CANbitRateData = NULL;
 
     /* verify arguments */
     if(CANmodule==NULL || rxArray==NULL || txArray==NULL){
@@ -133,13 +133,13 @@ CO_ReturnError_t CO_CANmodule_init(
     CANmodule->rxSize = rxSize;
     CANmodule->txArray = txArray;
     CANmodule->txSize = txSize;
+    CANmodule->CANerrorStatus = 0;
     CANmodule->CANnormal = false;
     CANmodule->useCANrxFilters = false;
     CANmodule->bufferInhibitFlag = false;
     CANmodule->firstCANtxMessage = true;
     CANmodule->CANtxCount = 0U;
     CANmodule->errOld = 0U;
-    CANmodule->em = NULL;
 
     for(i=0U; i<rxSize; i++){
         rxArray[i].ident = 0U;
@@ -157,28 +157,26 @@ CO_ReturnError_t CO_CANmodule_init(
 
 
     /* Configure CAN timing */
-    switch(CANbitRate){
-        case 10:   i=0; break;
-        case 20:   i=1; break;
-        case 50:   i=2; break;
-        default:
-        case 125:  i=3; break;
-        case 250:  i=4; break;
-        case 500:  i=5; break;
-        case 800:  i=6; break;
-        case 1000: i=7; break;
+    for (i=0; i<(sizeof(CO_CANbitRateData)/sizeof(CO_CANbitRateData[0])); i++) {
+        if (CO_CANbitRateData[i].bitrate == CANbitRate) {
+            CANbitRateData = &CO_CANbitRateData[i];
+            break;
+        }
+    }
+    if (CANbitRate == 0 || CANbitRateData == NULL) {
+        return CO_ERROR_ILLEGAL_BAUDRATE;
     }
 
-    if(CO_CANbitRateData[i].scale == 1)
+    if(CANbitRateData->scale == 1)
         CAN_REG(CANptr, C_CTRL) |= 0x0800;
 
-    CAN_REG(CANptr, C_CFG1) = (CO_CANbitRateData[i].SJW - 1) << 6 |
-                                         (CO_CANbitRateData[i].BRP - 1);
+    CAN_REG(CANptr, C_CFG1) = (CANbitRateData->SJW - 1) << 6 |
+                                         (CANbitRateData->BRP - 1);
 
-    CAN_REG(CANptr, C_CFG2) = ((uint16_t)(CO_CANbitRateData[i].phSeg2 - 1)) << 8 |
+    CAN_REG(CANptr, C_CFG2) = ((uint16_t)(CANbitRateData->phSeg2 - 1)) << 8 |
                                         0x0080 |
-                                        (CO_CANbitRateData[i].phSeg1 - 1) << 3 |
-                                        (CO_CANbitRateData[i].PROP - 1);
+                                        (CANbitRateData->phSeg1 - 1) << 3 |
+                                        (CANbitRateData->PROP - 1);
 
 
     /* setup RX and TX control registers */
@@ -336,7 +334,7 @@ CO_ReturnError_t CO_CANsend(CO_CANmodule_t *CANmodule, CO_CANtx_t *buffer){
     if(buffer->bufferFull){
         if(!CANmodule->firstCANtxMessage){
             /* don't set error, if bootup message is still on buffers */
-            CO_errorReport((CO_EM_t*)CANmodule->em, CO_EM_CAN_TX_OVERFLOW, CO_EMC_CAN_OVERRUN, 0);
+            CANmodule->CANerrorStatus |= CO_CAN_ERRTX_OVERFLOW;
         }
         err = CO_ERROR_TX_OVERFLOW;
     }
@@ -366,56 +364,55 @@ void CO_CANclearPendingSyncPDOs(CO_CANmodule_t *CANmodule){
 
 
 /******************************************************************************/
-void CO_CANverifyErrors(CO_CANmodule_t *CANmodule){
+void CO_CANmodule_process(CO_CANmodule_t *CANmodule){
     uint8_t err;
-    CO_EM_t* em = (CO_EM_t*)CANmodule->em;
 
     err = CAN_REG(CANmodule->CANptr, C_INTF)>>8;
 
-    if(CANmodule->errOld != err){
+    if (CANmodule->errOld != err) {
+        uint16_t status = CANmodule->CANerrorStatus;
+
         CANmodule->errOld = err;
 
         /* CAN RX bus overflow */
         if(err & 0xC0){
-            CO_errorReport(em, CO_EM_CAN_RXB_OVERFLOW, CO_EMC_CAN_OVERRUN, err);
+            status |= CO_CAN_ERRRX_OVERFLOW;
             CAN_REG(CANmodule->CANptr, C_INTF) &= 0x3FFF;/* clear bits */
         }
 
         /* CAN TX bus off */
         if(err & 0x20){
-            CO_errorReport(em, CO_EM_CAN_TX_BUS_OFF, CO_EMC_BUS_OFF_RECOVERED, err);
+            status |= CO_CAN_ERRTX_BUS_OFF;
         }
         else{
-            CO_errorReset(em, CO_EM_CAN_TX_BUS_OFF, err);
+            status &= 0xFFFF ^ CO_CAN_ERRTX_BUS_OFF;
         }
 
         /* CAN TX bus passive */
         if(err & 0x10){
-            if(!CANmodule->firstCANtxMessage) CO_errorReport(em, CO_EM_CAN_TX_BUS_PASSIVE, CO_EMC_CAN_PASSIVE, err);
+            if(!CANmodule->firstCANtxMessage) status |= CO_CAN_ERRTX_PASSIVE;
         }
         else{
-            int8_t isError = CO_isError(em, CO_EM_CAN_TX_BUS_PASSIVE);
-            if(isError){
-                CO_errorReset(em, CO_EM_CAN_TX_BUS_PASSIVE, err);
-                CO_errorReset(em, CO_EM_CAN_TX_OVERFLOW, err);
-            }
+            status &= 0xFFFF ^ (CO_CAN_ERRTX_PASSIVE | CO_CAN_ERRTX_OVERFLOW);
         }
 
         /* CAN RX bus passive */
         if(err & 0x08){
-            CO_errorReport(em, CO_EM_CAN_RX_BUS_PASSIVE, CO_EMC_CAN_PASSIVE, err);
+            status |= CO_CAN_ERRRX_PASSIVE;
         }
         else{
-            CO_errorReset(em, CO_EM_CAN_RX_BUS_PASSIVE, err);
+            status &= 0xFFFF ^ CO_CAN_ERRRX_PASSIVE;
         }
 
         /* CAN TX or RX bus warning */
         if(err & 0x19){
-            CO_errorReport(em, CO_EM_CAN_BUS_WARNING, CO_EMC_NO_ERROR, err);
+            status |= CO_CAN_ERRTX_WARNING | CO_CAN_ERRRX_WARNING;
         }
         else{
-            CO_errorReset(em, CO_EM_CAN_BUS_WARNING, err);
+            status &= 0xFFFF ^ (CO_CAN_ERRTX_WARNING | CO_CAN_ERRRX_WARNING);
         }
+
+        CANmodule->CANerrorStatus = status;
     }
 }
 

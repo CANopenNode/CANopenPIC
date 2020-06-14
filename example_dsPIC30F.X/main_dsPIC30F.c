@@ -62,15 +62,40 @@
 
 
 /* Global variables and objects */
+    volatile static bool_t CANopenConfiguredOK = false; /* Indication if CANopen modules are configured */
     volatile uint16_t CO_timer1ms = 0U; /* variable increments each millisecond */
     const CO_CANbitRateData_t  CO_CANbitRateData[8] = {CO_CANbitRateDataInitializers};
     //eeprom_t eeprom;
 
 
+/* callback for checking bitrate */
+static bool_t LSSchkBitrateCallback(void *object, uint16_t bitRate) {
+    (void)object;
+    int i;
+
+    for (i=0; i<(sizeof(CO_CANbitRateData)/sizeof(CO_CANbitRateData[0])); i++) {
+        if (CO_CANbitRateData[i].bitrate == bitRate) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/* callback for storing node id and bitrate */
+static bool_t LSScfgStoreCallback(void *object, uint8_t id, uint16_t bitRate) {
+    (void)object;
+    OD_CANNodeID = id;
+    OD_CANBitRate = bitRate;
+    return true;
+}
+
 /* main ***********************************************************************/
 int main (void){
     CO_ReturnError_t err;
     CO_NMT_reset_cmd_t reset = CO_RESET_NOT;
+    uint16_t pendingBitRate;
+    uint8_t pendingNodeId;
+    uint8_t activeNodeId;
     uint32_t heapMemoryUsed;
 
     /* Initialize two CAN led diodes */
@@ -99,36 +124,48 @@ int main (void){
 //                    (uint16_t*) &CO_OD_EEPROM,
 //                     sizeof(CO_OD_EEPROM));
 
+    /* Read CANopen Node-ID and CAN bit-rate from object dictionary */
+    pendingNodeId = OD_CANNodeID;
+    if (pendingNodeId<1 || pendingNodeId>127) pendingNodeId = 0xFF;
+    pendingBitRate = OD_CANBitRate;
+
     /* increase variable each startup. Variable is stored in eeprom. */
     OD_powerOnCounter++;
 
     while(reset != CO_RESET_APP){
 /* CANopen communication reset - initialize CANopen objects *******************/
         static uint16_t timer1msPrevious;
-        uint8_t nodeId;
-        uint16_t CANBitRate;
 
         /* disable CAN and CAN interrupts, turn on red LED */
         CO_CAN_ISR_ENABLE = 0;
         CAN_RUN_LED = 0;
         CAN_ERROR_LED = 1;
 
-
-        /* Read CANopen Node-ID and CAN bit-rate from object dictionary */
-        nodeId = OD_CANNodeID;
-        if(nodeId<1 || nodeId>127) nodeId = 0x10;
-        CANBitRate = OD_CANBitRate;/* in kbps */
+        CANopenConfiguredOK = false;
 
         /* initialize CANopen */
-        err = CO_CANinit(ADDR_CAN1, CANBitRate);
-        if (err == CO_ERROR_NO) {
-            err = CO_CANopenInit(nodeId);
-        }
-        if(err != CO_ERROR_NO){
+        err = CO_CANinit(ADDR_CAN1, pendingBitRate);
+        if (err != CO_ERROR_NO) {
             while(1) ClrWdt();
-            /* CO_errorReport(CO->em, CO_EM_MEMORY_ALLOCATION_ERROR, CO_EMC_SOFTWARE_INTERNAL, err); */
+        }
+        err = CO_LSSinit(&pendingNodeId, &pendingBitRate);
+        if (err != CO_ERROR_NO) {
+            while(1) ClrWdt();
+        }
+        activeNodeId = pendingNodeId;
+        err = CO_CANopenInit(activeNodeId);
+        if (err == CO_ERROR_NO) {
+            CANopenConfiguredOK = true;
+        }
+        else if(err != CO_ERROR_NODE_ID_UNCONFIGURED_LSS) {
+            while(1) ClrWdt();
         }
 
+        /* initialize callbacks */
+        CO_LSSslave_initCheckBitRateCallback(CO->LSSslave, NULL,
+                                             LSSchkBitrateCallback);
+        CO_LSSslave_initCfgStoreCallback(CO->LSSslave, NULL,
+                                         LSScfgStoreCallback);
 
         /* start CAN */
         CO_CANsetNormalMode(CO->CANmodule[0]);
@@ -181,8 +218,8 @@ int main (void){
             /* CANopen process */
             reset = CO_process(CO, (uint32_t)timer1msDiff*1000, NULL);
 
-            CAN_RUN_LED = LED_GREEN_RUN(CO->NMT);
-            CAN_ERROR_LED = LED_RED_ERROR(CO->NMT);
+            CAN_RUN_LED = CO_LED_GREEN(CO->LEDs, CO_LED_CANopen);
+            CAN_ERROR_LED = CO_LED_RED(CO->LEDs, CO_LED_CANopen);
 
             ClrWdt();
 

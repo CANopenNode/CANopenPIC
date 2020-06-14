@@ -96,13 +96,16 @@ void programStart(void){
 
 
 /******************************************************************************/
-void communicationReset(void){
+void communicationReset(bool_t CANopenConfiguredOK){
     CAN_RUN_LED = 0; CAN_ERROR_LED = 0;
     OD_writeOutput8Bit[0] = 0;
     OD_writeOutput8Bit[1] = 0;
 
-    /* Configure Object dictionary entry at index 0x2120 */
-    CO_OD_configure(CO->SDO[0], ODF_testDomain_index, ODF_testDomain, 0, 0, 0);
+    if (CANopenConfiguredOK) {
+        /* Configure Object dictionary entry at index 0x2120 */
+        CO_OD_configure(CO->SDO[0], ODF_testDomain_index,
+                        ODF_testDomain, 0, 0, 0);
+    }
 }
 
 
@@ -113,20 +116,22 @@ void programEnd(void){
 
 
 /******************************************************************************/
-void programAsync(uint16_t timer1msDiff){
+void programAsync(bool_t CANopenConfiguredOK, uint16_t timer1msDiff){
 
-    CAN_RUN_LED = LED_GREEN_RUN(CO->NMT);
-    CAN_ERROR_LED = LED_RED_ERROR(CO->NMT);
+    CAN_RUN_LED = CO_LED_GREEN(CO->LEDs, CO_LED_CANopen);
+    CAN_ERROR_LED = CO_LED_RED(CO->LEDs, CO_LED_CANopen);
 
-    /* Is any application critical error set? */
-    /* If error register is set, device will leave operational state. */
-    if(CO->em->errorStatusBits[8] || CO->em->errorStatusBits[9])
-        *CO->emPr->errorRegister |= 0x20;
+    if (CANopenConfiguredOK) {
+        /* Is any application critical error set? */
+        /* If error register is set, device will leave operational state. */
+        if(CO->em->errorStatusBits[8] || CO->em->errorStatusBits[9])
+            *CO->emPr->errorRegister |= 0x20;
+    }
 }
 
 
 /******************************************************************************/
-void program1ms(void){
+void program1ms(bool_t CANopenConfiguredOK){
     uint8_t leds, buttons;
 
     /* Read RPDO and show it on LEDS on Explorer16. */
@@ -138,17 +143,17 @@ void program1ms(void){
     LATAbits.LATA6 = (leds&0x40) ? 1 : 0;
     LATAbits.LATA7 = (leds&0x80) ? 1 : 0;
 
+    if (CANopenConfiguredOK) {
+        /* Verify operating state of this node */
+        /* LATAbits.LATA2 = (CO->NMT->operatingState == CO_NMT_OPERATIONAL) ? 1 : 0; */
 
-    /* Verify operating state of this node */
-    /* LATAbits.LATA2 = (CO->NMT->operatingState == CO_NMT_OPERATIONAL) ? 1 : 0; */
+        /* Verify operating state of monitored nodes */
+        /* LATAbits.LATA3 = (CO->HBcons->allMonitoredOperational) ? 1 : 0; */
 
-    /* Verify operating state of monitored nodes */
-    /* LATAbits.LATA3 = (CO->HBcons->allMonitoredOperational) ? 1 : 0; */
-
-    /* Example error is simulated from buttons on Explorer16 */
-    if(!PORTDbits.RD6) CO_errorReport(CO->em, CO_EMA_TEST1_INFORMATIVE, CO_EMC_GENERIC, 0x12345678L);
-    if(!PORTDbits.RD7) CO_errorReset(CO->em, CO_EMA_TEST1_INFORMATIVE, 0xAAAAAABBL);
-
+        /* Example error is simulated from buttons on Explorer16 */
+        if(!PORTDbits.RD6) CO_errorReport(CO->em, CO_EMA_TEST1_INFORMATIVE, CO_EMC_GENERIC, 0x12345678L);
+        if(!PORTDbits.RD7) CO_errorReset(CO->em, CO_EMA_TEST1_INFORMATIVE, 0xAAAAAABBL);
+    }
 
 #if 0
     /* Debug - disable CANrx for 650 ms, if button pressed. */

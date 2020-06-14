@@ -15,6 +15,11 @@
         <itemPath>../CANopenNode/301/CO_TIME.h</itemPath>
         <itemPath>../CANopenNode/301/CO_driver.h</itemPath>
         <itemPath>../CANopenNode/301/crc16-ccitt.h</itemPath>
+        <itemPath>../CANopenNode/301/CO_fifo.h</itemPath>
+        <itemPath>../CANopenNode/301/CO_config.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f5" displayName="303" projectFiles="true">
+        <itemPath>../CANopenNode/303/CO_LEDs.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="305" projectFiles="true">
         <itemPath>../CANopenNode/305/CO_LSS.h</itemPath>
@@ -49,6 +54,10 @@
         <itemPath>../CANopenNode/301/CO_SYNC.c</itemPath>
         <itemPath>../CANopenNode/301/CO_TIME.c</itemPath>
         <itemPath>../CANopenNode/301/crc16-ccitt.c</itemPath>
+        <itemPath>../CANopenNode/301/CO_fifo.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f5" displayName="303" projectFiles="true">
+        <itemPath>../CANopenNode/303/CO_LEDs.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="305" projectFiles="true">
         <itemPath>../CANopenNode/305/CO_LSSmaster.c</itemPath>
@@ -125,7 +134,7 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../PIC32;../CANopenNode/example;../CANopenNode"/>
+                  value=".;../PIC32;../CANopenNode/example;../CANopenNode"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="false"/>
@@ -298,6 +307,7 @@
         <property key="UART6" value="true"/>
         <property key="USB" value="true"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="false"/>
