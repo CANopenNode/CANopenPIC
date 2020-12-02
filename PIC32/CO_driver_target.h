@@ -55,6 +55,18 @@ extern "C" {
 
 /* Basic definitions */
 #define CO_LITTLE_ENDIAN
+#if __BYTE_ORDER == __LITTLE_ENDIAN
+    #define CO_LITTLE_ENDIAN
+    #define CO_SWAP_16(x) x
+    #define CO_SWAP_32(x) x
+    #define CO_SWAP_64(x) x
+#else
+    #define CO_BIG_ENDIAN
+    #include <byteswap.h>
+    #define CO_SWAP_16(x) bswap_16(x)
+    #define CO_SWAP_32(x) bswap_32(x)
+    #define CO_SWAP_64(x) bswap_64(x)
+#endif
 /* NULL is defined in stddef.h */
 /* true and false are defined in stdbool.h */
 /* int8_t to uint64_t are defined in stdint.h */
