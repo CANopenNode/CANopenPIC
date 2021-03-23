@@ -45,11 +45,131 @@
 extern "C" {
 #endif
 
-/* Stack configuration override from CO_driver.h.
+/* Stack configuration override default values (all enabled in this example).
  * For more information see file CO_config.h. */
+#define CO_CONFIG_GLOBAL_FLAG_CALLBACK_PRE CO_CONFIG_FLAG_CALLBACK_PRE
+#define CO_CONFIG_GLOBAL_FLAG_TIMERNEXT CO_CONFIG_FLAG_TIMERNEXT
+    
 #ifndef CO_CONFIG_NMT
-#define CO_CONFIG_NMT CO_CONFIG_NMT_MASTER
+#define CO_CONFIG_NMT (CO_CONFIG_NMT_CALLBACK_CHANGE | \
+                       CO_CONFIG_NMT_MASTER | \
+                       CO_CONFIG_GLOBAL_FLAG_CALLBACK_PRE | \
+                       CO_CONFIG_GLOBAL_FLAG_TIMERNEXT)
 #endif
+
+#ifndef CO_CONFIG_HB_CONS
+#define CO_CONFIG_HB_CONS (CO_CONFIG_HB_CONS_ENABLE | \
+                           CO_CONFIG_HB_CONS_CALLBACK_MULTI | \
+                           CO_CONFIG_HB_CONS_QUERY_FUNCT | \
+                           CO_CONFIG_GLOBAL_FLAG_CALLBACK_PRE | \
+                           CO_CONFIG_GLOBAL_FLAG_TIMERNEXT | \
+                           CO_CONFIG_GLOBAL_FLAG_OD_DYNAMIC)
+#endif
+
+#ifndef CO_CONFIG_EM
+#define CO_CONFIG_EM (CO_CONFIG_EM_PRODUCER | \
+                      CO_CONFIG_EM_PROD_CONFIGURABLE | \
+                      CO_CONFIG_EM_PROD_INHIBIT | \
+                      CO_CONFIG_EM_HISTORY | \
+                      CO_CONFIG_EM_STATUS_BITS | \
+                      CO_CONFIG_EM_CONSUMER | \
+                      CO_CONFIG_GLOBAL_FLAG_CALLBACK_PRE | \
+                      CO_CONFIG_GLOBAL_FLAG_TIMERNEXT)
+#endif
+
+#ifndef CO_CONFIG_SDO_SRV
+#define CO_CONFIG_SDO_SRV (CO_CONFIG_SDO_SRV_SEGMENTED | \
+                           CO_CONFIG_SDO_SRV_BLOCK | \
+                           CO_CONFIG_GLOBAL_FLAG_CALLBACK_PRE | \
+                           CO_CONFIG_GLOBAL_FLAG_TIMERNEXT | \
+                           CO_CONFIG_GLOBAL_FLAG_OD_DYNAMIC)
+#endif
+
+#ifndef CO_CONFIG_SDO_SRV_BUFFER_SIZE
+#define CO_CONFIG_SDO_SRV_BUFFER_SIZE 900
+#endif
+
+#ifndef CO_CONFIG_SDO_CLI
+#define CO_CONFIG_SDO_CLI (CO_CONFIG_SDO_CLI_ENABLE | \
+                           CO_CONFIG_SDO_CLI_SEGMENTED | \
+                           CO_CONFIG_SDO_CLI_BLOCK | \
+                           CO_CONFIG_SDO_CLI_LOCAL | \
+                           CO_CONFIG_GLOBAL_FLAG_CALLBACK_PRE | \
+                           CO_CONFIG_GLOBAL_FLAG_TIMERNEXT | \
+                           CO_CONFIG_GLOBAL_FLAG_OD_DYNAMIC)
+#endif
+
+#ifndef CO_CONFIG_TIME
+#define CO_CONFIG_TIME (CO_CONFIG_TIME_ENABLE | \
+                        CO_CONFIG_TIME_PRODUCER | \
+                        CO_CONFIG_GLOBAL_FLAG_CALLBACK_PRE | \
+                        CO_CONFIG_GLOBAL_FLAG_OD_DYNAMIC)
+#endif
+
+/*
+#ifndef CO_CONFIG_GFC
+#define CO_CONFIG_GFC (CO_CONFIG_GFC_ENABLE | \
+                       CO_CONFIG_GFC_CONSUMER | \
+                       CO_CONFIG_GFC_PRODUCER)
+#endif
+*/
+
+/*
+#ifndef CO_CONFIG_SRDO
+#define CO_CONFIG_SRDO (CO_CONFIG_SRDO_ENABLE | \
+                        CO_CONFIG_SRDO_CHECK_TX | \
+                        CO_CONFIG_RSRDO_CALLS_EXTENSION | \
+                        CO_CONFIG_TSRDO_CALLS_EXTENSION | \
+                        CO_CONFIG_GLOBAL_FLAG_CALLBACK_PRE | \
+                        CO_CONFIG_GLOBAL_FLAG_TIMERNEXT)
+#endif
+*/
+
+#ifndef CO_CONFIG_SRDO_MINIMUM_DELAY
+#define CO_CONFIG_SRDO_MINIMUM_DELAY 0
+#endif
+
+#ifndef CO_CONFIG_LSS
+#define CO_CONFIG_LSS (CO_CONFIG_LSS_SLAVE | \
+                       CO_CONFIG_LSS_SLAVE_FASTSCAN_DIRECT_RESPOND | \
+                       CO_CONFIG_LSS_MASTER | \
+                       CO_CONFIG_GLOBAL_FLAG_CALLBACK_PRE)
+#endif
+
+/*
+#ifndef CO_CONFIG_GTW
+#define CO_CONFIG_GTW (CO_CONFIG_GTW_ASCII | \
+                       CO_CONFIG_GTW_ASCII_SDO | \
+                       CO_CONFIG_GTW_ASCII_NMT | \
+                       CO_CONFIG_GTW_ASCII_LSS | \
+                       CO_CONFIG_GTW_ASCII_LOG | \
+                       CO_CONFIG_GTW_ASCII_ERROR_DESC | \
+                       CO_CONFIG_GTW_ASCII_PRINT_HELP | \
+                       CO_CONFIG_GTW_ASCII_PRINT_LEDS)
+#define CO_CONFIG_GTW_BLOCK_DL_LOOP 1
+#define CO_CONFIG_GTWA_COMM_BUF_SIZE 2000
+#define CO_CONFIG_GTWA_LOG_BUF_SIZE 2000
+#endif
+*/
+
+#ifndef CO_CONFIG_CRC16
+#define CO_CONFIG_CRC16 (CO_CONFIG_CRC16_ENABLE)
+#endif
+
+#ifndef CO_CONFIG_FIFO
+#define CO_CONFIG_FIFO (CO_CONFIG_FIFO_ENABLE | \
+                        CO_CONFIG_FIFO_ALT_READ | \
+                        CO_CONFIG_FIFO_CRC16_CCITT | \
+                        CO_CONFIG_FIFO_ASCII_COMMANDS | \
+                        CO_CONFIG_FIFO_ASCII_DATATYPES)
+#endif
+
+/*
+#ifndef CO_CONFIG_TRACE
+#define CO_CONFIG_TRACE (CO_CONFIG_TRACE_ENABLE)
+#endif
+*/
+
 
 /* Basic definitions */
 #define CO_LITTLE_ENDIAN
@@ -65,18 +185,13 @@ extern "C" {
     #define CO_SWAP_32(x) bswap_32(x)
     #define CO_SWAP_64(x) bswap_64(x)
 #endif
-#define CO_OWN_INTTYPES
-#define PRIu32 "lu"
-#define PRId32 "ld"
+    
 /* NULL is defined in stddef.h */
 /* true and false are defined in stdbool.h */
 /* int8_t to uint64_t are defined in stdint.h */
 typedef unsigned char           bool_t;
 typedef float                   float32_t;
 typedef long double             float64_t;
-typedef char                    char_t;
-typedef unsigned char           oChar_t;
-typedef unsigned char           domain_t;
 
 
 /* CAN message buffer sizes for CAN module 1 and 2. Valid values
@@ -168,8 +283,7 @@ typedef struct {
 
 /* Transmit message object */
 typedef struct {
-    uint16_t ident; /* Standard Identifier as aligned in CAN module. 16 bits:
-                     'SSSSSUUU SSSSSSRE' (U: unused; S: SID; R=SRR; E=IDE). */
+    uint32_t ident;
     uint8_t DLC;
     uint8_t data[8];
     volatile bool_t bufferFull;
@@ -191,21 +305,31 @@ typedef struct {
     volatile bool_t bufferInhibitFlag;
     volatile bool_t firstCANtxMessage;
     volatile uint16_t CANtxCount;
-    uint16_t errOld;
+    uint32_t errOld;
 } CO_CANmodule_t;
 
 
+/* Data storage object for one entry */
+typedef struct {
+    void *addr;
+    size_t len;
+    uint8_t subIndexOD;
+    uint8_t attr;
+    /* Additional variables */
+} CO_storage_entry_t;
+
+
 /* (un)lock critical section in CO_CANsend() */
-#define CO_LOCK_CAN_SEND()      asm volatile ("disi #0x3FFF")
-#define CO_UNLOCK_CAN_SEND()    asm volatile ("disi #0x0000")
+#define CO_LOCK_CAN_SEND(CAN_MODULE)      asm volatile ("disi #0x3FFF")
+#define CO_UNLOCK_CAN_SEND(CAN_MODULE)    asm volatile ("disi #0x0000")
 
 /* (un)lock critical section in CO_errorReport() or CO_errorReset() */
-#define CO_LOCK_EMCY()          asm volatile ("disi #0x3FFF")
-#define CO_UNLOCK_EMCY()        asm volatile ("disi #0x0000")
+#define CO_LOCK_EMCY(CAN_MODULE)          asm volatile ("disi #0x3FFF")
+#define CO_UNLOCK_EMCY(CAN_MODULE)        asm volatile ("disi #0x0000")
 
 /* (un)lock critical section when accessing Object Dictionary */
-#define CO_LOCK_OD()            asm volatile ("disi #0x3FFF")
-#define CO_UNLOCK_OD()          asm volatile ("disi #0x0000")
+#define CO_LOCK_OD(CAN_MODULE)            asm volatile ("disi #0x3FFF")
+#define CO_UNLOCK_OD(CAN_MODULE)          asm volatile ("disi #0x0000")
 
 /* dsPIC33F specific */
 #define CO_DISABLE_INTERRUPTS()  asm volatile ("disi #0x3FFF")

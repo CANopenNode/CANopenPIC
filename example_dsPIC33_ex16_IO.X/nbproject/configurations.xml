@@ -17,6 +17,8 @@
         <itemPath>../CANopenNode/301/CO_config.h</itemPath>
         <itemPath>../CANopenNode/301/CO_SDOclient.h</itemPath>
         <itemPath>../CANopenNode/301/CO_fifo.h</itemPath>
+        <itemPath>../CANopenNode/301/CO_ODinterface.h</itemPath>
+        <itemPath>../CANopenNode/301/CO_storage.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f5" displayName="303" projectFiles="true">
         <itemPath>../CANopenNode/303/CO_LEDs.h</itemPath>
@@ -30,10 +32,10 @@
         <itemPath>../PIC24_dsPIC33/CO_driver_target.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="extra" projectFiles="true">
-        <itemPath>../CANopenNode/extra/CO_trace.h</itemPath>
       </logicalFolder>
       <itemPath>../CANopenNode/CANopen.h</itemPath>
-      <itemPath>../CANopenNode/example/CO_OD.h</itemPath>
+      <itemPath>../CANopenNode/example/OD.h</itemPath>
+      <itemPath>../PIC24_dsPIC33/inttypes.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -53,6 +55,8 @@
         <itemPath>../CANopenNode/301/crc16-ccitt.c</itemPath>
         <itemPath>../CANopenNode/301/CO_SDOclient.c</itemPath>
         <itemPath>../CANopenNode/301/CO_fifo.c</itemPath>
+        <itemPath>../CANopenNode/301/CO_ODinterface.c</itemPath>
+        <itemPath>../CANopenNode/301/CO_storage.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f5" displayName="303" projectFiles="true">
         <itemPath>../CANopenNode/303/CO_LEDs.c</itemPath>
@@ -65,11 +69,10 @@
         <itemPath>../PIC24_dsPIC33/CO_driver.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="extra" projectFiles="true">
-        <itemPath>../CANopenNode/extra/CO_trace.c</itemPath>
       </logicalFolder>
-      <itemPath>../CANopenNode/example/CO_OD.c</itemPath>
       <itemPath>../CANopenNode/CANopen.c</itemPath>
       <itemPath>main_dsPIC33F.c</itemPath>
+      <itemPath>../CANopenNode/example/OD.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -161,6 +164,7 @@
         <property key="scalar-model" value="default"/>
         <property key="use-cci" value="false"/>
         <property key="use-iar" value="false"/>
+        <appendMe value="-std=gnu99"/>
       </C30>
       <C30-AR>
         <property key="additional-options-chop-files" value="false"/>
@@ -184,9 +188,6 @@
         <property key="relax" value="false"/>
         <property key="warning-level" value="emit-warnings"/>
       </C30-AS>
-      <C30-CO>
-        <property key="coverage-enable" value=""/>
-      </C30-CO>
       <C30-LD>
         <property key="additional-options-use-response-files" value="false"/>
         <property key="boot-eeprom" value="no_eeprom"/>
