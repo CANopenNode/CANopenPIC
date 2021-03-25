@@ -267,6 +267,32 @@ int main (void){
             return 0;
         }
 
+//#if (CO_CONFIG_EM) & CO_CONFIG_EM_CONSUMER
+//            CO_EM_initCallbackRx(CO->em, EmergencyRxCallback);
+//#endif
+//#if (CO_CONFIG_NMT) & CO_CONFIG_NMT_CALLBACK_CHANGE
+//            CO_NMT_initCallbackChanged(CO->NMT, NmtChangedCallback);
+//#endif
+//#if (CO_CONFIG_HB_CONS) & CO_CONFIG_HB_CONS_CALLBACK_CHANGE
+//            CO_HBconsumer_initCallbackNmtChanged(CO->HBcons, 0, NULL,
+//                                                 HeartbeatNmtChangedCallback);
+//#endif
+        
+        errInfo = 0;
+        err = CO_CANopenInitPDO(CO,             /* CANopen object */
+                                CO->em,         /* emergency object */
+                                OD,             /* Object dictionary */
+                                nodeId,
+                                &errInfo);
+        if(err != CO_ERROR_NO && err != CO_ERROR_NODE_ID_UNCONFIGURED_LSS) {
+            if (err == CO_ERROR_OD_PARAMETERS) {
+                log_printf("Error: CO_CANopenInitPDO() OD parameters error: %d\n", err);
+            }
+            else {
+                log_printf("Error: CO_CANopenInitPDO() failed: %d\n", err);
+            }
+            return 0;
+        }
         
         /* Configure Timer interrupt function for execution every 1 millisecond */
         CO_TMR_CON = 0;
