@@ -49,6 +49,7 @@ will switch leds on explorer16 board.
 - encoding: UTF-8
 - (gcc -> optimization-level = 1)
 - Global Options -> Use legacy libc: NO
+- Global Options -> Additional options : Add `-std=gnu99`
 - gcc -> Include directories (PIC32): .
                                       ../PIC32
                                       ../CANopenNode/example;
