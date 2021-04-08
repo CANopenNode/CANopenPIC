@@ -671,7 +671,7 @@ void CO_CANinterrupt(CO_CANmodule_t *CANmodule) {
         uint16_t C_CTRL1old;
         uint16_t C_RXFUL1copy;
         uint16_t C_FIFOcopy;
-        uint8_t FNRB, FBP;
+        uint8_t FNRB;
 
         CO_DISABLE_INTERRUPTS();
         C_CTRL1old = CAN_REG(CANmodule->CANptr, C_CTRL1);
@@ -687,8 +687,6 @@ void CO_CANinterrupt(CO_CANmodule_t *CANmodule) {
 
         /* FNRB tells us which buffer to read in FIFO */
         FNRB = C_FIFOcopy & 0x3F;
-        /* FBP tells us the next FIFO entry that will be written */
-        FBP = C_FIFOcopy >> 8;
 
         while(C_RXFUL1copy != 0) {
             __eds__ CO_CANrxMsg_t *rcvMsg;/* pointer to received message in CAN module */

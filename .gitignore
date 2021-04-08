@@ -3,4 +3,4 @@
 *.X/debug/
 *.X/dist/
 *.X/nbproject/private/
-
+*.X/.generated_files/

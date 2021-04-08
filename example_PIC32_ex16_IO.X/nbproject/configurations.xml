@@ -9,7 +9,6 @@
         <itemPath>../CANopenNode/301/CO_HBconsumer.h</itemPath>
         <itemPath>../CANopenNode/301/CO_NMT_Heartbeat.h</itemPath>
         <itemPath>../CANopenNode/301/CO_PDO.h</itemPath>
-        <itemPath>../CANopenNode/301/CO_SDOclient.h</itemPath>
         <itemPath>../CANopenNode/301/CO_SDOserver.h</itemPath>
         <itemPath>../CANopenNode/301/CO_SYNC.h</itemPath>
         <itemPath>../CANopenNode/301/CO_TIME.h</itemPath>
@@ -17,6 +16,7 @@
         <itemPath>../CANopenNode/301/crc16-ccitt.h</itemPath>
         <itemPath>../CANopenNode/301/CO_fifo.h</itemPath>
         <itemPath>../CANopenNode/301/CO_config.h</itemPath>
+        <itemPath>../CANopenNode/301/CO_SDOclient.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f5" displayName="303" projectFiles="true">
         <itemPath>../CANopenNode/303/CO_LEDs.h</itemPath>
@@ -49,12 +49,12 @@
         <itemPath>../CANopenNode/301/CO_HBconsumer.c</itemPath>
         <itemPath>../CANopenNode/301/CO_NMT_Heartbeat.c</itemPath>
         <itemPath>../CANopenNode/301/CO_PDO.c</itemPath>
-        <itemPath>../CANopenNode/301/CO_SDOclient.c</itemPath>
         <itemPath>../CANopenNode/301/CO_SDOserver.c</itemPath>
         <itemPath>../CANopenNode/301/CO_SYNC.c</itemPath>
         <itemPath>../CANopenNode/301/CO_TIME.c</itemPath>
         <itemPath>../CANopenNode/301/crc16-ccitt.c</itemPath>
         <itemPath>../CANopenNode/301/CO_fifo.c</itemPath>
+        <itemPath>../CANopenNode/301/CO_SDOclient.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f5" displayName="303" projectFiles="true">
         <itemPath>../CANopenNode/303/CO_LEDs.c</itemPath>
@@ -95,12 +95,14 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>ICD3PlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>2.30</languageToolchainVersion>
+        <languageToolchainVersion>2.50</languageToolchainVersion>
         <platform>2</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC32MX_DFP" vendor="Microchip" version="1.1.215"/>
+        <pack name="PIC32MX_DFP" vendor="Microchip" version="1.3.231"/>
       </packs>
+      <ScriptingSettings>
+      </ScriptingSettings>
       <compileType>
         <linkerTool>
           <linkerLibItems>
@@ -118,6 +120,7 @@
       </compileType>
       <makeCustomizationType>
         <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
+        <makeUseCleanTarget>false</makeUseCleanTarget>
         <makeCustomizationPreStep></makeCustomizationPreStep>
         <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
         <makeCustomizationPostStep></makeCustomizationPostStep>
@@ -143,7 +146,7 @@
         <property key="place-data-into-section" value="false"/>
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
-        <property key="preprocessor-macros" value=""/>
+        <property key="preprocessor-macros" value="CO_VERSION_MAJOR=2"/>
         <property key="strict-ansi" value="false"/>
         <property key="support-ansi" value="false"/>
         <property key="toplevel-reordering" value=""/>
@@ -254,9 +257,11 @@
         <property key="mdtcm" value=""/>
         <property key="mitcm" value=""/>
         <property key="mstacktcm" value="false"/>
+        <property key="omit-pack-options" value="1"/>
         <property key="relaxed-math" value="false"/>
         <property key="save-temps" value="false"/>
         <property key="wpo-lto" value="false"/>
+        <appendMe value="-std=gnu99"/>
       </C32Global>
       <ICD3PlatformTool>
         <property key="ADC 1" value="true"/>
@@ -307,7 +312,6 @@
         <property key="UART6" value="true"/>
         <property key="USB" value="true"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
-        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="false"/>

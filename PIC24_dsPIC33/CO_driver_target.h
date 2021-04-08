@@ -51,8 +51,27 @@ extern "C" {
 #define CO_CONFIG_NMT CO_CONFIG_NMT_MASTER
 #endif
 
+#ifndef CO_CONFIG_SDO_CLI
+#define CO_CONFIG_SDO_CLI (CO_CONFIG_SDO_CLI_ENABLE)
+#endif
+
+#ifndef CO_CONFIG_TIME
+#define CO_CONFIG_TIME (CO_CONFIG_TIME_ENABLE)
+#endif
+
+#ifndef CO_CONFIG_CRC16
+#define CO_CONFIG_CRC16 (CO_CONFIG_CRC16_ENABLE)
+#endif
+
+#ifndef CO_CONFIG_FIFO
+#define CO_CONFIG_FIFO (CO_CONFIG_FIFO_ENABLE)
+#endif
+
 /* Basic definitions */
 #define CO_LITTLE_ENDIAN
+#define CO_SWAP_16(x) x
+#define CO_SWAP_32(x) x
+#define CO_SWAP_64(x) x
 #define CO_OWN_INTTYPES
 #define PRIu32 "lu"
 #define PRId32 "ld"

@@ -49,10 +49,12 @@ will switch leds on explorer16 board.
 - encoding: UTF-8
 - (gcc -> optimization-level = 1)
 - Global Options -> Use legacy libc: NO
+- Global Options -> Additional options : Add `-std=gnu99`
 - gcc -> Include directories (PIC32): .
                                       ../PIC32
                                       ../CANopenNode/example;
                                       ../CANopenNode
+- gcc -> Define C macros: `CO_VERSION_MAJOR=2`
 - ld -> Heap size (bytes): 5000 (see heapMemoryUsed in main() for actual usage).
   If macro `CO_USE_GLOBALS` is definded, then heap is not needed.
 

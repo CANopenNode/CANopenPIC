@@ -49,12 +49,36 @@ extern "C" {
 #define CO_CONFIG_NMT CO_CONFIG_NMT_MASTER
 #endif
 
-#ifndef CO_CONFIG_SDO_BUFFER_SIZE
-#define CO_CONFIG_SDO_BUFFER_SIZE 950
+#ifndef CO_CONFIG_SDO_SRV
+#define CO_CONFIG_SDO_SRV (CO_CONFIG_SDO_SRV_SEGMENTED | \
+                           CO_CONFIG_SDO_SRV_BLOCK)
+#endif
+
+#ifndef CO_CONFIG_SDO_SRV_BUFFER_SIZE
+#define CO_CONFIG_SDO_SRV_BUFFER_SIZE 900
+#endif
+
+#ifndef CO_CONFIG_SDO_CLI
+#define CO_CONFIG_SDO_CLI (CO_CONFIG_SDO_CLI_ENABLE)
+#endif
+
+#ifndef CO_CONFIG_TIME
+#define CO_CONFIG_TIME (CO_CONFIG_TIME_ENABLE)
+#endif
+
+#ifndef CO_CONFIG_CRC16
+#define CO_CONFIG_CRC16 (CO_CONFIG_CRC16_ENABLE)
+#endif
+
+#ifndef CO_CONFIG_FIFO
+#define CO_CONFIG_FIFO (CO_CONFIG_FIFO_ENABLE)
 #endif
 
 /* Basic definitions */
 #define CO_LITTLE_ENDIAN
+#define CO_SWAP_16(x) x
+#define CO_SWAP_32(x) x
+#define CO_SWAP_64(x) x
 /* NULL is defined in stddef.h */
 /* true and false are defined in stdbool.h */
 /* int8_t to uint64_t are defined in stdint.h */
@@ -365,6 +389,9 @@ typedef struct {
     uint8_t   phSeg2;   /* (1...8) Phase Segment 2 time */
     uint16_t  bitrate;  /* bitrate in kbps */
 } CO_CANbitRateData_t;
+
+/* Function called from CAN receive interrupt handler */
+void CO_CANinterrupt(CO_CANmodule_t *CANmodule);
 
 #ifdef __cplusplus
 }
