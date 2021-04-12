@@ -579,6 +579,11 @@ typedef struct {
     uint16_t  bitrate;  /* bitrate in kbps */
 } CO_CANbitRateData_t;
 
+/**
+ * CAN interrupt function
+ */
+void CO_CANinterrupt(CO_CANmodule_t *CANmodule);
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
