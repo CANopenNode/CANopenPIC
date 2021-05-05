@@ -3,13 +3,9 @@ CANopenPIC
 
 CANopenPIC is a CANopen stack running on PIC microcontrollers.
 
-It is based on [CANopenNode](https://github.com/CANopenNode/CANopenNode),
-which is free and open source CANopen Stack and is included as a git submodule.
+It is based on [CANopenNode](https://github.com/CANopenNode/CANopenNode), which is free and open source CANopen Stack and is included as a git submodule.
 
-CANopen is the internationally standardized (EN 50325-4)
-([CiA301](http://can-cia.org/standardization/technical-documents))
-CAN-based higher-layer protocol for embedded control system. For more
-information on CANopen see http://www.can-cia.org/
+CANopen is the internationally standardized (EN 50325-4) ([CiA301](http://can-cia.org/standardization/technical-documents)) CAN-based higher-layer protocol for embedded control system. For more information on CANopen see http://www.can-cia.org/.
 
 
 Getting or updating the project
@@ -27,145 +23,94 @@ Update the project:
     git pull # or: git fetch; inspect the changes (gitk); git merge
     git submodule update
 
+
 Using on PIC32, dsPIC33, PIC24 and dsPIC30
 ------------------------------------------
-Visit [Microchip](http://www.microchip.com/) and Install MplabX IDE,
-XC32 C compiler for PIC32 or XC16 C compiler for others.
-Works on Linux, Mac or Windows.
+Visit [Microchip](http://www.microchip.com/) and Install MplabX IDE, XC32 C compiler for PIC32 or XC16 C compiler for others. Works on Linux, Mac or Windows.
 
-Open project, build and program your microcontroller.
+PIC programmer is required, for example [PICkit 4](https://microchipdeveloper.com/pickit4:start).
 
-Program is tested on Explorer16 board from Microchip, devices
-PIC32MX795F512L and dsPIC33FJ256GP710.
-CAN transciever chip is soldered to the Explorer16 board.
+Open one of the example projects, build and program your microcontroller.
+
+Program is tested on Explorer16 board from Microchip with devices PIC32MX795F512L and dsPIC33FJ256GP710, and on Max32 board. CAN transciever chip must be soldered to the Explorer16 board.
 
 Program also compiles for dsPIC30F6015, should work, but is not tested.
 
-You can connect the PIC device into your CANopen network and
-watch the CAN messages. TPDO is sent on buttons pressed. Correct RPDO
-will switch leds on explorer16 board.
+After connecting the CANopen PIC device into the CAN(open) network, bootup message is visible. By default device uses Object Dictionary from `CANopenNode/example`, which contains only communication parameters. With the external CANopen tool all parameters can be accessed and CANopen PIC device can be configured (For example write heartbeat producer time in object 0x1017,0).
+
+For more information and examples see https://github.com/CANopenNode/CANopenSocket.
+
+
+### PIC32 on Arduino style Max32 board
+- [Max32 board](https://reference.digilentinc.com/reference/microprocessor/max32/start) with [PIC32MX795F512L](https://www.microchip.com/wwwproducts/en/PIC32MX795F512L) Microcontroller.
+- Board must be programmed directly from MPLAB X, with PIC programmer, [PICkit 4](https://microchipdeveloper.com/pickit4:start) for example. It is necessary to solder the connector for programmer to the Max32 board.
+- Add CAN transciever (MCP2551 or similar) and EEEPROM (25LC128 or similar) chips to the board. See example schema below. CAN connector is DB9, according to CiA303,1, values in brackets are pins for flat cable, if used with DB9 connector.
+
+      +-------+             +-------------+                +----------------+
+      |       |           5-| VREF    RXD |-4-----------45-| C1RX/ETXD1/RF0 |
+      | CAN_L |-2(3)------6-| CAN_L   VCC |-3-------+--5V0-| VCC5V0         |
+      | CAN_H |-7(4)------7-| CAN_H   GND |-2--+    |      |                |
+      |       |        +--8-| RS      TXD |-1--|----|---46-| C1TX/ETXD0/RF1 |
+      |       |        |    +-------------+    |    |      |                |
+      |       |      47kΩ    MCP2551           |  100nF    |                |
+      |       |        |                       |    |      |                |
+      | GND   |-3(5)---+------------GND--------+----+--GND-| GND            |
+      +-------+                                            |                |
+       DB9                                                 |                |
+                                                           |                |
+                  +-----------------------------+------3V3-| VCC3V3         |
+                  |  +--------------------------|-------29-| SDI2/RG7       |
+                  |  |  +-----------------------|-------53-| SS2/RG9        |
+                  |  |  |                       |          |                |
+                  |  |  |   +-------------+     |          |                |
+                  |  |  +-1-| !CS     VCC |-8---+          |                |
+                  |  +----2-| SO    !HOLD |-7---+          |                |
+                  +-------3-| !WP     SCK |-6---|-------52-| SCK2/RG6       |
+                        +-4-| GND      SI |-5---|-------43-| SDO2/RG8       |
+                        |   +-------------+     |          |                |
+                        |    25LC128          100nF        |                |
+                        |                       |          |                |
+                        +-----------------------+------GND-| GND            |
+                                                           +----------------+
+                                                            Max32
+
+- If EEprom chip is not used or connected differently, disable or configure it in CO_driver_custom.h file.
+- File appl_max32_demo.c contains entry functions for custom application in Arduino style with additional CANopen communicationReset function and real-time thread.
+- Default CAN bitrate is 250kbps and CANopen NodeId is 0x30. See appl_max32_demo.c file. Can also be configured by CANopen LSS commands.
+- After Max32 is first connected to the CANopen network it shows bootup message and emergency message, because it has empty eeprom. It is necessary to trigger saveAll command and reset: `cocomm "0x30 w 0x1010 1 vs save" "0x30 reset node"`. To see heartbeat messages use: `cocomm "0x30 w 0x1017 0 u16 1000"`, etc. See also https://github.com/CANopenNode/CANopenSocket.
+
+
+Starting new project with MplabX
+--------------------------------
+#### Create new project
+- Microchip Embedded, Standalone Project
+- Choose device, compiler
+- Specify project name and location, set UTF-8
+- Add header and source files, may be organized in logical folders, see example
+
 
 #### MplabX project configuration:
 - encoding: UTF-8
 - (gcc -> optimization-level = 1)
 - Global Options -> Use legacy libc: NO
 - Global Options -> Additional options : Add `-std=gnu99`
-- gcc -> Include directories (PIC32): .
-                                      ../PIC32
-                                      ../CANopenNode/example;
-                                      ../CANopenNode
-- gcc -> Define C macros: `CO_VERSION_MAJOR=2`
-- ld -> Heap size (bytes): 5000 (see heapMemoryUsed in main() for actual usage).
+- gcc -> Include directories (example_PIC32): `.;../PIC32;../CANopenNode`
+- Add `DO.h` and `OD.c` files to the project or include `../CANopenNode/example` above.
+- ld -> Heap size (bytes): 10000 (see heapMemoryUsed in main() for actual usage).
   If macro `CO_USE_GLOBALS` is definded, then heap is not needed.
-
-Example usage
--------------
-
-#### Using with CANopen command interface
-Linux command interface, as described in CANopenNode
-[Getting Started](https://github.com/CANopenNode/CANopenNode/blob/master/doc/gettingStarted.md),
-connected to CAN network (via (USB to) CAN interface), can be used for testing.
-It acts as another CANopen device. It also includes CAN monitor and command line
-interface for master access to the CANopen network.
-Here is a quick example for Explorer16 board leds and buttons:
-
-
-    sudo ip link set up can0 type can bitrate 250000
-    candump can0
-
-Pressing some buttons on Explorer16 board will produce PDO.
-
-Another terminal, start CANopen "master" device:
-
-    cd CANopenNode
-    ./canopend vcan0 -i1 -c "stdio"
-
-Type into program command interface. Set heartbeat of the PIC to 5 seconds:
-
-    0x30 w 0x1017 0 i16 5000
-
-Third terminal, generate CAN message, which should make LEDs on Explorer16 board blinking:
-
-    cangen can0 -I 230 -L2 -g100 -Di
-
-candump output:
-
-    can0  730   [1]  00
-    can0  1B0   [2]  00 00
-    can0  701   [1]  05       # canopend heartbeat
-    can0  730   [1]  05       # PIC heartbeat
-    can0  1B0   [2]  01 00    # button pressed
-    can0  1B0   [2]  00 00
-    can0  701   [1]  05
-    can0  730   [1]  05
-    can0  630   [8]  2B 17 10 00 88 13 00 00
-    can0  5B0   [8]  60 17 10 00 00 00 00 00
-    can0  701   [1]  05
-    can0  701   [1]  05
-    can0  701   [1]  05
-    can0  701   [1]  05
-    can0  701   [1]  05
-    can0  730   [1]  05
-    can0  701   [1]  05
-    can0  230   [2]  00 00    # cangen
-    can0  230   [2]  01 00
-    can0  230   [2]  02 00
-    can0  230   [2]  03 00
-    can0  230   [2]  04 00
-    can0  230   [2]  05 00
-    can0  701   [1]  05
-
-#### Configuration CANopen node-id and CAN bit-rate with LSS
-All microcontrollers are LSS slaves by default, see
-[LSS usage](https://github.com/CANopenNode/CANopenNode/blob/master/doc/LSSusage.md).
-
-Please note, eeprom storage of variables is not implemented in examples, so
-node node-id and bit-rate are not preserved.
-
-#### Monitor variables using built in trace functionality
-CANopenNode includes optional trace functionality. It monitors
-choosen variables from Object Dictionary. On change of state of variable it
-makes a record with timestamp into circular buffer. String with points can later
-be read via SDO.
-
-Trace is disabled by default. It can be enabled using Object Dictionary editor.
-Include also *CO_trace.h/.c* into project, compile and run.
-
-Here is en example of monitoring variable, connected with buttons
-(OD_readInput8Bit, index 0x6000, subindex 0x01). It was tested on PIC32:
-
-```
-# Enable trace first:
-./canopencomm 0x30 w 0x2400 0 u8 1
-
-# Press and hold the button on Explorer16 and execute SDO read command:
-./canopencomm 0x30 r 0x6000 1 u8
-[1] 0x08
-# It displays same value, as was transmitted via PDO and visible on candump.
-
-# Now get the complete history for that buttons with timestamp for each change
-# and store it as a text to the file:
-./canopencomm 0x30 r 0x2401 5 vs > plot1.csv
-cat plot1.csv
-```
-If large data blocks are transmitted via CAN bus, then more efficient SDO block
-transfer can be enabled with command `./canopencomm set sdo_block 1`
-
-For more info on using trace functionality see CANopenNode/example/IO.html
-file. There is also a description of all Object Dictionary variables.
-
-Trace functionality can also be configured on CANopenSocket directly. In that
-case CANopenSocket must first receive PDO data from remote node(s) and store it
-to the local Object Dictionary variable. CANopenSocket's trace then monitors
-that variable. Text buffer is then read with the similar command as above. But
-local SDO data access from CANopenSocket itself doesn't occupy CAN bus, so large
-data is transfered realy fast. Besides that, Linux machine has much more RAM to
-store the monitored data. Except timestamp is less accurate.
 
 
 Change Log
 ----------
-- **[Unreleased](https://github.com/CANopenNode/CANopenPIC/tree/HEAD)**: [Full Changelog](https://github.com/CANopenNode/CANopenPIC/compare/v1.0...master)
+- **[Unreleased(v4.0)](https://github.com/CANopenNode/CANopenPIC/tree/HEAD)**: Update CANopenNode to branch v4.0. [Full Changelog](https://github.com/CANopenNode/CANopenPIC/compare/v2.0...master)
+  - Update CANopenNode to branch v4.0 (new object dictionary interface).
+  - Minor updates in the drivers.
+  - PIC32: renewed storage, main_PIC32.c and application interface.
+  - Added Max32 board example.
+  - Put some project files into gitignore.
+  - Cleanup readme.md, wider example will be in CANopenSocket.
+- **[v2.0](https://github.com/CANopenNode/CANopenPIC/tree/v2.0) - 2021-04-08**: Update CANopenNode to branch v2.0. [Full Changelog](https://github.com/CANopenNode/CANopenPIC/compare/v1.0...v2.0)
+  - Update CANopenNode to branch v2.0.
   - License changed to Apache 2.0.
   - Drivers moved from CANopenNode into this project. Changed directory structure. Changed CANopen.h interface.
   - Trace added to PIC32. Time base changed to microseconds in all functions.

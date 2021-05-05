@@ -33,7 +33,7 @@
         <itemPath>../CANopenNode/extra/CO_trace.h</itemPath>
       </logicalFolder>
       <itemPath>../CANopenNode/CANopen.h</itemPath>
-      <itemPath>../CANopenNode/example/CO_OD.h</itemPath>
+      <itemPath>../CANopenNode/example/OD.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -67,9 +67,9 @@
       <logicalFolder name="f3" displayName="extra" projectFiles="true">
         <itemPath>../CANopenNode/extra/CO_trace.c</itemPath>
       </logicalFolder>
-      <itemPath>../CANopenNode/example/CO_OD.c</itemPath>
       <itemPath>../CANopenNode/CANopen.c</itemPath>
       <itemPath>main_dsPIC33F.c</itemPath>
+      <itemPath>../CANopenNode/example/OD.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -160,7 +160,7 @@
         <property key="optimization-level" value="1"/>
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
-        <property key="preprocessor-macros" value="CO_VERSION_MAJOR=2"/>
+        <property key="preprocessor-macros" value=""/>
         <property key="scalar-model" value="default"/>
         <property key="use-cci" value="false"/>
         <property key="use-iar" value="false"/>

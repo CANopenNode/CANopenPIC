@@ -1,10 +1,9 @@
 /**
- * Application interface for CANopenNode stack.
+ * Application interface for CANopenNode.
  *
  * @file        application.h
- * @ingroup     CO_application
  * @author      Janez Paternoster
- * @copyright   2012 - 2020 Janez Paternoster
+ * @copyright   2021 Janez Paternoster
  *
  * This file is part of CANopenNode, an opensource CANopen Stack.
  * Project home page is <https://github.com/CANopenNode/CANopenNode>.
@@ -23,131 +22,79 @@
  * limitations under the License.
  */
 
+#ifndef APPLICATION_H
+#define APPLICATION_H
 
-#ifndef CO_APPLICATION_H
-#define CO_APPLICATION_H
+#include "CANopen.h"
 
 
 /**
- * @defgroup CO_application Application interface
- * @ingroup CO_CANopen
- * @{
- *
- * Application interface for CANopenNode stack. Function is called
- * from file main_xxx.c (if implemented).
- *
- * ###Main program flow chart
- *
- * @code
-               (Program Start)
-                      |
-                      V
-    +------------------------------------+
-    |           programStart()           |
-    +------------------------------------+
-                      |
-                      |<-------------------------+
-                      |                          |
-                      V                          |
-             (Initialze CANopen)                 |
-                      |                          |
-                      V                          |
-    +------------------------------------+       |
-    |        communicationReset()        |       |
-    +------------------------------------+       |
-                      |                          |
-                      V                          |
-         (Enable CAN and interrupts)             |
-                      |                          |
-                      |<----------------------+  |
-                      |                       |  |
-                      V                       |  |
-    +------------------------------------+    |  |
-    |           programAsync()           |    |  |
-    +------------------------------------+    |  |
-                      |                       |  |
-                      V                       |  |
-        (Process CANopen asynchronous)        |  |
-                      |                       |  |
-                      +- infinite loop -------+  |
-                      |                          |
-                      +- reset communication ----+
-                      |
-                      V
-    +------------------------------------+
-    |            programEnd()            |
-    +------------------------------------+
-                      |
-                      V
-              (delete CANopen)
-                      |
-                      V
-                (Program end)
-   @endcode
- *
- *
- * ###Timer program flow chart
- *
- * @code
-        (Timer interrupt 1 millisecond)
-                      |
-                      V
-              (CANopen read RPDOs)
-                      |
-                      V
-    +------------------------------------+
-    |           program1ms()             |
-    +------------------------------------+
-                      |
-                      V
-              (CANopen write TPDOs)
-   @endcode
- *
- *
- * ###Receive and transmit high priority interrupt flow chart
- *
- * @code
-           (CAN receive event or)
-      (CAN transmit buffer empty event)
-                      |
-                      V
-       (Process received CAN message or)
-   (copy next message to CAN transmit buffer)
-   @endcode
+ * Application interface, similar to Arduino, extended to CANopen and
+ * additional, realtime thread.
  */
 
 
 /**
- * Called after microcontroller reset.
- */
-void programStart(void);
-
-
-/**
- * Called after communication reset.
- */
-void communicationReset(bool_t CANopenConfiguredOK);
-
-
-/**
- * Called before program end.
- */
-void programEnd(void);
-
-
-/**
- * Called cyclically from main.
+ * Function is called once on the program startup, after Object dictionary
+ * initialization and before CANopen initialization.
  *
- * @param timer1msDiff Time difference since last call
+ * @param [in,out] bitRate Stored CAN bit rate, can be overridden.
+ * @param [in,out] nodeId Stored CANopen NodeId, can be overridden.
+ * @param [out] errInfo Variable may indicate error information - index of
+ * erroneous OD entry.
+ *
+ * @return @ref CO_ReturnError_t CO_ERROR_NO in case of success.
  */
-void programAsync(bool_t CANopenConfiguredOK, uint16_t timer1msDiff);
+CO_ReturnError_t app_programStart(uint16_t *bitRate,
+                                  uint8_t *nodeId,
+                                  uint32_t *errInfo);
 
 
 /**
- * Called cyclically from 1ms timer task.
+ * Function is called after CANopen communication reset.
+ *
+ * @param co CANopen object.
  */
-void program1ms(bool_t CANopenConfiguredOK);
+void app_communicationReset(CO_t *co);
 
 
-/** @} */
-#endif
+/**
+ * Function is called just before program ends.
+ */
+void app_programEnd();
+
+
+/**
+ * Function is called cyclically from main().
+ *
+ * @param co CANopen object.
+ * @param timer1usDiff Time difference since last call in microseconds
+ */
+void app_programAsync(CO_t *co, uint32_t timer1usDiff);
+
+
+/**
+ * Function is called cyclically from realtime thread at constant intervals.
+ *
+ * Code inside this function must be executed fast. Take care on race conditions
+ * with app_programAsync.
+ *
+ * @param co CANopen object.
+ * @param timer1usDiff Time difference since last call in microseconds
+ */
+void app_programRt(CO_t *co, uint32_t timer1usDiff);
+
+
+/**
+ * Function is called in the beginning of the realtime thread.
+ */
+void app_peripheralRead(CO_t *co);
+
+
+/**
+ * Function is called in the end of the realtime thread.
+ */
+void app_peripheralWrite(CO_t *co);
+
+
+#endif /* APPLICATION_H */

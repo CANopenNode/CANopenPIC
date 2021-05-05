@@ -355,8 +355,10 @@ CO_ReturnError_t CO_CANmodule_init(
 
 
 /******************************************************************************/
-void CO_CANmodule_disable(CO_CANmodule_t *CANmodule){
-    CO_CANsetConfigurationMode(CANmodule->CANptr);
+void CO_CANmodule_disable(CO_CANmodule_t *CANmodule) {
+    if (CANmodule != NULL) {
+        CO_CANsetConfigurationMode(CANmodule->CANptr);
+    }
 }
 
 

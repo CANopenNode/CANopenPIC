@@ -3,8 +3,8 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>example_PIC32_ex16_IO</name>
-            <creation-uuid>52ad9bf3-aa8e-4ccf-914d-2d3ddd311f67</creation-uuid>
+            <name>example_PIC32</name>
+            <creation-uuid>89118679-14f3-4046-8e56-c665e8a023dd</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>
@@ -13,8 +13,8 @@
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList>
-                <sourceRootElem>../CANopenNode</sourceRootElem>
                 <sourceRootElem>../PIC32</sourceRootElem>
+                <sourceRootElem>../CANopenNode</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

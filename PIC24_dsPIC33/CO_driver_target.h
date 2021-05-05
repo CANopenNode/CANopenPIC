@@ -81,9 +81,6 @@ extern "C" {
 typedef unsigned char           bool_t;
 typedef float                   float32_t;
 typedef long double             float64_t;
-typedef char                    char_t;
-typedef unsigned char           oChar_t;
-typedef unsigned char           domain_t;
 
 
 /* CAN message buffer sizes for CAN module 1 and 2. Valid values
@@ -203,16 +200,16 @@ typedef struct {
 
 
 /* (un)lock critical section in CO_CANsend() */
-#define CO_LOCK_CAN_SEND()      asm volatile ("disi #0x3FFF")
-#define CO_UNLOCK_CAN_SEND()    asm volatile ("disi #0x0000")
+#define CO_LOCK_CAN_SEND(CAN_MODULE)      asm volatile ("disi #0x3FFF")
+#define CO_UNLOCK_CAN_SEND(CAN_MODULE)    asm volatile ("disi #0x0000")
 
 /* (un)lock critical section in CO_errorReport() or CO_errorReset() */
-#define CO_LOCK_EMCY()          asm volatile ("disi #0x3FFF")
-#define CO_UNLOCK_EMCY()        asm volatile ("disi #0x0000")
+#define CO_LOCK_EMCY(CAN_MODULE)          asm volatile ("disi #0x3FFF")
+#define CO_UNLOCK_EMCY(CAN_MODULE)        asm volatile ("disi #0x0000")
 
 /* (un)lock critical section when accessing Object Dictionary */
-#define CO_LOCK_OD()            asm volatile ("disi #0x3FFF")
-#define CO_UNLOCK_OD()          asm volatile ("disi #0x0000")
+#define CO_LOCK_OD(CAN_MODULE)            asm volatile ("disi #0x3FFF")
+#define CO_UNLOCK_OD(CAN_MODULE)          asm volatile ("disi #0x0000")
 
 /* dsPIC33F specific */
 #define CO_DISABLE_INTERRUPTS()  asm volatile ("disi #0x3FFF")
