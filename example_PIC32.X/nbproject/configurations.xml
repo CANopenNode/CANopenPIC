@@ -34,7 +34,7 @@
       </logicalFolder>
       <logicalFolder name="PIC32" displayName="PIC32" projectFiles="true">
         <itemPath>../PIC32/CO_driver_target.h</itemPath>
-        <itemPath>../PIC32/application.h</itemPath>
+        <itemPath>../PIC32/CO_application.h</itemPath>
       </logicalFolder>
       <itemPath>CO_driver_custom.h</itemPath>
       <itemPath>../CANopenNode/example/OD.h</itemPath>
@@ -73,7 +73,7 @@
       <logicalFolder name="PIC32" displayName="PIC32" projectFiles="true">
         <itemPath>../PIC32/CO_driver.c</itemPath>
         <itemPath>../PIC32/CO_eepromPIC32.c</itemPath>
-        <itemPath>../PIC32/main_PIC32.c</itemPath>
+        <itemPath>../PIC32/CO_main_PIC32.c</itemPath>
       </logicalFolder>
       <itemPath>appl_max32_demo.c</itemPath>
       <itemPath>../CANopenNode/example/OD.c</itemPath>

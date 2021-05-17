@@ -2,8 +2,8 @@
  * Application program for CANopen IO device on Max32 board with PIC32
  *
  * @file        appl_max32_demo.c
- * @author      Janez Paternoster
- * @copyright   2021 Janez Paternoster
+ * @author      --
+ * @copyright   2021 --
  *
  * This file is part of CANopenNode, an opensource CANopen Stack.
  * Project home page is <https://github.com/CANopenNode/CANopenNode>.
@@ -22,7 +22,7 @@
  * limitations under the License.
  */
 
-#include "application.h"
+#include "CO_application.h"
 #include "OD.h"
 
 
@@ -82,7 +82,7 @@ void app_programRt(CO_t *co, uint32_t timer1usDiff) {
 
 
 /******************************************************************************/
-void app_peripheralRead(CO_t *co) {
+void app_peripheralRead(CO_t *co, uint32_t timer1usDiff) {
 
     /* All analog inputs must be read or interrupt source for RT thread won't be
      * cleared. See analog input configuration in main_PIC32.c */
@@ -115,7 +115,7 @@ void app_peripheralRead(CO_t *co) {
 
 
 /******************************************************************************/
-void app_peripheralWrite(CO_t *co) {
+void app_peripheralWrite(CO_t *co, uint32_t timer1usDiff) {
     CAN_RUN_LED = CO_LED_GREEN(co->LEDs, CO_LED_CANopen);
     CAN_ERROR_LED = CO_LED_RED(co->LEDs, CO_LED_CANopen);
 

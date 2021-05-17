@@ -1,9 +1,9 @@
 /*
  * Custom definitions for CANopenNode.
  *
- * @file        CO_driver_target.h
- * @author      Janez Paternoster
- * @copyright   2021 Janez Paternoster
+ * @file        CO_driver_custom.h
+ * @author      --
+ * @copyright   2021 --
  *
  * This file is part of CANopenNode, an opensource CANopen Stack.
  * Project home page is <https://github.com/CANopenNode/CANopenNode>.

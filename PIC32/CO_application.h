@@ -1,7 +1,7 @@
 /**
  * Application interface for CANopenNode.
  *
- * @file        application.h
+ * @file        CO_application.h
  * @author      Janez Paternoster
  * @copyright   2021 Janez Paternoster
  *
@@ -22,8 +22,8 @@
  * limitations under the License.
  */
 
-#ifndef APPLICATION_H
-#define APPLICATION_H
+#ifndef CO_APPLICATION_H
+#define CO_APPLICATION_H
 
 #include "CANopen.h"
 
@@ -67,6 +67,15 @@ void app_programEnd();
 /**
  * Function is called cyclically from main().
  *
+ * Place for the slower code (all must be non-blocking).
+ *
+ * @warning
+ * Mind race conditions between this functions and following three functions
+ * (app_programRt() app_peripheralRead() and app_peripheralWrite()), which all
+ * run from the realtime thread. If accessing Object dictionary variable which
+ * is also mappable to PDO, it is necessary to use CO_LOCK_OD() and
+ * CO_UNLOCK_OD() macros from @ref CO_critical_sections.
+ *
  * @param co CANopen object.
  * @param timer1usDiff Time difference since last call in microseconds
  */
@@ -87,14 +96,20 @@ void app_programRt(CO_t *co, uint32_t timer1usDiff);
 
 /**
  * Function is called in the beginning of the realtime thread.
+ *
+ * @param co CANopen object.
+ * @param timer1usDiff Time difference since last call in microseconds
  */
-void app_peripheralRead(CO_t *co);
+void app_peripheralRead(CO_t *co, uint32_t timer1usDiff);
 
 
 /**
  * Function is called in the end of the realtime thread.
+ *
+ * @param co CANopen object.
+ * @param timer1usDiff Time difference since last call in microseconds
  */
-void app_peripheralWrite(CO_t *co);
+void app_peripheralWrite(CO_t *co, uint32_t timer1usDiff);
 
 
-#endif /* APPLICATION_H */
+#endif /* CO_APPLICATION_H */

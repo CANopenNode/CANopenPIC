@@ -28,7 +28,7 @@
 #include "CANopen.h"
 #include "storage/CO_storageEeprom.h"
 #include "OD.h"
-#include "application.h"
+#include "CO_application.h"
 
 
 /* Default configuration bit settings */
@@ -492,7 +492,7 @@ CO_RT_THREAD_ISR() {
     CO_timer_us += CO_RT_THREAD_INTERVAL_US;
 
     /* Execute external application code */
-    app_peripheralRead(CO);
+    app_peripheralRead(CO, CO_RT_THREAD_INTERVAL_US);
 
     CO_RT_THREAD_ISR_FLAG = 0;
 
@@ -524,7 +524,7 @@ CO_RT_THREAD_ISR() {
     }
 
     /* Execute external application code */
-    app_peripheralWrite(CO);
+    app_peripheralWrite(CO, CO_RT_THREAD_INTERVAL_US);
 }
 #endif /* CO_RT_THREAD_ISR_DEFAULT */
 

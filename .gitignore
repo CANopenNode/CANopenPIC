@@ -1,3 +1,5 @@
+/html
+
 # MPLAB X IDE, keep only base project files:
 # - *.X/Makefile
 # - *.X/nbproject/configurations.xml
