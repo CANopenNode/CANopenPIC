@@ -496,6 +496,7 @@ CO_RT_THREAD_ISR() {
 
     CO_RT_THREAD_ISR_FLAG = 0;
 
+    /* No need to CO_LOCK_OD(co->CANmodule); this is interrupt */
     if (!CO->nodeIdUnconfigured && CO->CANmodule->CANnormal) {
         bool_t syncWas = false;
 

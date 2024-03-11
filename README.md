@@ -85,7 +85,7 @@ For more information and examples see https://github.com/CANopenNode/CANopenDemo
 Starting new project with MplabX
 --------------------------------
 #### Create new project
-- Microchip Embedded, Standalone Project
+- Microchip Embedded, Application Project
 - Choose device, compiler
 - Specify project name and location, set UTF-8
 - Add header and source files, may be organized in logical folders, see example
