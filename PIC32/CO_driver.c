@@ -356,6 +356,8 @@ CO_ReturnError_t CO_CANmodule_init(
     CANmodule->firstCANtxMessage = true;
     CANmodule->CANtxCount = 0U;
     CANmodule->errOld = 0U;
+    CANmodule->interruptStatus = 0;
+    CANmodule->interruptDisabler = 0;
 
     for(i=0U; i<rxSize; i++){
         rxArray[i].ident = 0U;
