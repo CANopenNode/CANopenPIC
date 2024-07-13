@@ -106,7 +106,7 @@ int main (void){
     bool_t firstRun = true;
     uint8_t pendingNodeId = 10;    /* read from dip switches or nonvolatile memory, configurable by LSS slave */
     uint8_t activeNodeId = 10;     /* Copied from CO_pendingNodeId in the communication reset section */
-    uint16_t pendingBitRate = 125; /* read from dip switches or nonvolatile memory, configurable by LSS slave */
+    uint16_t pendingBitRate = 250; /* read from dip switches or nonvolatile memory, configurable by LSS slave */
     uint32_t heapMemoryUsed;
 
     /* Initialize two CAN led diodes */
