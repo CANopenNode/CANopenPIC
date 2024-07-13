@@ -44,6 +44,7 @@
 
 
 #include "CANopen.h"
+#include "OD.h"
 /* (not implemented) #include "eeprom.h" */
 
 /* Configuration bits */
@@ -62,15 +63,25 @@
     #define CO_TMR_ISR_PRIORITY IPC1bits.T2IP    /* Interrupt Priority */
     #define CO_TMR_ISR_ENABLE   IEC0bits.T2IE    /* Interrupt Enable bit */
 
+    #define CO_RT_THREAD_INTERVAL_US 1000        /* Interval of the realtime thread */
+
     #define CO_CAN_ISR() void __attribute__((interrupt, auto_psv)) _C1Interrupt (void)
     #define CO_CAN_ISR_FLAG     IFS2bits.C1IF    /* Interrupt Flag bit */
     #define CO_CAN_ISR_PRIORITY IPC8bits.C1IP    /* Interrupt Priority */
     #define CO_CAN_ISR_ENABLE   IEC2bits.C1IE    /* Interrupt Enable bit */
 
 
+/* default values for CO_CANopenInit() */
+    #define NMT_CONTROL (CO_NMT_STARTUP_TO_OPERATIONAL | CO_NMT_ERR_ON_ERR_REG | CO_ERR_REG_GENERIC_ERR | CO_ERR_REG_COMMUNICATION)
+    #define FIRST_HB_TIME        500
+    #define SDO_SRV_TIMEOUT_TIME 1000
+    #define SDO_CLI_TIMEOUT_TIME 500
+    #define SDO_CLI_BLOCK        false
+    #define OD_STATUS_BITS       NULL
+
 /* Global variables and objects */
-    volatile static bool_t CANopenConfiguredOK = false; /* Indication if CANopen modules are configured */
-    volatile uint16_t CO_timer1ms = 0U; /* variable increments each millisecond */
+    CO_t* CO = NULL; /* CANopen object */
+    volatile uint32_t CO_timer_us = 0U; /* Timer for time measurement in microseconds */
     const CO_CANbitRateData_t  CO_CANbitRateData[8] = {CO_CANbitRateDataInitializers};
     /* (not implemented) eeprom_t eeprom; */
 
@@ -88,21 +99,14 @@ static bool_t LSSchkBitrateCallback(void *object, uint16_t bitRate) {
     return false;
 }
 
-/* callback for storing node id and bitrate */
-static bool_t LSScfgStoreCallback(void *object, uint8_t id, uint16_t bitRate) {
-    (void)object;
-    OD_CANNodeID = id;
-    OD_CANBitRate = bitRate;
-    return true;
-}
-
 /* main ***********************************************************************/
 int main (void){
     CO_ReturnError_t err;
     CO_NMT_reset_cmd_t reset = CO_RESET_NOT;
-    uint16_t pendingBitRate;
-    uint8_t pendingNodeId;
-    uint8_t activeNodeId;
+    bool_t firstRun = true;
+    uint8_t pendingNodeId = 10;    /* read from dip switches or nonvolatile memory, configurable by LSS slave */
+    uint8_t activeNodeId = 10;     /* Copied from CO_pendingNodeId in the communication reset section */
+    uint16_t pendingBitRate = 125; /* read from dip switches or nonvolatile memory, configurable by LSS slave */
     uint32_t heapMemoryUsed;
 
     /* Initialize two CAN led diodes */
@@ -110,17 +114,6 @@ int main (void){
     TRISAbits.TRISA1 = 0; LATAbits.LATA1 = 1;
     #define CAN_RUN_LED   LATAbits.LATA0
     #define CAN_ERROR_LED LATAbits.LATA1
-
-    /* Initialize LED diode for CANrx */
-    TRISAbits.TRISA2 = 0; LATAbits.LATA2 = 0;
-    #define CAN_RX_LED    LATAbits.LATA2
-
-    /* Initialize other LED diodes for RPDO */
-    TRISAbits.TRISA3 = 0; LATAbits.LATA3 = 0;
-    TRISAbits.TRISA4 = 0; LATAbits.LATA4 = 0;
-    TRISAbits.TRISA5 = 0; LATAbits.LATA5 = 0;
-    TRISAbits.TRISA6 = 0; LATAbits.LATA6 = 0;
-    TRISAbits.TRISA7 = 0; LATAbits.LATA7 = 0;
 
 
     /* Configure Oscillator */
@@ -133,16 +126,10 @@ int main (void){
     while(OSCCONbits.LOCK!=1) ClrWdt(); /* wait for PLL to lock */
 
 
-    /* Verify, if OD structures have proper alignment of initial values */
-    if(CO_OD_RAM.FirstWord != CO_OD_RAM.LastWord) while(1) ClrWdt();
-    if(CO_OD_EEPROM.FirstWord != CO_OD_EEPROM.LastWord) while(1) ClrWdt();
-    if(CO_OD_ROM.FirstWord != CO_OD_ROM.LastWord) while(1) ClrWdt();
-
-
     /* Allocate memory */
-    err = CO_new(&heapMemoryUsed);
-    if (err != CO_ERROR_NO) {
-        while(1);
+    CO = CO_new(NULL, &heapMemoryUsed);
+    if (CO == NULL) {
+        while (1) ClrWdt();
     }
 
 
@@ -150,61 +137,79 @@ int main (void){
         /* (not implemented) */
 
 
-    /* Read CANopen Node-ID and CAN bit-rate from object dictionary */
-    pendingNodeId = OD_CANNodeID;
-    if (pendingNodeId<1 || pendingNodeId>127) pendingNodeId = 0xFF;
-    pendingBitRate = OD_CANBitRate;
-
-
-    /* increase variable each startup. Variable is stored in eeprom. */
-    OD_powerOnCounter++;
-
     while(reset != CO_RESET_APP){
 /* CANopen communication reset - initialize CANopen objects *******************/
-        static uint16_t timer1msPrevious;
+        uint32_t errInfo;
+        static uint32_t CO_timer_us_previous = 0;
 
         /* disable CAN and CAN interrupts, turn on red LED */
         CO_CAN_ISR_ENABLE = 0;
         CAN_RUN_LED = 0;
         CAN_ERROR_LED = 1;
 
-        /* Initialize digital outputs */
-        TRISAbits.TRISA3 = 0; LATAbits.LATA3 = 0;
-        TRISAbits.TRISA4 = 0; LATAbits.LATA4 = 0;
-        TRISAbits.TRISA5 = 0; LATAbits.LATA5 = 0;
-        TRISAbits.TRISA6 = 0; LATAbits.LATA6 = 0;
-        TRISAbits.TRISA7 = 0; LATAbits.LATA7 = 0;
-        OD_writeOutput8Bit[0] = 0;
-        OD_writeOutput8Bit[1] = 0;
-
-        CANopenConfiguredOK = false;
-
         /* initialize CANopen */
-        err = CO_CANinit(ADDR_CAN1, pendingBitRate);
+        err = CO_CANinit(CO, (void *)ADDR_CAN1, pendingBitRate);
         if (err != CO_ERROR_NO) {
-            while(1) ClrWdt();
+            while (1) ClrWdt();
         }
-        err = CO_LSSinit(&pendingNodeId, &pendingBitRate);
+
+        CO_LSS_address_t lssAddress = {.identity = {
+            .vendorID = OD_PERSIST_COMM.x1018_identity.vendor_ID,
+            .productCode = OD_PERSIST_COMM.x1018_identity.productCode,
+            .revisionNumber = OD_PERSIST_COMM.x1018_identity.revisionNumber,
+            .serialNumber = OD_PERSIST_COMM.x1018_identity.serialNumber
+        }};
+        err = CO_LSSinit(CO, &lssAddress, &pendingNodeId, &pendingBitRate);
         if (err != CO_ERROR_NO) {
-            while(1) ClrWdt();
+            while (1) ClrWdt();
         }
+
         activeNodeId = pendingNodeId;
-        err = CO_CANopenInit(activeNodeId);
-        if (err == CO_ERROR_NO) {
-            CANopenConfiguredOK = true;
+
+        errInfo = 0;
+        err = CO_CANopenInit(CO,                /* CANopen object */
+                             NULL,              /* alternate NMT */
+                             NULL,              /* alternate em */
+                             OD,                /* Object dictionary */
+                             OD_STATUS_BITS,    /* Optional OD_statusBits */
+                             NMT_CONTROL,       /* CO_NMT_control_t */
+                             FIRST_HB_TIME,     /* firstHBTime_ms */
+                             SDO_SRV_TIMEOUT_TIME, /* SDOserverTimeoutTime_ms */
+                             SDO_CLI_TIMEOUT_TIME, /* SDOclientTimeoutTime_ms */
+                             SDO_CLI_BLOCK,     /* SDOclientBlockTransfer */
+                             activeNodeId,
+                             &errInfo);
+        if (err != CO_ERROR_NO && err != CO_ERROR_NODE_ID_UNCONFIGURED_LSS) {
+            while (1) ClrWdt();
         }
-        else if(err != CO_ERROR_NODE_ID_UNCONFIGURED_LSS) {
-            while(1) ClrWdt();
+
+        /* Emergency messages in case of errors */
+        if (!CO->nodeIdUnconfigured && errInfo != 0) {
+            CO_errorReport(CO->em, CO_EM_INCONSISTENT_OBJECT_DICT, CO_EMC_DATA_SET, errInfo);
         }
+
+        /* First time only initialization. */
+        if (firstRun) {
+            firstRun = false;
+            CO_timer_us_previous = CO_timer_us;
+        } /* if(firstRun) */
 
         /* initialize callbacks */
-        CO_LSSslave_initCheckBitRateCallback(CO->LSSslave, NULL,
-                                             LSSchkBitrateCallback);
-        CO_LSSslave_initCfgStoreCallback(CO->LSSslave, NULL,
-                                         LSScfgStoreCallback);
+        CO_LSSslave_initCkBitRateCall(CO->LSSslave, NULL,  LSSchkBitrateCallback);
+
+        /* init PDO */
+        errInfo = 0;
+        err = CO_CANopenInitPDO(CO,             /* CANopen object */
+                                CO->em,         /* emergency object */
+                                OD,             /* Object dictionary */
+                                activeNodeId,
+                                &errInfo);
+        if (err != CO_ERROR_NO && err != CO_ERROR_NODE_ID_UNCONFIGURED_LSS) {
+            while (1) ClrWdt();
+        }
 
         /* start CAN */
-        CO_CANsetNormalMode(CO->CANmodule[0]);
+        CO_CANsetNormalMode(CO->CANmodule);
 
 
         /* Configure Timer interrupt function for execution every 1 millisecond */
@@ -221,38 +226,19 @@ int main (void){
         CO_CAN_ISR_ENABLE = 1;     /* CAN1 Interrupt - Enable interrupt */
 
         reset = CO_RESET_NOT;
-        timer1msPrevious = CO_timer1ms;
 
         while(reset == CO_RESET_NOT){
 /* loop for normal program execution ******************************************/
-            uint16_t timer1msCopy, timer1msDiff;
-            static uint16_t TMR_TMR_PREV = 0;
 
-            timer1msCopy = CO_timer1ms;
-            timer1msDiff = timer1msCopy - timer1msPrevious;
-            timer1msPrevious = timer1msCopy;
+            /* calculate time difference since last cycle */
+            uint32_t timer_us_copy = CO_timer_us;
+            uint32_t timeDifference_us = timer_us_copy - CO_timer_us_previous;
+            CO_timer_us_previous = timer_us_copy;
 
             ClrWdt();
 
-            /* calculate cycle time for performance measurement */
-            uint16_t t0 = CO_TMR_TMR;
-            uint16_t t = t0;
-            if(t >= TMR_TMR_PREV){
-                t = t - TMR_TMR_PREV;
-                t = (timer1msDiff * 100) + (t / (CO_FCY / 100));
-            }
-            else if(timer1msDiff){
-                t = TMR_TMR_PREV - t;
-                t = (timer1msDiff * 100) - (t / (CO_FCY / 100));
-            }
-            else t = 0;
-            OD_performance[ODA_performance_mainCycleTime] = t;
-            if(t > OD_performance[ODA_performance_mainCycleMaxTime])
-                OD_performance[ODA_performance_mainCycleMaxTime] = t;
-            TMR_TMR_PREV = t0;
-
             /* CANopen process */
-            reset = CO_process(CO, (uint32_t)timer1msDiff*1000, NULL);
+            reset = CO_process(CO, false, timeDifference_us, NULL);
 
             CAN_RUN_LED = CO_LED_GREEN(CO->LEDs, CO_LED_CANopen);
             CAN_ERROR_LED = CO_LED_RED(CO->LEDs, CO_LED_CANopen);
@@ -284,53 +270,23 @@ CO_TIMER_ISR(){
     /* clear interrupt flag bit */
     CO_TMR_ISR_FLAG = 0;
 
-    CO_timer1ms++;
+    CO_timer_us += CO_RT_THREAD_INTERVAL_US;
 
-    if(CO->CANmodule[0]->CANnormal) {
+    if (!CO->nodeIdUnconfigured && CO->CANmodule->CANnormal) {
         bool_t syncWas;
 
-        /* Process Sync */
-        syncWas = CO_process_SYNC(CO, 1000, NULL);
-
-        /* Read inputs */
-        CO_process_RPDO(CO, syncWas);
-
-        /* Further I/O or nonblocking application code may go here. */
-        /* read RPDO and show it on example LEDS on Explorer16 */
-        uint8_t leds = OD_writeOutput8Bit[0];
-        LATAbits.LATA3 = (leds&0x08) ? 1 : 0;
-        LATAbits.LATA4 = (leds&0x10) ? 1 : 0;
-        LATAbits.LATA5 = (leds&0x20) ? 1 : 0;
-        LATAbits.LATA6 = (leds&0x40) ? 1 : 0;
-        LATAbits.LATA7 = (leds&0x80) ? 1 : 0;
-
-        /* prepare TPDO from example buttons on Explorer16 */
-        uint8_t but = 0;
-        if(!PORTDbits.RD6)  but |= 0x08;
-        if(!PORTDbits.RD7)  but |= 0x04;
-        if(!PORTDbits.RD13) but |= 0x01;
-        OD_readInput8Bit[0] = but;
-
-#if 0
-        /* Debug - disable CANrx for 650 ms, if button pressed. */
-        static uint16_t tmrDebug = 0;
-        if(!PORTDbits.RD13) {
-            if(tmrDebug < 650) {
-                CO_CAN_ISR_ENABLE = 0;
-                tmrDebug++;
-            }
-            else {
-                CO_CAN_ISR_ENABLE = 1;
-            }
-        }
-        else {
-            CO_CAN_ISR_ENABLE = 1;
-            tmrDebug = 0;
-        }
+#if (CO_CONFIG_SYNC) & CO_CONFIG_SYNC_ENABLE
+        syncWas = CO_process_SYNC(CO, CO_RT_THREAD_INTERVAL_US, NULL);
+#endif
+#if (CO_CONFIG_PDO) & CO_CONFIG_RPDO_ENABLE
+        CO_process_RPDO(CO, syncWas, CO_RT_THREAD_INTERVAL_US, NULL);
 #endif
 
-        /* Write outputs */
-        CO_process_TPDO(CO, syncWas, 1000, NULL);
+        /* Further I/O or nonblocking application code may go here. */
+
+#if (CO_CONFIG_PDO) & CO_CONFIG_TPDO_ENABLE
+        CO_process_TPDO(CO, syncWas, CO_RT_THREAD_INTERVAL_US, NULL);
+#endif
 
         /* verify timer overflow */
         if(CO_TMR_ISR_FLAG == 1){
@@ -338,25 +294,14 @@ CO_TIMER_ISR(){
             CO_TMR_ISR_FLAG = 0;
         }
     }
-
-
-    /* calculate cycle time for performance measurement */
-    uint16_t t = CO_TMR_TMR / (CO_FCY / 100);
-    OD_performance[ODA_performance_timerCycleTime] = t;
-    if(t > OD_performance[ODA_performance_timerCycleMaxTime])
-        OD_performance[ODA_performance_timerCycleMaxTime] = t;
 }
 
 
 /* CAN interrupt function *****************************************************/
 void CO_CANinterrupt(CO_CANmodule_t *CANmodule);
 CO_CAN_ISR(){
-    CAN_RX_LED = 1;
-
-    CO_CANinterrupt(CO->CANmodule[0]);
+    CO_CANinterrupt(CO->CANmodule);
 
     /* Clear combined Interrupt flag */
     CO_CAN_ISR_FLAG = 0;
-
-    CAN_RX_LED = 0;
 }
