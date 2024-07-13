@@ -36,7 +36,7 @@ Open one of the example projects, build and program your microcontroller.
 
 Program is tested on Explorer16 board from Microchip with devices PIC32MX795F512L and dsPIC33FJ256GP710, and on Max32 board. CAN transciever chip must be soldered to the Explorer16 board.
 
-Program also compiles for dsPIC30F6015, should work, but is not tested.
+Program also works on dsPIC30F4011 with basic CANopen functionality (see dsPIC30F/CO_driver_target.h). Device has only 2 Kbytes of RAM.
 
 After connecting the CANopen PIC device into the CAN(open) network, bootup message is visible. By default device uses Object Dictionary from `CANopenNode/example`, which contains only communication parameters. With the external CANopen tool all parameters can be accessed and CANopen PIC device can be configured (For example write heartbeat producer time in object 0x1017,0).
 

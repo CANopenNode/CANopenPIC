@@ -45,21 +45,17 @@ extern "C" {
 
 /* Stack configuration override from CO_driver.h.
  * For more information see file CO_config.h. */
-#ifndef CO_CONFIG_SDO_CLI
-#define CO_CONFIG_SDO_CLI (CO_CONFIG_SDO_CLI_ENABLE)
-#endif
+/* Make small memory configuration, it is possible to reduce further by lowering number of PDOs */
+#define CO_CONFIG_GLOBAL_FLAG_OD_DYNAMIC (0)
+#define CO_CONFIG_HB_CONS (0)
+#define CO_CONFIG_EM (CO_CONFIG_EM_PRODUCER)
+#define CO_CONFIG_SDO_SRV (0) /* only expedited transfer */
+#define CO_CONFIG_SYNC (0)
+#define CO_CONFIG_PDO (CO_CONFIG_RPDO_ENABLE | CO_CONFIG_TPDO_ENABLE | CO_CONFIG_TPDO_TIMERS_ENABLE)
+#define CO_CONFIG_TIME (0)
+#define CO_CONFIG_LSS (0)
+#define CO_CONFIG_STORAGE (0)
 
-#ifndef CO_CONFIG_TIME
-#define CO_CONFIG_TIME (CO_CONFIG_TIME_ENABLE)
-#endif
-
-#ifndef CO_CONFIG_CRC16
-#define CO_CONFIG_CRC16 (CO_CONFIG_CRC16_ENABLE)
-#endif
-
-#ifndef CO_CONFIG_FIFO
-#define CO_CONFIG_FIFO (CO_CONFIG_FIFO_ENABLE)
-#endif
 
 /* use global variables in CANopen.c instead of heap */
 #define CO_USE_GLOBALS
@@ -78,9 +74,6 @@ extern "C" {
 typedef unsigned char           bool_t;
 typedef float                   float32_t;
 typedef long double             float64_t;
-typedef char                    char_t;
-typedef unsigned char           oChar_t;
-typedef unsigned char           domain_t;
 
 
 /* CAN module base addresses */
@@ -140,16 +133,16 @@ typedef struct {
 
 
 /* (un)lock critical section in CO_CANsend() */
-#define CO_LOCK_CAN_SEND()      asm volatile ("disi #0x3FFF")
-#define CO_UNLOCK_CAN_SEND()    asm volatile ("disi #0x0000")
+#define CO_LOCK_CAN_SEND(CAN_MODULE)      asm volatile ("disi #0x3FFF")
+#define CO_UNLOCK_CAN_SEND(CAN_MODULE)    asm volatile ("disi #0x0000")
 
 /* (un)lock critical section in CO_errorReport() or CO_errorReset() */
-#define CO_LOCK_EMCY()          asm volatile ("disi #0x3FFF")
-#define CO_UNLOCK_EMCY()        asm volatile ("disi #0x0000")
+#define CO_LOCK_EMCY(CAN_MODULE)          asm volatile ("disi #0x3FFF")
+#define CO_UNLOCK_EMCY(CAN_MODULE)        asm volatile ("disi #0x0000")
 
 /* (un)lock critical section when accessing Object Dictionary */
-#define CO_LOCK_OD()            asm volatile ("disi #0x3FFF")
-#define CO_UNLOCK_OD()          asm volatile ("disi #0x0000")
+#define CO_LOCK_OD(CAN_MODULE)            asm volatile ("disi #0x3FFF")
+#define CO_UNLOCK_OD(CAN_MODULE)          asm volatile ("disi #0x0000")
 
 /* Synchronization between CAN receive and message processing threads. */
 #define CO_MemoryBarrier()
