@@ -337,7 +337,7 @@ int main (void) {
     while (reset != CO_RESET_APP) {
 /* CANopen communication reset - initialize CANopen objects *******************/
         uint32_t errInfo;
-        uint32_t CO_timer_us_previous;
+        static uint32_t CO_timer_us_previous = 0;
 
         /* disable CAN receive interrupts */
         CO_CANRX_ENABLE(0);
@@ -396,10 +396,10 @@ int main (void) {
         }
 
         /* initialize callbacks */
-        CO_LSSslave_initCheckBitRateCallback(CO->LSSslave, NULL,
-                                             CO_LSSchkBitrateCallback);
-        CO_LSSslave_initCfgStoreCallback(CO->LSSslave, &mlStorage,
-                                         LSScfgStoreCallback);
+        CO_LSSslave_initCkBitRateCall(CO->LSSslave, NULL,
+                                      CO_LSSchkBitrateCallback);
+        CO_LSSslave_initCfgStoreCall(CO->LSSslave, &mlStorage,
+                                     LSScfgStoreCallback);
 
 
         /* First time only initialization. */
