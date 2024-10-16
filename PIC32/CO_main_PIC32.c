@@ -144,8 +144,12 @@
 #ifndef CO_RT_THREAD_ISR
 #define CO_RT_THREAD_ISR_DEFAULT
 #define CO_RT_THREAD_ISR() void __ISR(_TIMER_2_VECTOR, IPL7SRS) _adIsr(void) { \
-    AD1CON1bits.ASAM = 1; \
-    CO_RT_THREAD_CUSTOM_TRIGGERS(); \
+    static bool_t skipFirstPass = true; \
+    if(skipFirstPass) { skipFirstPass = false; } \
+    else { \
+        AD1CON1bits.ASAM = 1; \
+        CO_RT_THREAD_CUSTOM_TRIGGERS(); \
+    } \
     IFS0bits.T2IF = 0; \
 } \
 void __ISR(_ADC_VECTOR, IPL3SOFT) _rtThread(void)
